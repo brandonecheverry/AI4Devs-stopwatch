@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch-AAI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="blue-grey darken-4 white-text">
+    <div class="container center-align">
+        <h1 class="teal-text text-lighten-3">Stopwatch-AAI</h1>
+        <div class="card-panel blue-grey darken-3 z-depth-4">
+            <div class="timer-display" id="timer">00:00:00</div>
+        </div>
+        <div class="input-field">
+            <input id="countdownTime" type="number" min="1" placeholder="Introduce segundos" class="white-text">
+            <label for="countdownTime" class="white-text">Tiempo de cuenta atrás (segundos)</label>
+        </div>
+        <div class="controls">
+            <button id="startStop" class="btn-large waves-effect waves-light teal darken-2">
+                <i class="material-icons left">play_arrow</i>Iniciar
+            </button>
+            <button id="countdown" class="btn-large waves-effect waves-light amber darken-2">
+                <i class="material-icons left">timer</i>Cuenta Atrás
+            </button>
+            <button id="reset" class="btn-large waves-effect waves-light red darken-2">
+                <i class="material-icons left">refresh</i>Reiniciar
+            </button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
