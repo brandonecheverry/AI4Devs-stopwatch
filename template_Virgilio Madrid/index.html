@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWATCH & COUNTDOWN</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="theme-color" content="#3636B5">
+</head>
+<body class="light-mode">
+    <!-- Main Menu Page -->
+    <div id="main-menu" class="page active">
+        <header>
+            <h1>MAIN MENU</h1>
+            <div class="website">www.online-stopwatch.com</div>
+        </header>
+        
+        <div class="menu-container">
+            <div id="goto-stopwatch" class="menu-option">
+                <div class="label">Stopwatch</div>
+                <div class="icon">
+                    <svg viewBox="0 0 100 120" class="up-arrow">
+                        <path d="M50,0 L100,70 L75,70 L75,120 L25,120 L25,70 L0,70 Z" fill="#4AE54A" stroke="#222" stroke-width="2"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div id="goto-countdown" class="menu-option">
+                <div class="label">Countdown</div>
+                <div class="icon">
+                    <svg viewBox="0 0 100 120" class="down-arrow">
+                        <path d="M50,120 L100,50 L75,50 L75,0 L25,0 L25,50 L0,50 Z" fill="#E54A4A" stroke="#222" stroke-width="2"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="title">StopWATCH</div>
+            <div class="website">www.online-stopwatch.com</div>
+            <div class="mode-toggle">
+                <button id="toggle-mode">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Stopwatch Page -->
+    <div id="stopwatch-page" class="page">
+        <header>
+            <h1>StopWATCH</h1>
+            <div class="website">www.online-stopwatch.com</div>
+        </header>
+        
+        <div class="timer-display">
+            <div class="time" id="stopwatch-display">00:00:00</div>
+            <div class="milliseconds" id="stopwatch-ms">000</div>
+        </div>
+        
+        <div class="controls">
+            <button id="start-stop" class="start-btn">Start</button>
+            <button id="stopwatch-clear" class="clear-btn">Clear</button>
+            <button id="lap-split" class="lap-btn">Lap</button>
+        </div>
+
+        <div class="laps-container">
+            <div class="laps-header">
+                <h3>Laps</h3>
+                <button id="clear-laps" class="small-btn">Clear Laps</button>
+            </div>
+            <div id="laps-list" class="laps-list"></div>
+        </div>
+        
+        <footer>
+            <button id="stopwatch-back" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </footer>
+    </div>
+
+    <!-- Countdown Page -->
+    <div id="countdown-page" class="page">
+        <header>
+            <h1>COUNTDOWN</h1>
+            <div class="website">www.online-stopwatch.com</div>
+        </header>
+        
+        <div class="timer-display">
+            <div class="time" id="countdown-display">00:00:00</div>
+            <div class="milliseconds" id="countdown-ms">000</div>
+        </div>
+        
+        <div class="numpad">
+            <div class="numpad-row">
+                <button class="numpad-btn" data-num="5">5</button>
+                <button class="numpad-btn" data-num="6">6</button>
+                <button class="numpad-btn" data-num="7">7</button>
+                <button class="numpad-btn" data-num="8">8</button>
+                <button class="numpad-btn" data-num="9">9</button>
+                <button id="set-countdown" class="set-btn">Set</button>
+            </div>
+            <div class="numpad-row">
+                <button class="numpad-btn" data-num="0">0</button>
+                <button class="numpad-btn" data-num="1">1</button>
+                <button class="numpad-btn" data-num="2">2</button>
+                <button class="numpad-btn" data-num="3">3</button>
+                <button class="numpad-btn" data-num="4">4</button>
+                <button id="countdown-clear" class="clear-btn">Clear</button>
+            </div>
+        </div>
+
+        <div class="favorites-container">
+            <div class="favorites-header">
+                <h3>Favorites</h3>
+                <button id="save-favorite" class="small-btn">Save Current</button>
+            </div>
+            <div id="favorites-list" class="favorites-list"></div>
+        </div>
+        
+        <div class="controls">
+            <button id="countdown-start-stop" class="start-btn">Start</button>
+        </div>
+        
+        <footer>
+            <button id="countdown-back" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </footer>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="buzzer-sound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869.wav" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
