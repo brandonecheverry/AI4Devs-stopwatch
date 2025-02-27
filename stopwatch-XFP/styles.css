@@ -1,0 +1,231 @@
+/* ------------------------------
+    🎨 DISEÑO GENERAL
+------------------------------ */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121826;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Contenedor principal */
+.container {
+    background-color: #1e293b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+}
+
+/* ------------------------------
+    🔠 TITULOS Y TEXTOS
+------------------------------ */
+h1 {
+    color: #4f76e5; /* Azul acero */
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* ------------------------------
+    ⏱ DISPLAY DE CRONÓMETRO Y CUENTA ATRÁS
+------------------------------ */
+.display {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 15px 0;
+    padding: 10px;
+    background: #334155;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Milisegundos más pequeños */
+.milliseconds {
+    font-size: 0.5em;
+    margin-left: 5px;
+}
+
+/* ------------------------------
+    🎛 BOTONES Y EFECTOS
+------------------------------ */
+button {
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 8px;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+/* Efecto al pasar el cursor */
+button:hover {
+    background-color: #4338ca;
+    box-shadow: 0px 0px 10px rgba(79, 70, 229, 0.8);
+}
+
+/* Efecto de presión al hacer clic */
+button:active {
+    transform: scale(0.95);
+}
+
+/* ------------------------------
+    🎛 BOTÓN DE PANTALLA COMPLETA
+------------------------------ */
+.fullscreen-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+/* Efecto hover del botón de pantalla completa */
+.fullscreen-toggle:hover {
+    transform: scale(1.2);
+}
+
+/* 🔹 Ajuste para que el botón de salida (×) sea más visible */
+.fullscreen-exit {
+    font-size: 28px;
+    color: #ff4444;
+    right: 20px;
+    position: absolute;
+}
+
+/* ------------------------------
+    📺 MODO PANTALLA COMPLETA
+------------------------------ */
+.fullscreen-mode {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #121826;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* Ocultar elementos innecesarios en pantalla completa */
+.fullscreen-mode h1,
+.fullscreen-mode .mode-selection {
+    display: none;
+}
+
+/* Display más grande en pantalla completa */
+.fullscreen-mode .display {
+    font-size: 6em;
+}
+
+/* 🔹 Ajuste para que en pantalla completa los botones se vean bien */
+.fullscreen-mode .controls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+/* ------------------------------
+    🔢 TECLADO NUMÉRICO
+------------------------------ */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Estilo de los números */
+.num-key {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    background: #4f46e5;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+/* Efectos en el teclado numérico */
+.num-key:hover {
+    background: #4338ca;
+    box-shadow: 0px 0px 8px rgba(79, 70, 229, 0.8);
+}
+
+.num-key:active {
+    transform: scale(0.95);
+}
+
+/* ------------------------------
+    🛑 BOTÓN BACK EN TECLADO NUMÉRICO
+------------------------------ */
+/* 🔹 Estilo del botón Back en el teclado numérico para que siga el estilo de SET y Reset */
+#num-pad .back-btn {
+    background-color: #4f46e5; /* Mismo color que SET y Reset */
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+/* 🔹 Efecto hover y click para el botón Back */
+#num-pad .back-btn:hover {
+    background-color: #4338ca; /* Mismo efecto hover que SET y Reset */
+    box-shadow: 0px 0px 10px rgba(79, 70, 229, 0.8);
+}
+
+#num-pad .back-btn:active {
+    transform: scale(0.95);
+}
+
+
+
+/* ------------------------------
+    🔔 EFECTOS Y ANIMACIONES
+------------------------------ */
+
+/* Animación de alerta */
+@keyframes blink {
+    0% { background-color: #ff0000; }
+    50% { background-color: #ffffff; }
+    100% { background-color: #ff0000; }
+}
+
+.blink {
+    animation: blink 0.5s infinite;
+}
+
+/* ------------------------------
+    🎭 OCULTAR ELEMENTOS
+------------------------------ */
+.hidden {
+    display: none;
+}
+
