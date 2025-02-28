@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI4Devs Stopwatch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Logo y título -->
+    <div class="branding">
+        <div class="logo-container">
+            <img src="logo.png" alt="Stopwatch Logo" class="logo">
+            <h1 class="brand-title">Online AI4Devs Stopwatch</h1>
+        </div>
+        <div class="separator-line"></div>
+    </div>
+
+    <div class="container">
+        <!-- Main Selection Panel -->
+        <div id="main-panel" class="panel active">
+            <header class="header">
+                <h1>AI4Devs Stopwatch</h1>
+            </header>
+            <main class="main-content">
+                <div class="option-container">
+                    <div class="option" id="stopwatch-option">
+                        <h2>Stopwatch</h2>
+                        <img src="flecha-verde.png" alt="Green Arrow" class="icon-img">
+                    </div>
+                    <div class="divider"></div>
+                    <div class="option" id="countdown-option">
+                        <h2>Countdown</h2>
+                        <img src="flecha-rojo.png" alt="Red Arrow" class="icon-img">
+                    </div>
+                </div>
+            </main>
+            <footer class="footer"></footer>
+        </div>
+
+        <!-- Stopwatch Panel -->
+        <div id="stopwatch-panel" class="panel">
+            <header class="header">
+                <h1>AI4Devs Stopwatch</h1>
+            </header>
+            <main class="main-content">
+                <div class="display-container">
+                    <div class="time-display" id="stopwatch-display">
+                        <span class="time-value">00:00:00</span>
+                        <span class="milliseconds">000</span>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button id="start-pause-btn" class="btn btn-start">Start</button>
+                    <button id="clear-stopwatch-btn" class="btn btn-clear">Clear</button>
+                </div>
+            </main>
+            <footer class="footer">
+                <button id="back-from-stopwatch" class="back-btn"><span class="back-arrow"></span> Back</button>
+            </footer>
+        </div>
+
+        <!-- Countdown Panel -->
+        <div id="countdown-panel" class="panel">
+            <header class="header">
+                <h1>AI4Devs Stopwatch</h1>
+            </header>
+            <main class="main-content">
+                <div class="display-container">
+                    <div class="time-display" id="countdown-display">
+                        <span class="time-value">00:00:00</span>
+                        <span class="milliseconds">000</span>
+                    </div>
+                </div>
+                <div class="keypad">
+                    <div class="keypad-row">
+                        <button class="btn btn-num" data-num="5">5</button>
+                        <button class="btn btn-num" data-num="6">6</button>
+                        <button class="btn btn-num" data-num="7">7</button>
+                        <button class="btn btn-num" data-num="8">8</button>
+                        <button class="btn btn-num" data-num="9">9</button>
+                        <button id="set-btn" class="btn btn-set">Set</button>
+                    </div>
+                    <div class="keypad-row">
+                        <button class="btn btn-num" data-num="0">0</button>
+                        <button class="btn btn-num" data-num="1">1</button>
+                        <button class="btn btn-num" data-num="2">2</button>
+                        <button class="btn btn-num" data-num="3">3</button>
+                        <button class="btn btn-num" data-num="4">4</button>
+                        <button id="clear-countdown-btn" class="btn btn-clear-gray">Clear</button>
+                    </div>
+                </div>
+            </main>
+            <footer class="footer">
+                <button id="back-from-countdown" class="back-btn"><span class="back-arrow"></span> Back</button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
