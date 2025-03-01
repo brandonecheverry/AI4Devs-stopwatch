@@ -26,10 +26,11 @@
     <!-- Pantalla de Cronómetro -->
     <div id="screen-timer" class="screen">
         <div class="time-display">
-            <span id="timer-time">00:00:00</span>
-            <span id="timer-ms" class="milliseconds">000</span>
+            <div class="time-wrapper">
+                <span id="timer-time">00:00:00</span>
+                <span id="timer-ms" class="milliseconds">000</span>
+            </div>
         </div>
-        <!-- Controles en fila; el contenedor tiene clase "row" -->
         <div class="controls row">
             <button id="timer-toggle" class="big-button cron-start-continue-button">Start</button>
             <button id="timer-clear" class="big-button cron-clear-button">Clear</button>
@@ -45,8 +46,10 @@
     <!-- Pantalla de Cuenta Atrás -->
     <div id="screen-countdown" class="screen">
         <div class="time-display">
-            <span id="countdown-time">00:00:00</span>
-            <span id="countdown-ms" class="milliseconds">000</span>
+            <div class="time-wrapper">
+                <span id="countdown-time">00:00:00</span>
+                <span id="countdown-ms" class="milliseconds">000</span>
+            </div>
         </div>
         <div class="controls">
             <div id="digit-rows">

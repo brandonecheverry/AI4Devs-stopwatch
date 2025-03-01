@@ -39,9 +39,12 @@ h1 {
     display: block !important;
 }
 
+.main-container.screen.active {
+    display: flex !important;
+}
+
 /* ====== PANTALLA PRINCIPAL ====== */
 .main-container {
-    display: flex;
     width: 100%;
     height: 60vh;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
@@ -61,11 +64,7 @@ h1 {
 }
 
 .half-countdown {
-    background-color: #f0fff0;
-}
-
-.half:hover {
-    filter: brightness(95%);
+    background-color: #ffffff;
 }
 
 /* Íconos */
@@ -85,7 +84,6 @@ h1 {
 
 /* Reloj */
 .time-display {
-    padding: 10px 20px;
     background-color: #e9ecff;
     border: 3px solid #666;
     border-radius: 30px;
@@ -93,12 +91,15 @@ h1 {
     text-align: center;
 }
 
+.time-wrapper {
+    display: inline-block;
+}
+
 /* El tiempo principal (HH:MM:SS) centrado */
 #timer-time, #countdown-time {
     display: block;
-    font-size: 4.5rem;
+    font-size: 7rem;
     font-weight: bold;
-    text-align: center;
 }
 
 /* Los milisegundos se muestran debajo, alineados a la derecha */
@@ -122,9 +123,13 @@ h1 {
     gap: 20px;
 }
 
-/* Para Timer, los botones en fila (ocupan el ancho del reloj) */
+#screen-timer .controls.row button {
+    flex: 1;
+}
+
 #screen-timer .controls.row {
     display: inline-flex;
+    flex-direction: row;
     justify-content: space-between;
     width: 100%;
     max-width: 100%;
@@ -217,10 +222,12 @@ h1 {
     font-size: 1.2rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
+    padding-left: 20px;
     cursor: pointer;
 }
+
 
 .back-button:hover {
     opacity: 0.9;
