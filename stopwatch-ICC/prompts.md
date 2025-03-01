@@ -143,3 +143,10 @@ Scrollable lap list
 
 
 To complete your setup, just save the CSS code to a file named "styles.css" in the same directory as your HTML and JS files.
+
+
+# Prompt 2 (Review & refinement) In a new converation (max length of a message) including (index.html, styles.css, script.js, and prompts.md)
+
+You didn't include Future Enhancements, such as export Lap times or sound notifications.
+
+In addition to that, it would be super helpful if you put some information about what is the purpose of the application and the information about the functionalities that it has. Display this information with an elegant typography and some icons to be more user-friendly.
