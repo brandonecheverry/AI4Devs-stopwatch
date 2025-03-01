@@ -1,0 +1,141 @@
+body {
+	font-family: Arial, sans-serif;
+	text-align: center;
+	background-color: white;
+	margin: 50px;
+}
+
+.container {
+	display: inline-block;
+	padding: 20px;
+	border: 2px solid black;
+	border-radius: 10px;
+	background-color: #f9f9f9;
+}
+
+h1 {
+	font-size: 2.5em;
+}
+
+.timer-display {
+	font-size: 4em;
+	padding: 15px;
+	margin: 20px auto;
+	background-color: #e0e0e0;
+	border: 3px solid black;
+	border-radius: 8px;
+	width: 420px;
+	display: flex;
+	justify-content: center;
+	letter-spacing: 2px;
+}
+
+.controls {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin-top: 15px;
+}
+
+button {
+	font-size: 1.5em;
+	padding: 15px;
+	width: 160px;
+	cursor: pointer;
+	border: 3px solid black;
+	border-radius: 8px;
+	text-transform: uppercase;
+	font-weight: bold;
+	transition: all 0.3s;
+	color: black;
+}
+
+.start-btn {
+	background-color: green;
+}
+
+.reset-btn {
+	background-color: red;
+}
+
+.pause-btn {
+	background-color: blue;
+}
+
+button:hover {
+	opacity: 0.8;
+	transform: scale(1.05);
+}
+
+button:disabled {
+	background-color: gray;
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+.mode-switch {
+	margin-top: 20px;
+	font-size: 1.2em;
+}
+
+input[type="checkbox"] {
+	margin-left: 10px;
+	transform: scale(1.5);
+	cursor: pointer;
+}
+
+#countdownTime {
+	font-size: 1.5em;
+	padding: 5px;
+	margin-left: 10px;
+	width: 130px;
+	text-align: center;
+	border: 2px solid black;
+	border-radius: 5px;
+	outline: none;
+	background-color: #e0e0e0;
+	color: black;
+}
+
+@media (max-width: 600px) {
+	.timer-display {
+		font-size: 3em;
+		width: 320px;
+	}
+	button {
+		font-size: 1.2em;
+		width: 130px;
+	}
+}
+.info-icon {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	font-size: 24px;
+	cursor: pointer;
+	background: #007bff;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 50%;
+	font-weight: bold;
+}
+/* Readme Page Styling */
+.readme-container {
+	max-width: 600px;
+	margin: auto;
+	padding: 20px;
+	border: 2px solid black;
+	background-color: white;
+}
+
+/* Center align the title */
+.readme-container h1 {
+	text-align: center;
+}
+
+/* Left align the rest of the content */
+.readme-container h2,
+.readme-container p,
+.readme-container ul {
+	text-align: left;
+}
