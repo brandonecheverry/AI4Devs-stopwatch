@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Timer and Countdown</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<h1>Timer and Countdown</h1>
+
+<!--
+  Pantalla Principal:
+  - Dividida en dos columnas (Stopwatch y Countdown).
+  - Cada columna es clicable para navegar.
+  - Inicia con la clase "active" para que sea visible.
+-->
+<div id="screen-main" class="screen active main-container">
+    <!-- Columna Izquierda: Stopwatch -->
+    <div id="btn-timer" class="half half-stopwatch">
+        <!-- Ajusta la ruta/nombre de tu imagen si es distinto -->
+        <img src="Stopwatch.png" alt="Green arrow pointing up" class="arrow-icon" />
+    </div>
+
+    <!-- Columna Derecha: Countdown -->
+    <div id="btn-countdown" class="half half-countdown">
+        <!-- Ajusta la ruta/nombre de tu imagen si es distinto -->
+        <img src="Countdown.png" alt="Red arrow pointing down" class="arrow-icon" />
+    </div>
+</div>
+
+<!-- Pantalla de Cronómetro -->
+<div id="screen-timer" class="screen">
+    <div class="time-display">
+        <span id="timer-time">00:00:00</span>
+        <br>
+        <span id="timer-ms" class="milliseconds">000</span>
+    </div>
+    <div class="controls">
+        <!-- Botón toggle: Start/Pause/Continue -->
+        <button id="timer-toggle" class="big-button cron-start-continue-button">Start</button>
+        <!-- Botón Clear: fondo rojo -->
+        <button id="timer-clear" class="big-button cron-clear-button">Clear</button>
+    </div>
+    <div class="back-button">
+        <button id="timer-back">Back</button>
+    </div>
+</div>
+
+<!-- Pantalla de Cuenta Atrás -->
+<div id="screen-countdown" class="screen">
+    <div class="time-display">
+        <span id="countdown-time">00:00:00</span>
+        <br>
+        <span id="countdown-ms" class="milliseconds">000</span>
+    </div>
+    <div class="controls">
+        <!-- Filas de dígitos -->
+        <div id="digit-rows">
+            <div class="digit-row">
+                <!-- Fila 1: dígitos 5,6,7,8,9 y botón Set (verdes) -->
+                <button class="countdown-digit digit-button ca-green-button" data-value="5">5</button>
+                <button class="countdown-digit digit-button ca-green-button" data-value="6">6</button>
+                <button class="countdown-digit digit-button ca-green-button" data-value="7">7</button>
+                <button class="countdown-digit digit-button ca-green-button" data-value="8">8</button>
+                <button class="countdown-digit digit-button ca-green-button" data-value="9">9</button>
+                <button id="countdown-set" class="big-button ca-green-button">Set</button>
+            </div>
+            <div class="digit-row">
+                <!-- Fila 2: dígitos 1,2,3,4,5 y botón Clear (gris) -->
+                <button class="countdown-digit digit-button ca-green-button" data-value="1">1</button>
+                <button class="countdown-digit digit-button ca-green-button" data-value="2">2</button>
+                <button class="countdown-digit digit-button ca-green-button" data-value="3">3</button>
+                <button class="countdown-digit digit-button ca-green-button" data-value="4">4</button>
+                <button class="countdown-digit digit-button ca-green-button" data-value="5">5</button>
+                <button id="countdown-clear" class="big-button ca-gray-button">Clear</button>
+            </div>
+        </div>
+        <!-- Botones de acción (inicialmente ocultos) -->
+        <div id="action-buttons" class="hidden">
+            <!-- Botón toggle: Start/Pause (azul)/Continue (verde) -->
+            <button id="countdown-toggle" class="big-button ca-green-button">Start</button>
+            <!-- Botón Stop: rojo -->
+            <button id="countdown-stop-button" class="big-button red-button">Stop</button>
+        </div>
+        <div class="back-button">
+            <button id="countdown-back">Back</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
