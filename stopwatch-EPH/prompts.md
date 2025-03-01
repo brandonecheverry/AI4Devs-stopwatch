@@ -2,7 +2,7 @@
 
 # Prompt:
 
-```markdown
+````markdown
 # Stopwatch
 
 Actúa como un experto desarrollador front-end especializado en JavaScript. Tengo un proyecto que consta de dos ficheros:
@@ -43,4 +43,4 @@ Este fichero debe contener toda la funcionalidad en JavaScript para que:
 - Estética: Utiliza TailwindCSS en el fichero index.html para lograr una interfaz visualmente atractiva.
 - Comentarios: Incluye comentarios en el código para explicar las funcionalidades.
 - Formato de Salida: La salida final debe consistir únicamente en el contenido completo de ambos ficheros (index.html y script.js), sin explicaciones adicionales.
-```
+````
