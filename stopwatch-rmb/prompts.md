@@ -102,5 +102,3 @@ el botón de continue solo tiene que aparecer cunado se haya pulsado el botón d
 **Prompt 16**
 el boton de pause tendria que estar oculto hasta que se empiece en ambas pantallas
 
-
-**Prompt 17**
