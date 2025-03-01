@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timer and Countdown</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;700&display=swap');
+    .timer-font {
+      font-family: 'Roboto Mono', monospace;
+    }
+    .tab-active {
+      background-color: #3b82f6;
+      color: white;
+    }
+    .button-hover:hover {
+      filter: brightness(1.1);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <h1 class="text-4xl font-bold text-center text-blue-600 mb-8">Timer and Countdown</h1>
+    
+    <!-- Tab Navigation -->
+    <div class="flex justify-center mb-6">
+      <div class="bg-white rounded-lg shadow-md flex overflow-hidden">
+        <button id="stopwatch-tab" class="tab-active px-6 py-3 font-semibold text-lg transition-colors duration-200 w-40">Stopwatch</button>
+        <button id="countdown-tab" class="px-6 py-3 font-semibold text-lg transition-colors duration-200 text-gray-700 w-40">Countdown</button>
+      </div>
+    </div>
+    
+    <!-- Stopwatch Section -->
+    <div id="stopwatch-section" class="bg-white rounded-xl shadow-lg p-8 mb-8">
+      <div class="text-center">
+        <div id="stopwatch-display" class="timer-font text-7xl md:text-8xl font-bold text-blue-600 mb-8 tabular-nums">00:00:00.00</div>
+        
+        <div class="flex flex-wrap justify-center gap-4">
+          <button id="stopwatch-start" class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-xl shadow-md transition-all button-hover">Start</button>
+          <button id="stopwatch-stop" class="bg-red-500 hover:bg-red-600 text-white font-bold py-4 px-8 rounded-lg text-xl shadow-md transition-all button-hover hidden">Stop</button>
+          <button id="stopwatch-reset" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-lg text-xl shadow-md transition-all button-hover">Reset</button>
+          <button id="stopwatch-lap" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-xl shadow-md transition-all button-hover">Lap</button>
+        </div>
+        
+        <!-- Laps Section -->
+        <div id="laps-container" class="mt-8 max-h-64 overflow-y-auto hidden">
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">Laps</h3>
+          <div id="laps-list" class="space-y-2"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Countdown Section -->
+    <div id="countdown-section" class="bg-white rounded-xl shadow-lg p-8 hidden">
+      <div class="text-center">
+        <!-- Time Input Section (visible when not running) -->
+        <div id="countdown-input-section">
+          <div class="flex justify-center items-center gap-2 mb-8">
+            <div class="flex flex-col items-center">
+              <input type="number" id="hours-input" min="0" max="99" class="timer-font w-20 h-20 text-4xl text-center border-2 border-blue-300 rounded-lg focus:outline-none focus:border-blue-500" value="0">
+              <label class="text-gray-600 mt-1">Hours</label>
+            </div>
+            <div class="text-4xl font-bold text-gray-400">:</div>
+            <div class="flex flex-col items-center">
+              <input type="number" id="minutes-input" min="0" max="59" class="timer-font w-20 h-20 text-4xl text-center border-2 border-blue-300 rounded-lg focus:outline-none focus:border-blue-500" value="0">
+              <label class="text-gray-600 mt-1">Minutes</label>
+            </div>
+            <div class="text-4xl font-bold text-gray-400">:</div>
+            <div class="flex flex-col items-center">
+              <input type="number" id="seconds-input" min="0" max="59" class="timer-font w-20 h-20 text-4xl text-center border-2 border-blue-300 rounded-lg focus:outline-none focus:border-blue-500" value="0">
+              <label class="text-gray-600 mt-1">Seconds</label>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Countdown Display (visible when running) -->
+        <div id="countdown-display-section" class="hidden">
+          <div id="countdown-display" class="timer-font text-7xl md:text-8xl font-bold text-red-600 mb-8 tabular-nums">00:00:00</div>
+        </div>
+        
+        <div class="flex flex-wrap justify-center gap-4">
+          <button id="countdown-start" class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-xl shadow-md transition-all button-hover">Start</button>
+          <button id="countdown-stop" class="bg-red-500 hover:bg-red-600 text-white font-bold py-4 px-8 rounded-lg text-xl shadow-md transition-all button-hover hidden">Stop</button>
+          <button id="countdown-reset" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-lg text-xl shadow-md transition-all button-hover">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
