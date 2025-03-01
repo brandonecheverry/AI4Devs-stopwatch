@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch & Countdown</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <button id="stopwatch-tab">Stopwatch</button>
+            <button id="countdown-tab">Countdown</button>
+        </nav>
+        
+        <div id="stopwatch" class="tab-content">
+            <div class="display" id="stopwatch-display">00:00:00</div>
+            <div class="controls">
+                <button id="stopwatch-start">Start</button>
+                <button id="stopwatch-pause">Pause</button>
+                <button id="stopwatch-clear">Clear</button>
+            </div>
+        </div>
+        
+        <div id="countdown" class="tab-content hidden">
+            <div class="display" id="countdown-display">00:00:00</div>
+            <div class="keypad">
+                <button class="key" data-value="1">1</button>
+                <button class="key" data-value="2">2</button>
+                <button class="key" data-value="3">3</button>
+                <button class="key" data-value="4">4</button>
+                <button class="key" data-value="5">5</button>
+                <button class="key" data-value="6">6</button>
+                <button class="key" data-value="7">7</button>
+                <button class="key" data-value="8">8</button>
+                <button class="key" data-value="9">9</button>
+                <button class="key" data-value="0">0</button>
+                <button class="key" data-action="delete">←</button>
+            </div>
+            <div class="controls">
+                <button id="countdown-start">Start</button>
+                <button id="countdown-pause">Pause</button>
+                <button id="countdown-clear">Clear</button>
+            </div>
+        </div>
+    </div>
+    <audio id="alarm-sound" src="alarm.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html>

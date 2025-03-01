@@ -1,0 +1,77 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Stopwatch & Countdown Display */
+.display {
+    font-size: 3rem;
+    background: #e0e8ff;
+    padding: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    min-width: 250px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#stopwatch-start, #countdown-start {
+    background: #4CAF50;
+    color: white;
+}
+
+#stopwatch-clear, #countdown-clear {
+    background: #d9534f;
+    color: white;
+}
+
+#stopwatch-pause, #countdown-pause {
+    background: #f0ad4e;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Preset buttons */
+.preset-buttons button {
+    background: #337ab7;
+    color: white;
+    margin: 5px;
+}
