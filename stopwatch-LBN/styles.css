@@ -1,0 +1,91 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.menu-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.menu-btn i {
+    font-size: 18px;
+}
+
+.menu-btn.active {
+    background-color: #0056b3;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.timer-display {
+    font-size: 48px;
+    background: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.button-group {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+button i {
+    font-size: 18px;
+}
+
+#startStopwatch, #startCountdown {
+    background-color: #28a745;
+    color: white;
+}
+
+#stopStopwatch, #stopCountdown {
+    background-color: #dc3545;
+    color: white;
+}
+
+#resetStopwatch {
+    background-color: #ffc107;
+    color: black;
+}
+
+.hidden {
+    display: none;
+}
