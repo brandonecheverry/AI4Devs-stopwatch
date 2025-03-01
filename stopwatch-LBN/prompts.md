@@ -29,3 +29,28 @@ Actualiza los tres archivos y muestramelos.
 
 Prompt4
 Los iconos no se ven
+
+Prompt5
+Vamos a añadir más mejoras:
+- Hay que resaltar más el botón de la funcionalidad activa. Además, para dejarlo más claro, vamos a añadir un título a la funcionalidad, encima del reloj, que indique cual está activa.
+- El icono de los botones de detener, no debe ser el icono de pause, sino el icono de stop.
+- En la cuenta atrás, hay que posicionar los inputs del tiempo a seleccionar encima del reloj, y además vamos a darle un estilo más profesional.
+- En la cuenta atrás, además, cuando le demos a iniciar, entre los inputs y el reloj, vamos a indicar el tiempo que hemos solicitado, para que el usuario lo tenga presente.
+- En la cuenta atrás, necesitamos un botón de resetear, que borre la información de los inputs y que ponga a cero el contador.
+
+Prompt6
+Seguimos añadiendo mejoras
+- Al cargar la página, si no hemos pulsado en ningún botón todavía, en la zona centro, donde mostramos la funcionalidad, mostraremos un mensaje de bienvenida. Hasta que no se pulse uno de los botones, no se activará ninguna funcionalidad.
+- En el modo cronómetro, tras pulsar en iniciar, si pulsamos en detener, mientras no pulsemos en reiniciar, el botón de iniciar debe cambiar su nombre a Continuar.
+- En el modo cuenta atrás falta un botón denominado "Establecer", a la derecha de los inputs para fijar el valor inicial del reloj, en base a los datos disponibles en los inputs.
+
+Prompt7
+Vamos a corregir lo siguiente:
+- El icono del botón Iniciar, en el modo cronómetro, se ha perdido.
+- En el modo cuenta atrás, el botón de establecer no carga la información en el reloj.
+
+Prompt8
+El modo cuenta atrás no funciona como se ha indicado.
+El objetivo de este modo es que una vez que el usuario indique unos valores y pulse en el botón Establecer, estos valores se coloquen en el reloj, para que al pulsar en el botón Iniciar, empiece la cuenta atrás desde el valor del reloj hasta llegar a cero.
+Si mientras está la cuenta atrás funcionando, se pulsa en el botón Detener, el reloj se parará. 
+Si cuando está parado se vuelve a pulsar en el botón Iniciar, la cuenta atrás seguirá hasta llegar a cero.
