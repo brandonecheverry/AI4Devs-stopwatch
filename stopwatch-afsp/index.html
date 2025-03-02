@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch & Countdown Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .timer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .mode-toggle {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        .mode-label {
+            font-size: 1.2rem;
+            margin: 5px;
+        }
+
+        .timer-display {
+            background-color: #e6e6fa;
+            padding: 20px 40px;
+            border-radius: 20px;
+            border: 2px solid #333;
+            font-size: 4rem;
+            font-weight: bold;
+            position: relative;
+            min-width: 400px;
+            text-align: center;
+        }
+
+        .timer-display .milliseconds {
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 60px;
+            font-size: 2rem;
+            border-radius: 15px;
+            border: 2px solid #333;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .start-pause {
+            background-color: #90EE90;
+            color: black;
+        }
+
+        .clear {
+            background-color: #FF6347;
+            color: black;
+        }
+
+        .time-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .time-input input {
+            width: 70px;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="timer-container">
+        <div class="mode-toggle">
+            <span class="mode-label">Stopwatch</span>
+            <label class="switch">
+                <input type="checkbox" id="modeToggle">
+                <span class="slider"></span>
+            </label>
+            <span class="mode-label">Countdown</span>
+        </div>
+
+        <div id="countdownInput" class="time-input" style="display: none;">
+            <input type="number" id="hoursInput" min="0" max="99" placeholder="HH" value="0">
+            <span>:</span>
+            <input type="number" id="minutesInput" min="0" max="59" placeholder="MM" value="8">
+            <span>:</span>
+            <input type="number" id="secondsInput" min="0" max="59" placeholder="SS" value="0">
+        </div>
+
+        <div class="timer-display" id="timer">00:00:00<span class="milliseconds">000</span></div>
+        <div class="controls">
+            <button class="btn start-pause" id="startPause">Start</button>
+            <button class="btn clear" id="clear">Clear</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
