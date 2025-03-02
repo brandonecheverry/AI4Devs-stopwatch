@@ -97,15 +97,17 @@ stopwatchClearButton.addEventListener("click", () => {
 
 // --------------- COUNTDOWN NUMERIC PAD FUNCTIONS ---------------
 
-// Given up to 6 digits [S1, S2, M1, M2, H1, H2], return {hours, minutes, seconds}
+// Given up to 6 digits stored in the order they were entered,
+// reverse them so that the first digit entered becomes the rightmost digit.
+// Then assign: rev[0]=seconds ones, rev[1]=seconds tens, rev[2]=minutes ones, rev[3]=minutes tens, etc.
 function getTimeFromDigits(digits) {
-  // If array is shorter than 6, missing digits are 0
-  const s1 = digits[0] || 0; // ones of seconds
-  const s2 = digits[1] || 0; // tens of seconds
-  const m1 = digits[2] || 0; // ones of minutes
-  const m2 = digits[3] || 0; // tens of minutes
-  const h1 = digits[4] || 0; // ones of hours
-  const h2 = digits[5] || 0; // tens of hours
+  const rev = digits.slice().reverse(); // Create a reversed copy
+  const s1 = rev[0] || 0; // seconds ones
+  const s2 = rev[1] || 0; // seconds tens
+  const m1 = rev[2] || 0; // minutes ones
+  const m2 = rev[3] || 0; // minutes tens
+  const h1 = rev[4] || 0; // hours ones
+  const h2 = rev[5] || 0; // hours tens
 
   const hours = h2 * 10 + h1;
   const minutes = m2 * 10 + m1;
