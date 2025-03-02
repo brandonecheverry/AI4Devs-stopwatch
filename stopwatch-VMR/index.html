@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch & Countdown</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <!-- Initial Screen -->
+        <div id="initial-screen" class="screen">
+            <div class="split-container">
+                <div class="split-item" id="stopwatch-option">
+                    <h2>Stopwatch</h2>
+                    <div class="arrow green-arrow" id="stopwatch-arrow"></div>
+                </div>
+                <div class="split-item" id="countdown-option">
+                    <h2>Countdown</h2>
+                    <div class="arrow red-arrow" id="countdown-arrow"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stopwatch Screen -->
+        <div id="stopwatch-screen" class="screen hidden">
+            <div class="timer-display">
+                <span id="stopwatch-display">00:00:00</span>
+                <span class="milliseconds">000</span>
+            </div>
+            <div class="buttons-container">
+                <button id="start-button" class="control-button green-button">Start</button>
+                <button id="clear-button" class="control-button red-button">Clear</button>
+            </div>
+            <div class="back-container">
+                <button id="stopwatch-back" class="back-button">
+                    <span class="back-arrow">←</span> Back
+                </button>
+            </div>
+        </div>
+
+        <!-- Countdown Screen -->
+        <div id="countdown-screen" class="screen hidden">
+            <div class="timer-display">
+                <span id="countdown-display">00:00:00</span>
+                <span class="milliseconds">000</span>
+            </div>
+            <div class="numpad-container">
+                <div class="numpad-row">
+                    <button class="numpad-button" data-value="5">5</button>
+                    <button class="numpad-button" data-value="6">6</button>
+                    <button class="numpad-button" data-value="7">7</button>
+                    <button class="numpad-button" data-value="8">8</button>
+                    <button class="numpad-button" data-value="9">9</button>
+                    <button id="set-button" class="control-button green-button">Set</button>
+                </div>
+                <div class="numpad-row">
+                    <button class="numpad-button" data-value="0">0</button>
+                    <button class="numpad-button" data-value="1">1</button>
+                    <button class="numpad-button" data-value="2">2</button>
+                    <button class="numpad-button" data-value="3">3</button>
+                    <button class="numpad-button" data-value="4">4</button>
+                    <button id="countdown-clear-button" class="control-button gray-button">Clear</button>
+                </div>
+            </div>
+            <div class="back-container">
+                <button id="countdown-back" class="back-button">
+                    <span class="back-arrow">←</span> Back
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
