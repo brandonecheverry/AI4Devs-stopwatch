@@ -38,12 +38,11 @@ const countdownNumpad = document.getElementById("countdown-numpad");
 const countdownSetButton = document.getElementById("countdown-set");
 const countdownClearButton = document.getElementById("countdown-clear");
 
-// We'll store up to 6 digits in the order they were entered
 let countdownDigits = [];
 
 // --------------- COUNTDOWN ACTIVE MODE VARIABLES ---------------
 let isCountdownMode = false;
-let countdownRemainingTime = 0; // remaining time in ms
+let countdownRemainingTime = 0; // in ms
 let initialCountdownTime = 0; // originally set time in ms
 let countdownStartTime = null; // when countdown last started
 
@@ -56,7 +55,6 @@ function padMilliseconds(num) {
   return num.toString().padStart(3, "0");
 }
 
-// Format milliseconds into hh:mm:ss.mmm (returns a string with a span for ms)
 function formatTime(ms) {
   const totalSeconds = Math.floor(ms / 1000);
   const hours = Math.floor(totalSeconds / 3600);
@@ -84,30 +82,25 @@ function updateCountdown() {
     stopwatchInterval = null;
     newRemaining = 0;
     stopwatchStartPauseButton.textContent = "Start";
-    // Optionally, you could disable the start button or add an alert here.
   }
   stopwatchDisplay.innerHTML = formatTime(newRemaining);
 }
 
-// --------------- STOPWATCH / COUNTDOWN START-PAUSE BUTTON HANDLER ---------------
+// --------------- STOPWATCH / COUNTDOWN START-PAUSE HANDLER ---------------
 stopwatchStartPauseButton.addEventListener("click", () => {
   if (isCountdownMode) {
-    // Countdown mode logic:
     if (!stopwatchInterval) {
-      // Start or resume countdown
       countdownStartTime = Date.now();
       stopwatchInterval = setInterval(updateCountdown, 50);
       stopwatchStartPauseButton.textContent = "Pause";
     } else {
-      // Pause countdown: update remaining time and clear interval
       clearInterval(stopwatchInterval);
       stopwatchInterval = null;
       const elapsed = Date.now() - countdownStartTime;
-      countdownRemainingTime = countdownRemainingTime - elapsed;
+      countdownRemainingTime -= elapsed;
       stopwatchStartPauseButton.textContent = "Continue";
     }
   } else {
-    // Regular stopwatch mode logic:
     if (!stopwatchInterval) {
       stopwatchStartTime = Date.now();
       stopwatchInterval = setInterval(updateStopwatch, 50);
@@ -121,17 +114,15 @@ stopwatchStartPauseButton.addEventListener("click", () => {
   }
 });
 
-// --------------- STOPWATCH / COUNTDOWN CLEAR BUTTON HANDLER ---------------
+// --------------- STOPWATCH / COUNTDOWN CLEAR HANDLER ---------------
 stopwatchClearButton.addEventListener("click", () => {
   if (isCountdownMode) {
-    // Reset countdown to the originally set time
     clearInterval(stopwatchInterval);
     stopwatchInterval = null;
     countdownRemainingTime = initialCountdownTime;
     stopwatchDisplay.innerHTML = formatTime(countdownRemainingTime);
     stopwatchStartPauseButton.textContent = "Start";
   } else {
-    // Reset regular stopwatch
     clearInterval(stopwatchInterval);
     stopwatchInterval = null;
     stopwatchStartTime = null;
@@ -143,16 +134,14 @@ stopwatchClearButton.addEventListener("click", () => {
 });
 
 // --------------- COUNTDOWN NUMERIC PAD FUNCTIONS ---------------
-// Interpreting digits: reverse order so that first digit becomes the rightmost
 function getTimeFromDigits(digits) {
   const rev = digits.slice().reverse();
-  const s1 = rev[0] || 0; // seconds ones
-  const s2 = rev[1] || 0; // seconds tens
-  const m1 = rev[2] || 0; // minutes ones
-  const m2 = rev[3] || 0; // minutes tens
-  const h1 = rev[4] || 0; // hours ones
-  const h2 = rev[5] || 0; // hours tens
-
+  const s1 = rev[0] || 0;
+  const s2 = rev[1] || 0;
+  const m1 = rev[2] || 0;
+  const m2 = rev[3] || 0;
+  const h1 = rev[4] || 0;
+  const h2 = rev[5] || 0;
   const hours = h2 * 10 + h1;
   const minutes = m2 * 10 + m1;
   const seconds = s2 * 10 + s1;
@@ -182,29 +171,24 @@ countdownNumpad.addEventListener("click", (e) => {
 // --------------- COUNTDOWN SETUP CLEAR BUTTON ---------------
 countdownClearButton.addEventListener("click", () => {
   countdownDigits = [];
-  updateCountdownDisplay(); // Will show 00:00:00
+  updateCountdownDisplay();
 });
 
 // --------------- COUNTDOWN SETUP SET BUTTON ---------------
 countdownSetButton.addEventListener("click", () => {
   const { hours, minutes, seconds } = getTimeFromDigits(countdownDigits);
-  // Calculate total milliseconds
   const totalMs = (hours * 3600 + minutes * 60 + seconds) * 1000;
   if (totalMs <= 0) {
     alert("Please set a time greater than zero.");
     return;
   }
-  // Prepare countdown mode variables
   isCountdownMode = true;
   countdownRemainingTime = totalMs;
   initialCountdownTime = totalMs;
-  console.log(`Countdown set to: ${hours}h ${minutes}m ${seconds}s`);
-  // Switch to the stopwatch view to serve as the countdown active interface
-  countdownDigits = []; // reset numeric pad digits
-  updateCountdownDisplay(); // (so that if user goes back, it resets)
+  countdownDigits = [];
+  updateCountdownDisplay();
   countdownView.classList.add("hidden");
   stopwatchView.classList.remove("hidden");
-  // Set the display to the countdown time and reset the button text
   stopwatchDisplay.innerHTML = formatTime(countdownRemainingTime);
   stopwatchStartPauseButton.textContent = "Start";
 });
@@ -214,7 +198,6 @@ stopwatchButton.addEventListener("click", () => {
   modeSelection.classList.add("hidden");
   countdownView.classList.add("hidden");
   stopwatchView.classList.remove("hidden");
-  // Ensure we are in regular stopwatch mode when coming from main
   isCountdownMode = false;
 });
 
@@ -224,25 +207,20 @@ countdownButton.addEventListener("click", () => {
   countdownView.classList.remove("hidden");
 });
 
-// Back from stopwatch view (active stopwatch or countdown) to previous view
 backToMainFromStopwatch.addEventListener("click", () => {
   clearInterval(stopwatchInterval);
   stopwatchInterval = null;
   if (isCountdownMode) {
-    // We are in active countdown mode: return to the countdown setup view
     isCountdownMode = false;
     countdownRemainingTime = 0;
     initialCountdownTime = 0;
     countdownStartTime = null;
-    // Reset the stopwatch display for countdown mode
     stopwatchDisplay.innerHTML =
       '00:00:00.<span class="milliseconds">000</span>';
     stopwatchStartPauseButton.textContent = "Start";
-    // Hide the active countdown view and show the countdown numeric pad view
     stopwatchView.classList.add("hidden");
     countdownView.classList.remove("hidden");
   } else {
-    // Regular stopwatch mode: reset and return to main mode selection
     stopwatchStartTime = null;
     stopwatchElapsedTime = 0;
     stopwatchDisplay.innerHTML =
@@ -253,10 +231,9 @@ backToMainFromStopwatch.addEventListener("click", () => {
   }
 });
 
-// Back from countdown setup view to main mode selection
 backToMainFromCountdown.addEventListener("click", () => {
   countdownDigits = [];
-  updateCountdownDisplay(); // Resets the display to 00:00:00
+  updateCountdownDisplay();
   countdownView.classList.add("hidden");
   modeSelection.classList.remove("hidden");
 });

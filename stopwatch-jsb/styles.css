@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* Global Reset & Base Styles */
 * {
     box-sizing: border-box;
@@ -26,8 +24,6 @@
   /* ----------------------
      VIEW CONTAINERS
   ------------------------- */
-  
-  /* Mode Selection Container */
   #mode-selection {
     display: flex;
     justify-content: center;
@@ -35,14 +31,12 @@
     margin-top: 2rem;
   }
   
-  /* Make sure hidden elements are properly hidden */
   #mode-selection.hidden,
   #stopwatch-view.hidden,
   #countdown-view.hidden {
     display: none;
   }
   
-  /* Stopwatch and Countdown Views common container */
   #stopwatch-view,
   #countdown-view {
     width: 100%;
@@ -57,7 +51,6 @@
   /* ----------------------
      BUTTON STYLING
   ------------------------- */
-  
   button {
     cursor: pointer;
     transition: background 0.3s ease;
@@ -78,7 +71,6 @@
     background-color: #d0d0d0;
   }
   
-  /* Back Button */
   .back-button {
     background-color: #ddd;
     border-radius: 5px;
@@ -87,7 +79,6 @@
     margin-bottom: 10px;
   }
   
-  /* Controls for Stopwatch and Countdown */
   .controls {
     display: flex;
     justify-content: center;
@@ -101,7 +92,6 @@
     border-radius: 5px;
   }
   
-  /* Specific styling for Start/Pause/Clear buttons */
   #stopwatch-start-pause {
     background-color: #4caf50;
     color: #fff;
@@ -120,7 +110,6 @@
     background-color: #e53935;
   }
   
-  /* Numeric Pad Set/Clear buttons */
   #countdown-set {
     background-color: #4caf50;
     color: #fff;
@@ -142,7 +131,6 @@
   /* ----------------------
      ICON STYLING
   ------------------------- */
-  
   .green-arrow {
     color: #4caf50;
     font-size: 1.8rem;
@@ -156,8 +144,6 @@
   /* ----------------------
      TIME DISPLAYS
   ------------------------- */
-  
-  /* Stopwatch display styling */
   #stopwatch-display {
     font-family: 'Courier New', Courier, monospace;
     font-size: 3rem;
@@ -169,7 +155,6 @@
     vertical-align: super;
   }
   
-  /* Countdown input display styling */
   #countdown-input-display {
     font-family: 'Courier New', Courier, monospace;
     font-size: 2.5rem;
