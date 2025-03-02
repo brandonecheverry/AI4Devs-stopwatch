@@ -31,32 +31,40 @@ let stopwatchInterval = null;
 let stopwatchStartTime = null;
 let stopwatchElapsedTime = 0; // in milliseconds
 
-// Format milliseconds into hh:mm:ss
+// Format milliseconds into hh:mm:ss.mmm (with a span for milliseconds)
 function formatTime(ms) {
   const totalSeconds = Math.floor(ms / 1000);
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   const seconds = totalSeconds % 60;
-  return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  const milliseconds = ms % 1000;
+  return `${pad(hours)}:${pad(minutes)}:${pad(
+    seconds
+  )}.<span class="milliseconds">${padMilliseconds(milliseconds)}</span>`;
 }
 
 function pad(num) {
   return num.toString().padStart(2, "0");
 }
 
-// Update the stopwatch display
+function padMilliseconds(num) {
+  return num.toString().padStart(3, "0");
+}
+
+// Update the stopwatch display (running every 50ms for smooth ms update)
 function updateStopwatch() {
   const currentTime = Date.now();
   const elapsed = currentTime - stopwatchStartTime + stopwatchElapsedTime;
-  stopwatchDisplay.textContent = formatTime(elapsed);
+  stopwatchDisplay.innerHTML = formatTime(elapsed);
 }
 
 // Event handler for start/pause/continue button
 stopwatchStartPauseButton.addEventListener("click", () => {
   if (!stopwatchInterval) {
-    // Start or continue the stopwatch
+    // Start or resume the stopwatch
     stopwatchStartTime = Date.now();
-    stopwatchInterval = setInterval(updateStopwatch, 1000);
+    // Update every 50ms for millisecond precision
+    stopwatchInterval = setInterval(updateStopwatch, 50);
     stopwatchStartPauseButton.textContent = "Pause";
   } else {
     // Pause the stopwatch
@@ -73,20 +81,20 @@ stopwatchClearButton.addEventListener("click", () => {
   stopwatchInterval = null;
   stopwatchStartTime = null;
   stopwatchElapsedTime = 0;
-  stopwatchDisplay.textContent = "00:00:00";
+  stopwatchDisplay.innerHTML = '00:00:00.<span class="milliseconds">000</span>';
   stopwatchStartPauseButton.textContent = "Start";
 });
 
 // Navigation logic for showing views
 
-// Show stopwatch view
+// Show stopwatch view and hide others
 stopwatchButton.addEventListener("click", () => {
   modeSelection.classList.add("hidden");
   countdownView.classList.add("hidden");
   stopwatchView.classList.remove("hidden");
 });
 
-// Show countdown view (placeholder for Task 4)
+// Show countdown view (placeholder for Task 4) and hide others
 countdownButton.addEventListener("click", () => {
   modeSelection.classList.add("hidden");
   stopwatchView.classList.add("hidden");
@@ -100,7 +108,7 @@ backToMainFromStopwatch.addEventListener("click", () => {
   stopwatchInterval = null;
   stopwatchStartTime = null;
   stopwatchElapsedTime = 0;
-  stopwatchDisplay.textContent = "00:00:00";
+  stopwatchDisplay.innerHTML = '00:00:00.<span class="milliseconds">000</span>';
   stopwatchStartPauseButton.textContent = "Start";
   stopwatchView.classList.add("hidden");
   modeSelection.classList.remove("hidden");

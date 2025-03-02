@@ -27,8 +27,10 @@
         ← Back
       </button>
       <h2>Stopwatch</h2>
-      <!-- Time Display -->
-      <div id="stopwatch-display">00:00:00</div>
+      <!-- Time Display now includes milliseconds -->
+      <div id="stopwatch-display">
+        00:00:00.<span class="milliseconds">000</span>
+      </div>
       <!-- Controls: Start/Pause and Clear -->
       <div class="controls">
         <button id="stopwatch-start-pause">Start</button>

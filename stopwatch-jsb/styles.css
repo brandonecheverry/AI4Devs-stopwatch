@@ -74,6 +74,12 @@
     font-family: 'Courier New', Courier, monospace;
   }
   
+  /* Style for the milliseconds part to appear smaller */
+  #stopwatch-display .milliseconds {
+    font-size: 1rem;
+    vertical-align: super;
+  }
+  
   /* Controls container */
   .controls {
     display: flex;
