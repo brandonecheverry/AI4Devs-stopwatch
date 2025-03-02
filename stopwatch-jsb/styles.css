@@ -19,10 +19,19 @@
     margin-bottom: 1rem;
   }
   
-  /* Hide sections by default */
-  .hidden {
+  /* Hide the specific sections when .hidden is applied */
+  #mode-selection.hidden {
     display: none;
   }
+  
+  #stopwatch-view.hidden {
+    display: none;
+  }
+  
+  #countdown-view.hidden {
+    display: none;
+  }
+  
   
   /* Mode Selection Buttons */
   #mode-selection {
