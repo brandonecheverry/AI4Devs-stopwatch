@@ -1,0 +1,229 @@
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3a0ca3;
+  --accent-color: #f72585;
+  --background-color: #f8f9fa;
+  --text-color: #212529;
+  --light-gray: #e9ecef;
+  --success-color: #4cc9f0;
+  --border-radius: 12px;
+  --box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+  transition: all var(--transition-speed);
+}
+
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+h2 {
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+#stopwatch, #countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+#stopwatch-display, #countdown-display {
+  font-size: 3rem;
+  font-family: 'Courier New', monospace;
+  background-color: var(--light-gray);
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  margin: 1.5rem 0;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+button {
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  font-weight: 600;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(67, 97, 238, 0.3);
+}
+
+#start-stopwatch, #start-countdown {
+  background-color: var(--success-color);
+}
+
+#stop-stopwatch, #pause-countdown {
+  background-color: var(--accent-color);
+}
+
+#back-stopwatch, #back-countdown {
+  background-color: var(--light-gray);
+  color: var(--text-color);
+}
+
+#digit-pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 1rem 0;
+}
+
+.digit-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.digit-btn {
+  width: 60px;
+  height: 60px;
+  margin: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light-gray);
+  color: var(--text-color);
+}
+
+.digit-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+#countdown-setup-controls, #countdown-timer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  #stopwatch-display, #countdown-display {
+    font-size: 2rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .digit-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    margin: 0.3rem;
+  }
+  
+  #stopwatch, #countdown {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  #stopwatch-display, #countdown-display {
+    font-size: 1.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .digit-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    margin: 0.2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  #stopwatch, #countdown {
+    max-width: 600px;
+    padding: 3rem;
+  }
+
+  #stopwatch-display, #countdown-display {
+    font-size: 4rem;
+  }
+
+  button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+  }
+
+  .digit-btn {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+}
