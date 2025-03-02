@@ -224,30 +224,39 @@ countdownButton.addEventListener("click", () => {
   countdownView.classList.remove("hidden");
 });
 
-// Back from stopwatch view to main
+// Back from stopwatch view (active stopwatch or countdown) to previous view
 backToMainFromStopwatch.addEventListener("click", () => {
   clearInterval(stopwatchInterval);
   stopwatchInterval = null;
   if (isCountdownMode) {
-    // Reset countdown-specific variables
+    // We are in active countdown mode: return to the countdown setup view
     isCountdownMode = false;
     countdownRemainingTime = 0;
     initialCountdownTime = 0;
     countdownStartTime = null;
+    // Reset the stopwatch display for countdown mode
+    stopwatchDisplay.innerHTML =
+      '00:00:00.<span class="milliseconds">000</span>';
+    stopwatchStartPauseButton.textContent = "Start";
+    // Hide the active countdown view and show the countdown numeric pad view
+    stopwatchView.classList.add("hidden");
+    countdownView.classList.remove("hidden");
   } else {
+    // Regular stopwatch mode: reset and return to main mode selection
+    stopwatchStartTime = null;
     stopwatchElapsedTime = 0;
+    stopwatchDisplay.innerHTML =
+      '00:00:00.<span class="milliseconds">000</span>';
+    stopwatchStartPauseButton.textContent = "Start";
+    stopwatchView.classList.add("hidden");
+    modeSelection.classList.remove("hidden");
   }
-  stopwatchStartTime = null;
-  stopwatchDisplay.innerHTML = '00:00:00.<span class="milliseconds">000</span>';
-  stopwatchStartPauseButton.textContent = "Start";
-  stopwatchView.classList.add("hidden");
-  modeSelection.classList.remove("hidden");
 });
 
-// Back from countdown setup view to main
+// Back from countdown setup view to main mode selection
 backToMainFromCountdown.addEventListener("click", () => {
   countdownDigits = [];
-  updateCountdownDisplay();
+  updateCountdownDisplay(); // Resets the display to 00:00:00
   countdownView.classList.add("hidden");
   modeSelection.classList.remove("hidden");
 });
