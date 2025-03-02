@@ -1,0 +1,209 @@
+/* Estilos básicos de la sección del manual */
+.manual-section {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-height: 80px;
+}
+
+/* Efecto de entrada (fade-in) */
+.fade-in {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajustes de display para cronómetro y temporizador */
+
+.d-none {
+    display: none !important;
+}
+.cronometro-display {
+    width: fit-content;  /* Se ajusta al ancho del contenido */
+    margin: 0 auto;      /* Centrado horizontalmente en la página */
+    font-weight: bold;
+}
+
+.cronometro-display .tiempo {
+    text-align: right;   /* Alinea la fila de tiempo a la derecha */
+    font-size: 4rem;     /* Tamaño similar a display-5 (ajusta según prefieras) */
+}
+
+.cronometro-display .milisegundos {
+    text-align: right;   /* Alinea la fila de milisegundos a la derecha */
+    font-size: 2.0em;    /* Tamaño reducido para distinguirlo */
+    margin-top: -10px;   /* Ajusta el espacio vertical para alinearlo justo debajo de los segundos */
+}
+
+.temporizador-display {
+    width: fit-content;  /* Se ajusta al ancho del contenido */
+    margin: 0 auto;      /* Centrado horizontalmente */
+    font-weight: bold;
+}
+
+.temporizador-display .tiempo {
+    text-align: right;   /* Alinea la línea de horas, minutos y segundos a la derecha */
+    font-size: 4rem;     /* Tamaño similar a display-5 */
+}
+
+.temporizador-display .milisegundos {
+    text-align: right;   /* Alinea la línea de milisegundos a la derecha */
+    font-size: 2.0em;    /* Tamaño reducido para distinguirlo */
+    margin-top: -10px;   /* Ajusta el espacio vertical para alinear justo debajo de los segundos */
+}
+
+
+/* --- Botón flotante de configuración --- */
+.config-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s ease;
+    z-index: 1000;
+}
+
+.config-btn:hover {
+    transform: rotate(360deg);
+}
+
+/* --- Panel de configuración --- */
+.config-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 25%;
+    height: 100%;
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+/* Clase para mostrar el panel */
+.config-panel.active {
+    transform: translateX(0);
+}
+
+/* Encabezado del panel */
+.config-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+/* --- Templates de diseño --- */
+/* Template Azul */
+.template-azul {
+    background-color: #e0f0ff;
+}
+
+/* Template Verde */
+.template-verde {
+    background-color: #e0ffe0;
+}
+
+/* Template Rojo */
+.template-rojo {
+    background-color: #ffe0e0;
+}
+
+/* Template Oscuro: color de fondo y texto general */
+.template-oscuro {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Ajustar el manual en modo oscuro */
+.template-oscuro .manual-section {
+    background-color: #444; /* Fondo más claro que #333 para diferenciar */
+    color: #fff;           /* Texto en blanco */
+}
+
+/* Ajustar el panel de configuración en modo oscuro */
+.template-oscuro .config-panel {
+    background-color: #444; /* Fondo oscuro */
+    color: #fff;           /* Texto en blanco */
+    border-left: 1px solid #666; /* Borde sutil */
+}
+
+/* Si quieres que todos los botones en modo oscuro se adapten */
+.template-oscuro .btn {
+    background-color: #555;
+    color: #fff;
+    border-color: #666;
+}
+
+/* Ajustar inputs si deseas que también tengan fondo oscuro */
+.template-oscuro input,
+.template-oscuro select,
+.template-oscuro textarea {
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #666;
+}
+
+.template-oscuro .manual-config-minimal {
+    background-color: #444;
+    color: #fff;
+    border-color: #666;
+}
+
+/* Template Claro */
+.template-claro {
+    background-color: #fdfdfd;
+}
+
+
+.manual-config-minimal {
+    background-color: #fafafa; /* Fondo muy claro */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem 1.5rem;
+    max-width: 1300px;  /* Ajusta según tu preferencia */
+    margin: 0 auto;    /* Centra horizontalmente */
+    color: #555;       /* Texto gris suave */
+}
+
+.manual-config-minimal h4 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.manual-config-minimal p,
+.manual-config-minimal ul {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+.manual-config-minimal ul {
+    list-style-type: none; /* Quita el estilo de viñetas si deseas */
+    padding-left: 0;
+}
+
+.manual-config-minimal ul li {
+    margin-bottom: 0.5rem;
+}
