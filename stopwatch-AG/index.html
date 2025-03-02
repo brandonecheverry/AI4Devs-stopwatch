@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self';"
+    />
+    <meta
+      http-equiv="Strict-Transport-Security"
+      content="max-age=31536000; includeSubDomains"
+    />
+    <title>Stopwatch and Countdown</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Homepage Section -->
+    <section id="homepage" class="section">
+      <div class="container">
+        <div class="feature-container">
+          <div class="feature" id="stopwatch-feature">
+            <img src="./images/stopwatch.png" alt="Stopwatch" />
+            <h1>Stopwatch</h1>
+          </div>
+          <div class="feature" id="countdown-feature">
+            <img src="./images/countdown.png" alt="Countdown" />
+            <h1>Countdown</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stopwatch Section -->
+    <section id="stopwatch-section" class="section hidden">
+      <div class="container">
+        <h1>Stopwatch</h1>
+        <div class="timer-display" id="stopwatch-display">00:00:00.000</div>
+        <div class="button-container">
+          <button id="stopwatch-start-btn" class="btn btn-green">Start</button>
+          <button id="stopwatch-clear-btn" class="btn btn-red">Clear</button>
+        </div>
+        <button id="stopwatch-back-btn" class="btn btn-back">Back</button>
+      </div>
+    </section>
+
+    <!-- Countdown Setup Section -->
+    <section id="countdown-setup-section" class="section hidden">
+      <div class="container">
+        <h1>Set Countdown Time</h1>
+        <div class="timer-display" id="countdown-setup-display">
+          00:00:00.000
+        </div>
+        <div class="button-container">
+          <div class="number-buttons-row">
+            <button class="btn btn-green number-btn" data-value="5">5</button>
+            <button class="btn btn-green number-btn" data-value="6">6</button>
+            <button class="btn btn-green number-btn" data-value="7">7</button>
+            <button class="btn btn-green number-btn" data-value="8">8</button>
+            <button class="btn btn-green number-btn" data-value="9">9</button>
+            <button id="countdown-set-btn" class="btn btn-green">Set</button>
+          </div>
+          <div class="number-buttons-row">
+            <button class="btn btn-green number-btn" data-value="0">0</button>
+            <button class="btn btn-green number-btn" data-value="1">1</button>
+            <button class="btn btn-green number-btn" data-value="2">2</button>
+            <button class="btn btn-green number-btn" data-value="3">3</button>
+            <button class="btn btn-green number-btn" data-value="4">4</button>
+            <button id="countdown-setup-clear-btn" class="btn btn-red">
+              Clear
+            </button>
+          </div>
+        </div>
+        <button id="countdown-setup-back-btn" class="btn btn-back">Back</button>
+      </div>
+    </section>
+
+    <!-- Countdown Timer Section -->
+    <section id="countdown-section" class="section hidden">
+      <div class="container">
+        <h1>Countdown</h1>
+        <div class="timer-display" id="countdown-display">00:00:00.000</div>
+        <div class="button-container">
+          <button id="countdown-start-btn" class="btn btn-green">Start</button>
+          <button id="countdown-clear-btn" class="btn btn-red">Clear</button>
+        </div>
+        <button id="countdown-back-btn" class="btn btn-back">Back</button>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
