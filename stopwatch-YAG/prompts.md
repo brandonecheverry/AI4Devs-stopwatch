@@ -927,3 +927,1302 @@ Con esto cumplimos los requerimientos de diseño, funcionalidad y accesibilidad.
 
 ¡Éxitos con tu cronómetro!
 ```
+## 7ma iteracion input
+
+```md
+## Feature: Countdown
+
+Añadiremos tambien a nuestra implementacion un Countdown
+
+## Comportamiento
+
+- Al seleccionar la cuenta atras se nos preguntara cuanto tiempo queremos que tenga configurado
+- Al llegar a 0 debe realizar una animacion que permita identificar que se detuvo
+- Debe utilizar un sonido de alarma generico, se puede utilizar algun recurso gratuito de internet para esto
+- El historial no se permite en este modo
+
+## Feedback
+
+Haz todas las preguntas que creas pertinentes para esto
+```
+
+## 7ma iteracion ouput:
+
+```md
+# ¡Excelente adición, Yoberty! 🚀
+
+Antes de comenzar con la implementación del **Countdown**, tengo algunas preguntas para asegurar que cubrimos todos los casos de uso correctamente.
+
+## 🔍 Preguntas Claves para la Implementación
+
+### 1️⃣ Selección del tiempo
+- ¿El tiempo se ingresará con **botones numéricos** (como en las imágenes) o se permitirá también escribir directamente en un **input**?
+- ¿Cuál es el **máximo de tiempo permitido** para configurar el countdown? (¿Horas ilimitadas o un límite específico?)
+- ¿Se permitirá **iniciar el countdown sin haber ingresado un tiempo válido**?  
+  _(Ejemplo: Si el usuario presiona "Start" con `00:00`, ¿qué debería pasar?)_
+
+### 2️⃣ Visualización del tiempo
+- ¿El **formato del temporizador** seguirá el mismo de `mm:ss:ms`, o cambiará a `hh:mm:ss:ms` si supera 60 minutos?
+- ¿Deseas que haya una **indicación visual** mientras el countdown está en marcha? _(Ejemplo: el color de fondo cambia gradualmente a rojo)_
+- ¿El **display debe parpadear** cuando queden **X** segundos _(ejemplo: los últimos 5 segundos)_?
+
+### 3️⃣ Eventos y controles
+- ¿La lógica de los botones será igual al cronómetro (**Start, Pause, Clear**) o debería haber un botón adicional para **Reiniciar** el tiempo al valor inicial?
+- ¿El botón **Clear** solo resetea el countdown a `00:00`, o también **limpia el tiempo ingresado previamente**?
+- ¿El temporizador **se debe pausar o cancelar** si el usuario cierra la pestaña y vuelve después? _(Es decir, ¿se guarda en `localStorage` o no?)_
+
+### 4️⃣ Animación al llegar a 0
+- ¿La animación debe ser solo un **cambio de color** _(rojo)_ o algo más dinámico como un **flash de pantalla**?
+- ¿La animación debe **repetirse** o solo ejecutarse una vez?
+- ¿Debe haber alguna acción extra cuando llega a `00:00`, como **deshabilitar botones hasta que el usuario lo reinicie**?
+
+### 5️⃣ Sonido de alarma
+- ¿Debe sonar **una única vez** o **repetirse hasta que el usuario lo detenga**?
+- ¿Prefieres un **sonido corto** (~2 segundos) o uno **más largo**?
+- ¿Debe haber una opción para **silenciar la alarma** antes de que termine?
+
+### 6️⃣ Accesibilidad y Shortcuts
+- ¿Se deben mantener **atajos de teclado** (`Espacio` para iniciar/pausar, `L` para limpiar, `V` no aplica en este caso)?
+- ¿Necesitas algún **feedback auditivo** _(ejemplo: un pequeño beep cada segundo en los últimos 5 segundos)_?
+- ¿Deseas que el **modo Countdown tenga su propio diseño**, ligeramente diferente del Stopwatch, o debe mantenerse visualmente consistente?
+```
+
+## 8va iteracion input
+
+```md
+# 🔍 Preguntas Claves para la Implementación
+
+## 1️⃣ Selección del tiempo
+- **¿El tiempo se ingresará con botones numéricos (como en las imágenes) o se permitirá también escribir directamente en un input?**  
+  **R:** Se permitirán ambos comportamientos.  
+- **¿Cuál es el máximo de tiempo permitido para configurar el countdown? (¿Horas ilimitadas o un límite específico?)**  
+  **R:** Límite de **24h**.  
+- **¿Se permitirá iniciar el countdown sin haber ingresado un tiempo válido?**  
+  _(Ejemplo: Si el usuario presiona "Start" con `00:00`, ¿qué debería pasar?)_  
+  **R:** No debe permitirse este comportamiento.  
+
+## 2️⃣ Visualización del tiempo
+- **¿El formato del temporizador seguirá el mismo de `mm:ss:ms`, o cambiará a `hh:mm:ss:ms` si supera 60 minutos?**  
+  **R:** Se mantendrá el formato del **Cronómetro**.  
+- **¿Deseas que haya una indicación visual mientras el countdown está en marcha?**  
+  _(Ejemplo: Color de fondo cambia gradualmente a rojo)_  
+  **R:** Sí, que exista una indicación visual.  
+- **¿El display debe parpadear cuando queden X segundos (ejemplo: los últimos 5 segundos)?**  
+  **R:** Sí.  
+
+## 3️⃣ Eventos y controles
+- **¿La lógica de los botones será igual al cronómetro (`Start`, `Pause`, `Clear`) o debería haber un botón adicional para reiniciar el tiempo al valor inicial?**  
+  **R:** Utilizar el botón adicional de **reiniciar el tiempo**.  
+- **¿El botón `Clear` solo resetea el countdown a `00:00`, o también limpia el tiempo ingresado previamente?**  
+  **R:** También limpia el tiempo ingresado previamente.  
+- **¿El temporizador se debe pausar o cancelar si el usuario cierra la pestaña y vuelve después?**  
+  _(Es decir, ¿se guarda en `localStorage` o no?)_  
+  **R:** No se guarda en `localStorage`.  
+
+## 4️⃣ Animación al llegar a `00:00`
+- **¿La animación debe ser solo un cambio de color (rojo) o algo más dinámico como un flash de pantalla?**  
+  **R:** Flash de pantalla.  
+- **¿La animación debe repetirse o solo ejecutarse una vez?**  
+  **R:** **Repetirse**.  
+- **¿Debe haber alguna acción extra cuando llega a `00:00`, como deshabilitar botones hasta que el usuario lo reinicie?**  
+  **R:** Sí, **deshabilitar los botones** hasta su reinicio.  
+
+## 5️⃣ Sonido de alarma
+- **¿Debe sonar una única vez o repetirse hasta que el usuario lo detenga?**  
+  **R:** **Sonar hasta que se detenga**.  
+- **¿Prefieres un sonido corto (~2 segundos) o uno más largo?**  
+  **R:** **Indiferente**.  
+- **¿Debe haber una opción para silenciar la alarma antes de que termine?**  
+  **R:** **No**.  
+
+## 6️⃣ Accesibilidad y Shortcuts
+- **¿Se deben mantener atajos de teclado (`Espacio` para iniciar/pausar, `L` para limpiar, `V` no aplica en este caso)?**  
+  **R:** La `V` **no aplica** en este caso.  
+- **¿Necesitas algún feedback auditivo?**  
+  _(Ejemplo: un pequeño beep cada segundo en los últimos 5 segundos)_  
+  **R:** No.  
+- **¿Deseas que el modo Countdown tenga su propio diseño, ligeramente diferente del Stopwatch, o debe mantenerse visualmente consistente?**  
+  **R:** **Sí, debe verse ligeramente diferente, pero manteniendo los lineamientos de diseño**.  
+
+---
+
+**Una vez entendido esto, se puede proceder con la implementación.**
+```
+
+## 8va iteracion output
+```md
+# 🕒 Reasoned about countdown features durante 10 segundos
+
+¡Perfecto, Yoberty! 🚀 A continuación te presento una implementación completa que **integra el nuevo modo de Countdown** en los mismos archivos, manteniendo la estructura de:
+- **Un solo HTML**
+- **Un solo JS**
+- **Un solo CSS**
+
+## 🔄 Funcionalidades
+### 🎛️ **Switch de modo**
+✔ Permite alternar entre **Stopwatch** y **Countdown**.
+
+### ⏱️ **Cronómetro (Stopwatch)**
+✔ Funciona igual que antes, **manteniendo el historial**.
+
+### ⏳ **Countdown (Nuevo)**
+✔ **Ingreso de tiempo** hasta **24h**, con opción de **input manual** y **botones numéricos**.  
+✔ **Animación de "flash"** al llegar a `00:00`, repitiéndose hasta que se **resetee**.  
+✔ **Sonido de alarma** que **no se detiene** hasta que el usuario lo haga manualmente.  
+✔ **Sin historial y sin persistencia en `localStorage`** _(se pierde al recargar)_.
+
+---
+
+## 📜 Implementación
+A continuación se muestra el código de los **tres archivos**, con comentarios clave para facilitar su comprensión.
+```
+
+### index.html
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cronómetro YAG</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <!-- Meta viewport para Mobile-First -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body class="dark-bg text-base">
+  <!-- Contenedor principal -->
+  <main class="container" role="main">
+    
+    <!-- Título / Encabezado -->
+    <header class="header">
+      <h1>Cronómetro</h1>
+      <div class="mode-toggle">
+        <button id="stopwatchModeBtn" class="mode-btn mode-active">Cronómetro</button>
+        <button id="countdownModeBtn" class="mode-btn">Cuenta Atrás</button>
+      </div>
+      <p class="shortcuts-info">
+        <span>Presiona <strong>Barra espaciadora</strong> para Iniciar / Pausar / Continuar</span> •
+        <span>Presiona <strong>L</strong> para Limpiar</span> •
+        <span id="lapShortcut">Presiona <strong>V</strong> para Capturar Vuelta</span>
+      </p>
+    </header>
+
+    <!-- Display del tiempo -->
+    <section class="time-display" aria-live="polite" aria-atomic="true">
+      <span id="timer" class="timer" aria-label="Tiempo transcurrido">00:00.000</span>
+    </section>
+
+    <!-- Configuración de cuenta atrás (oculto por defecto) -->
+    <section id="countdownConfig" class="countdown-config hidden">
+      <div class="time-input-container">
+        <div class="time-input-group">
+          <div class="time-input-header">Horas</div>
+          <div class="time-controls">
+            <button class="time-btn up" data-target="hours">▲</button>
+            <input type="text" id="hoursInput" class="time-input" maxlength="2" value="00">
+            <button class="time-btn down" data-target="hours">▼</button>
+          </div>
+        </div>
+        <div class="time-separator">:</div>
+        <div class="time-input-group">
+          <div class="time-input-header">Minutos</div>
+          <div class="time-controls">
+            <button class="time-btn up" data-target="minutes">▲</button>
+            <input type="text" id="minutesInput" class="time-input" maxlength="2" value="00">
+            <button class="time-btn down" data-target="minutes">▼</button>
+          </div>
+        </div>
+        <div class="time-separator">:</div>
+        <div class="time-input-group">
+          <div class="time-input-header">Segundos</div>
+          <div class="time-controls">
+            <button class="time-btn up" data-target="seconds">▲</button>
+            <input type="text" id="secondsInput" class="time-input" maxlength="2" value="00">
+            <button class="time-btn down" data-target="seconds">▼</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Botones de acción -->
+    <section class="controls">
+      <button id="startPauseBtn" class="btn btn-green" 
+        aria-label="Iniciar cronómetro" role="button">
+        <span class="sr-only">Iniciar o Pausar cronómetro</span>
+        <span id="startPauseText">Iniciar</span>
+      </button>
+
+      <button id="resetBtn" class="btn btn-blue hidden" aria-label="Reiniciar cuenta atrás" role="button">
+        <span class="sr-only">Reiniciar cuenta atrás</span>
+        Reiniciar
+      </button>
+
+      <button id="lapBtn" class="btn btn-yellow" aria-label="Capturar vuelta" role="button">
+        <span class="sr-only">Capturar vuelta</span>
+        Vuelta
+      </button>
+
+      <button id="clearBtn" class="btn btn-red" aria-label="Limpiar cronómetro" role="button">
+        <span class="sr-only">Limpiar cronómetro y restablecer historial</span>
+        Limpiar
+      </button>
+    </section>
+
+    <!-- Listado de vueltas -->
+    <section id="lapsSection" class="laps-section">
+      <h2 class="laps-title">Vueltas</h2>
+      <ul id="lapsList" class="laps-list" aria-live="polite"></ul>
+    </section>
+
+  </main>
+
+  <!-- Audio para alarma de cuenta atrás -->
+  <audio id="alarmSound" src="./beep.mp3" preload="auto"></audio>
+
+  <!-- Script de la lógica del cronómetro -->
+  <script src="./index.js"></script>
+</body>
+</html>
+```
+### index.js
+```js
+/***********************************************
+ * index.js
+ * Lógica del Cronómetro y Cuenta Atrás
+ **********************************************/
+
+// Variables de control
+let startTime = 0;         // Timestamp (performance.now()) en el que se inició el cronómetro
+let elapsedTime = 0;       // Tiempo total acumulado mientras está pausado
+let requestId = null;      // ID de rAF para animar/actualizar
+let isRunning = false;     // Estado del cronómetro
+
+// Elementos del DOM
+const timerDisplay = document.getElementById("timer");
+const startPauseBtn = document.getElementById("startPauseBtn");
+const startPauseText = document.getElementById("startPauseText");
+const lapBtn = document.getElementById("lapBtn");
+const clearBtn = document.getElementById("clearBtn");
+const lapsList = document.getElementById("lapsList");
+const lapsSection = document.getElementById("lapsSection");
+const resetBtn = document.getElementById("resetBtn");
+const lapShortcut = document.getElementById("lapShortcut");
+const countdownConfig = document.getElementById("countdownConfig");
+const stopwatchModeBtn = document.getElementById("stopwatchModeBtn");
+const countdownModeBtn = document.getElementById("countdownModeBtn");
+const alarmSound = document.getElementById("alarmSound");
+
+// Inputs para configurar el countdown
+const hoursInput = document.getElementById("hoursInput");
+const minutesInput = document.getElementById("minutesInput");
+const secondsInput = document.getElementById("secondsInput");
+
+// Variables específicas para countdown
+let currentMode = "stopwatch"; // Puede ser "stopwatch" o "countdown"
+let countdownTime = 0;         // Tiempo total en ms para el countdown
+let initialCountdownTime = 0;  // Tiempo inicial para el reset
+let isCountdownFinished = false; // Indica si la cuenta atrás ha terminado
+let alarmInterval = null;      // Intervalo para reproducir el sonido de alarma
+
+// Límite de vueltas
+const MAX_LAPS = 10;
+
+// Almacenamiento en localStorage
+// Clave usada para persistir historial de vueltas
+const STORAGE_KEY_LAPS = "yag_stopwatch_laps";
+
+// Se cargan las vueltas almacenadas en localStorage
+let laps = loadLapsFromLocalStorage();
+renderLaps();
+
+// ------------------------------------------------------
+// Inicialización
+// ------------------------------------------------------
+
+// Configurar eventos para los botones de incremento/decremento
+setupTimeInputControls();
+
+// ------------------------------------------------------
+// Eventos: Botones
+// ------------------------------------------------------
+
+// Iniciar / Pausar / Continuar
+startPauseBtn.addEventListener("click", toggleStartPause);
+
+// Reiniciar cuenta atrás
+resetBtn.addEventListener("click", resetCountdown);
+
+// Capturar vuelta
+lapBtn.addEventListener("click", captureLap);
+
+// Limpiar cronómetro
+clearBtn.addEventListener("click", clearAll);
+
+// Cambiar entre cronómetro y cuenta atrás
+stopwatchModeBtn.addEventListener("click", () => switchMode("stopwatch"));
+countdownModeBtn.addEventListener("click", () => switchMode("countdown"));
+
+// Validar valores de entrada numérica
+hoursInput.addEventListener("input", () => validateTimeInput(hoursInput, 0, 23));
+minutesInput.addEventListener("input", () => validateTimeInput(minutesInput, 0, 59));
+secondsInput.addEventListener("input", () => validateTimeInput(secondsInput, 0, 59));
+
+// ------------------------------------------------------
+// Eventos: Teclado
+// ------------------------------------------------------
+document.addEventListener("keydown", (e) => {
+  // Prevenir scroll con la barra espaciadora, si fuera necesario
+  if (e.code === "Space") {
+    e.preventDefault();
+  }
+  
+  if (e.code === "Space") {
+    toggleStartPause();
+  } else if (e.key === "l" || e.key === "L") {
+    clearAll();
+  } else if ((e.key === "v" || e.key === "V") && currentMode === "stopwatch") {
+    captureLap();
+  }
+});
+
+// ------------------------------------------------------
+// Funciones principales
+// ------------------------------------------------------
+
+/**
+ * toggleStartPause
+ * Cambia el estado del cronómetro o cuenta atrás:
+ * - Si está detenido, iniciar.
+ * - Si está en marcha, pausar.
+ * - Si está pausado, continuar.
+ */
+function toggleStartPause() {
+  // Para la cuenta atrás, verificar que hay un valor configurado
+  if (currentMode === "countdown" && !isRunning && elapsedTime === 0) {
+    const configuredTime = getConfiguredTime();
+    if (configuredTime <= 0) {
+      alert("Por favor, configure un tiempo válido mayor a 00:00:00");
+      return;
+    }
+    countdownTime = configuredTime;
+    initialCountdownTime = configuredTime;
+    
+    // Ocultar la configuración al iniciar
+    countdownConfig.classList.add("hidden");
+  }
+
+  // Detener la alarma si está sonando
+  if (isCountdownFinished) {
+    stopAlarm();
+    isCountdownFinished = false;
+    timerDisplay.classList.remove("countdown-finished");
+    enableButtons(true);
+    return;
+  }
+
+  if (!isRunning) {
+    // Iniciar / Reanudar
+    isRunning = true;
+    
+    if (currentMode === "stopwatch") {
+      startTime = performance.now() - elapsedTime;
+      requestId = requestAnimationFrame(updateStopwatch);
+    } else {
+      // Para countdown, elapsedTime almacena cuánto tiempo ha transcurrido
+      startTime = performance.now() - (initialCountdownTime - countdownTime);
+      requestId = requestAnimationFrame(updateCountdown);
+    }
+
+    startPauseText.textContent = "Pausar";
+    startPauseBtn.setAttribute("aria-label", 
+      currentMode === "stopwatch" ? "Pausar cronómetro" : "Pausar cuenta atrás");
+  } else {
+    // Pausar
+    isRunning = false;
+    cancelAnimationFrame(requestId);
+    
+    if (currentMode === "stopwatch") {
+      elapsedTime = performance.now() - startTime;
+    } else {
+      // Para countdown, actualizamos el tiempo restante
+      const elapsedSinceSart = performance.now() - startTime;
+      countdownTime = Math.max(0, initialCountdownTime - elapsedSinceSart);
+    }
+
+    startPauseText.textContent = "Continuar";
+    startPauseBtn.setAttribute("aria-label", 
+      currentMode === "stopwatch" ? "Continuar cronómetro" : "Continuar cuenta atrás");
+  }
+}
+
+/**
+ * updateStopwatch
+ * Utiliza requestAnimationFrame para actualizar el display del cronómetro cada frame.
+ */
+function updateStopwatch(timestamp) {
+  if (!isRunning) return; // protección en caso de desincronización
+
+  const currentTime = performance.now();
+  const totalTime = currentTime - startTime;
+  displayTime(totalTime);
+
+  // Continuar requestAnimationFrame
+  requestId = requestAnimationFrame(updateStopwatch);
+}
+
+/**
+ * updateCountdown
+ * Utiliza requestAnimationFrame para actualizar el display de la cuenta atrás cada frame.
+ */
+function updateCountdown(timestamp) {
+  if (!isRunning) return; // protección en caso de desincronización
+
+  const currentTime = performance.now();
+  const elapsedSinceSart = currentTime - startTime;
+  const remainingTime = Math.max(0, initialCountdownTime - elapsedSinceSart);
+  
+  // Actualizar el tiempo de cuenta atrás para usar en caso de pausa
+  countdownTime = remainingTime;
+  
+  // Mostrar el tiempo restante
+  displayTime(remainingTime);
+  
+  // Comprobar si el tiempo restante está en el rango de advertencia o peligro
+  updateVisualIndicators(remainingTime);
+  
+  // Verificar si llegó a cero
+  if (remainingTime <= 0) {
+    finishCountdown();
+    return;
+  }
+
+  // Continuar requestAnimationFrame
+  requestId = requestAnimationFrame(updateCountdown);
+}
+
+/**
+ * finishCountdown
+ * Maneja el final de la cuenta atrás.
+ */
+function finishCountdown() {
+  isRunning = false;
+  isCountdownFinished = true;
+  cancelAnimationFrame(requestId);
+  
+  // Establecer a 0
+  displayTime(0);
+  
+  // Deshabilitar botones excepto el de iniciar/pausar (que ahora será detener alarma)
+  enableButtons(false);
+  
+  // Cambiar texto del botón
+  startPauseText.textContent = "Detener Alarma";
+  startPauseBtn.setAttribute("aria-label", "Detener alarma");
+  
+  // Efecto visual
+  timerDisplay.classList.add("countdown-finished");
+  document.body.classList.add("countdown-finished");
+  
+  // Reproducir alarma
+  playAlarm();
+}
+
+/**
+ * enableButtons
+ * Habilita o deshabilita botones según el estado.
+ */
+function enableButtons(enable) {
+  resetBtn.disabled = !enable;
+  clearBtn.disabled = !enable;
+  
+  // Siempre dejar habilitado el botón de iniciar/pausar
+  startPauseBtn.disabled = false;
+}
+
+/**
+ * playAlarm
+ * Reproduce el sonido de alarma en bucle.
+ */
+function playAlarm() {
+  alarmSound.loop = true;
+  alarmSound.play().catch(error => {
+    console.error("Error reproduciendo alarma:", error);
+  });
+
+  // Asegurarnos de que siga sonando en caso de error
+  alarmInterval = setInterval(() => {
+    alarmSound.play().catch(() => {});
+  }, 1000);
+}
+
+/**
+ * stopAlarm
+ * Detiene el sonido de alarma.
+ */
+function stopAlarm() {
+  if (alarmInterval) {
+    clearInterval(alarmInterval);
+    alarmInterval = null;
+  }
+  
+  alarmSound.pause();
+  alarmSound.currentTime = 0;
+  
+  // Limpiar efectos visuales
+  document.body.classList.remove("countdown-finished");
+}
+
+/**
+ * updateVisualIndicators
+ * Actualiza los indicadores visuales según el tiempo restante.
+ */
+function updateVisualIndicators(remainingTime) {
+  // Remover clases existentes
+  timerDisplay.classList.remove("countdown-warning", "countdown-danger");
+  timerDisplay.parentNode.classList.remove("countdown-bg", "danger");
+  
+  // Último 20% del tiempo: advertencia (amarillo)
+  if (remainingTime <= initialCountdownTime * 0.2 && remainingTime > 5000) {
+    timerDisplay.classList.add("countdown-warning");
+    timerDisplay.parentNode.classList.add("countdown-bg");
+  }
+  // Últimos 5 segundos: peligro (rojo) + parpadeo
+  else if (remainingTime <= 5000) {
+    timerDisplay.classList.add("countdown-danger");
+    timerDisplay.parentNode.classList.add("countdown-bg", "danger");
+    
+    // Parpadeo en los últimos 5 segundos
+    if (!timerDisplay.classList.contains("blink") && remainingTime <= 5000) {
+      timerDisplay.classList.add("blink");
+      timerDisplay.style.animation = "highlightFlash 0.5s infinite";
+    }
+  } else {
+    // Quitar el parpadeo si salimos de la zona de peligro
+    timerDisplay.classList.remove("blink");
+    timerDisplay.style.animation = "";
+  }
+}
+
+/**
+ * resetCountdown
+ * Reinicia la cuenta atrás al valor inicial.
+ */
+function resetCountdown() {
+  // Detener si está en marcha
+  if (isRunning) {
+    isRunning = false;
+    cancelAnimationFrame(requestId);
+  }
+  
+  // Reiniciar a los valores iniciales
+  countdownTime = initialCountdownTime;
+  
+  // Mostrar el tiempo configurado
+  displayTime(countdownTime);
+  
+  // Limpiar indicadores visuales
+  timerDisplay.classList.remove("countdown-warning", "countdown-danger", "blink", "countdown-finished");
+  timerDisplay.parentNode.classList.remove("countdown-bg", "danger");
+  timerDisplay.style.animation = "";
+  
+  // Actualizar botón
+  startPauseText.textContent = "Iniciar";
+  startPauseBtn.setAttribute("aria-label", "Iniciar cuenta atrás");
+  
+  // Si se había terminado, restaurar botones
+  if (isCountdownFinished) {
+    isCountdownFinished = false;
+    enableButtons(true);
+    stopAlarm();
+  }
+  
+  // Volver a mostrar la configuración
+  countdownConfig.classList.remove("hidden");
+}
+
+/**
+ * captureLap
+ * Registra una vuelta en el historial, si el cronómetro está activo.
+ */
+function captureLap() {
+  // Solo permitir vueltas en modo cronómetro
+  if (currentMode !== "stopwatch" || !isRunning) {
+    return;
+  }
+  
+  // El tiempo actual
+  const currentTime = performance.now() - startTime;
+  const formattedTime = formatTime(currentTime);
+
+  // Insertar al final del array
+  laps.push(formattedTime);
+
+  // Controlar el desplazamiento (si excede 10)
+  if (laps.length > MAX_LAPS) {
+    laps.shift(); // Remueve el primero
+  }
+
+  // Persistir
+  saveLapsToLocalStorage(laps);
+
+  // Renderizar
+  renderLaps(true); // true -> aplicar efecto de parpadeo a la última vuelta
+}
+
+/**
+ * clearAll
+ * Limpia el cronómetro/cuenta atrás y el historial de vueltas.
+ */
+function clearAll() {
+  // Detener y resetear variables
+  isRunning = false;
+  cancelAnimationFrame(requestId);
+  startPauseText.textContent = "Iniciar";
+  startPauseBtn.setAttribute("aria-label", 
+    currentMode === "stopwatch" ? "Iniciar cronómetro" : "Iniciar cuenta atrás");
+
+  // Detener alarma si está sonando
+  if (isCountdownFinished) {
+    stopAlarm();
+    isCountdownFinished = false;
+  }
+
+  // Resetear valores específicos según el modo
+  if (currentMode === "stopwatch") {
+    // Modo cronómetro
+    startTime = 0;
+    elapsedTime = 0;
+    displayTime(0);
+    
+    // Limpiar historial
+    laps = [];
+    saveLapsToLocalStorage(laps);
+    renderLaps();
+  } else {
+    // Modo cuenta atrás
+    countdownTime = 0;
+    initialCountdownTime = 0;
+    displayTime(0);
+    
+    // Resetear inputs
+    hoursInput.value = "00";
+    minutesInput.value = "00";
+    secondsInput.value = "00";
+    
+    // Mostrar la configuración
+    countdownConfig.classList.remove("hidden");
+    
+    // Limpiar indicadores visuales
+    timerDisplay.classList.remove("countdown-warning", "countdown-danger", "blink", "countdown-finished");
+    timerDisplay.parentNode.classList.remove("countdown-bg", "danger");
+    timerDisplay.style.animation = "";
+  }
+  
+  // Restaurar botones
+  enableButtons(true);
+}
+
+/**
+ * displayTime
+ * Actualiza el elemento de tiempo con el formato mm:ss.ms o hh:mm:ss.ms
+ */
+function displayTime(milliseconds) {
+  timerDisplay.textContent = formatTime(milliseconds);
+}
+
+/**
+ * formatTime
+ * Devuelve una cadena en formato mm:ss.mmm o hh:mm:ss.mmm
+ */
+function formatTime(ms) {
+  const totalSeconds = Math.floor(ms / 1000);
+  const milliseconds = ms % 1000;
+
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  // Si no llega a la hora, se usa mm:ss.mmm
+  // Si llega/hay horas, se usa hh:mm:ss.mmm
+  if (hours > 0) {
+    return (
+      String(hours).padStart(2, "0") + ":" +
+      String(minutes).padStart(2, "0") + ":" +
+      String(seconds).padStart(2, "0") + "." +
+      String(Math.floor(milliseconds)).padStart(3, "0")
+    );
+  } else {
+    return (
+      String(minutes).padStart(2, "0") + ":" +
+      String(seconds).padStart(2, "0") + "." +
+      String(Math.floor(milliseconds)).padStart(3, "0")
+    );
+  }
+}
+
+// ------------------------------------------------------
+// Manejo de Laps en la Interfaz
+// ------------------------------------------------------
+
+/**
+ * renderLaps
+ * Vuelca el array de vueltas en la lista <ul>.
+ */
+function renderLaps(highlightLast = false) {
+  lapsList.innerHTML = "";
+
+  laps.forEach((lapTime, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${index + 1}. ${lapTime}`;
+    li.classList.add("lap-item");
+    
+    // En la última vuelta, opcionalmente aplicamos animación de parpadeo
+    if (highlightLast && index === laps.length - 1) {
+      li.classList.add("highlight");
+      // Remover la clase después de un breve tiempo (para que parpadee solo una vez)
+      setTimeout(() => {
+        li.classList.remove("highlight");
+      }, 1500);
+    }
+
+    lapsList.appendChild(li);
+  });
+}
+
+// ------------------------------------------------------
+// Funciones para la Cuenta Atrás
+// ------------------------------------------------------
+
+/**
+ * switchMode
+ * Cambia entre modo cronómetro y cuenta atrás.
+ */
+function switchMode(mode) {
+  if (mode === currentMode) return;
+  
+  // Detener cualquier operación en curso
+  isRunning = false;
+  cancelAnimationFrame(requestId);
+  stopAlarm();
+  
+  currentMode = mode;
+  
+  // Resetear valores
+  startTime = 0;
+  elapsedTime = 0;
+  countdownTime = 0;
+  initialCountdownTime = 0;
+  isCountdownFinished = false;
+  
+  // Actualizar UI
+  if (mode === "stopwatch") {
+    // Activar modo cronómetro
+    stopwatchModeBtn.classList.add("mode-active");
+    countdownModeBtn.classList.remove("mode-active");
+    
+    // Mostrar/ocultar elementos
+    lapBtn.classList.remove("hidden");
+    resetBtn.classList.add("hidden");
+    lapsSection.classList.remove("hidden");
+    countdownConfig.classList.add("hidden");
+    lapShortcut.classList.remove("hidden");
+    
+    // Cargar vueltas del localStorage
+    laps = loadLapsFromLocalStorage();
+    renderLaps();
+  } else {
+    // Activar modo cuenta atrás
+    stopwatchModeBtn.classList.remove("mode-active");
+    countdownModeBtn.classList.add("mode-active");
+    
+    // Mostrar/ocultar elementos
+    lapBtn.classList.add("hidden");
+    resetBtn.classList.remove("hidden");
+    lapsSection.classList.add("hidden");
+    countdownConfig.classList.remove("hidden");
+    lapShortcut.classList.add("hidden");
+    
+    // Resetear la configuración de tiempo
+    hoursInput.value = "00";
+    minutesInput.value = "00";
+    secondsInput.value = "00";
+  }
+  
+  // Resetear display
+  displayTime(0);
+  
+  // Resetear clases y botones
+  timerDisplay.classList.remove("countdown-warning", "countdown-danger", "blink", "countdown-finished");
+  timerDisplay.parentNode.classList.remove("countdown-bg", "danger");
+  timerDisplay.style.animation = "";
+  
+  startPauseText.textContent = "Iniciar";
+  startPauseBtn.setAttribute("aria-label", 
+    mode === "stopwatch" ? "Iniciar cronómetro" : "Iniciar cuenta atrás");
+  
+  enableButtons(true);
+}
+
+/**
+ * setupTimeInputControls
+ * Configura los controles de incremento/decremento para los inputs de tiempo.
+ */
+function setupTimeInputControls() {
+  // Obtener todos los botones de incremento/decremento
+  const timeButtons = document.querySelectorAll(".time-btn");
+  
+  timeButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const target = button.dataset.target;
+      const isUp = button.classList.contains("up");
+      
+      let input;
+      let max;
+      
+      // Determinar el input y el valor máximo
+      switch (target) {
+        case "hours":
+          input = hoursInput;
+          max = 23;
+          break;
+        case "minutes":
+          input = minutesInput;
+          max = 59;
+          break;
+        case "seconds":
+          input = secondsInput;
+          max = 59;
+          break;
+      }
+      
+      if (input) {
+        let value = parseInt(input.value, 10);
+        
+        if (isUp) {
+          // Incrementar y manejar overflow
+          value = (value + 1) > max ? 0 : value + 1;
+        } else {
+          // Decrementar y manejar underflow
+          value = (value - 1) < 0 ? max : value - 1;
+        }
+        
+        // Actualizar el valor formateado
+        input.value = String(value).padStart(2, "0");
+      }
+    });
+  });
+}
+
+/**
+ * validateTimeInput
+ * Valida y formatea el valor de un input de tiempo.
+ */
+function validateTimeInput(input, min, max) {
+  let value = input.value.trim();
+  
+  // Eliminar caracteres no numéricos
+  value = value.replace(/[^0-9]/g, "");
+  
+  // Convertir a número
+  let numValue = parseInt(value, 10);
+  
+  // Verificar rango
+  if (isNaN(numValue)) {
+    numValue = 0;
+  } else if (numValue > max) {
+    numValue = max;
+  } else if (numValue < min) {
+    numValue = min;
+  }
+  
+  // Actualizar el valor formateado
+  input.value = String(numValue).padStart(2, "0");
+}
+
+/**
+ * getConfiguredTime
+ * Obtiene el tiempo configurado en milisegundos.
+ */
+function getConfiguredTime() {
+  const hours = parseInt(hoursInput.value, 10) || 0;
+  const minutes = parseInt(minutesInput.value, 10) || 0;
+  const seconds = parseInt(secondsInput.value, 10) || 0;
+  
+  // Convertir a milisegundos
+  return (hours * 3600 + minutes * 60 + seconds) * 1000;
+}
+
+// ------------------------------------------------------
+// localStorage utils
+// ------------------------------------------------------
+function saveLapsToLocalStorage(lapsArray) {
+  localStorage.setItem(STORAGE_KEY_LAPS, JSON.stringify(lapsArray));
+}
+
+function loadLapsFromLocalStorage() {
+  const stored = localStorage.getItem(STORAGE_KEY_LAPS);
+  return stored ? JSON.parse(stored) : [];
+}
+```
+### styles.css
+```css
+/***********************************************
+ * styles.css
+ * Estilos para el Cronómetro (Mobile-First)
+ **********************************************/
+
+/* Modo oscuro base */
+:root {
+    --dark-bg-color: #001d3d;
+    --text-color: #ffffff;
+    --pastel-yellow: #ffc300;
+    --pastel-green: #06d6a0;
+    --pastel-red: #ff1c66;
+    --pastel-blue: #4cc9f0;
+    
+    /* Colores para indicadores de cuenta atrás */
+    --countdown-warning: #ffc107;
+    --countdown-danger: #ff1c66;
+    
+    /* Ajuste de tipografía base */
+    --font-size-base: 16px;
+  }
+  
+  /* Reset básico */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Texto oculto para lectores de pantalla */
+  .sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+  
+  /* Body principal */
+  body.dark-bg {
+    background-color: var(--dark-bg-color);
+    color: var(--text-color);
+    font-family: sans-serif;
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+  }
+  
+  /* Contenedor principal (centrado en pantallas grandes, full en móviles) */
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Info de shortcuts */
+  .shortcuts-info {
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+  
+  /* Display del tiempo */
+  .time-display {
+    text-align: center;
+    margin: 1rem 0;
+  }
+  
+  .timer {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Sección de botones de control */
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .btn {
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    transition: transform 0.15s ease, background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Colores pastel */
+  .btn-green {
+    background-color: var(--pastel-green);
+    color: #000;
+  }
+  
+  .btn-red {
+    background-color: var(--pastel-red);
+    color: #000;
+  }
+  
+  .btn-yellow {
+    background-color: var(--pastel-yellow);
+    color: #000;
+  }
+
+  .btn-blue {
+    background-color: var(--pastel-blue);
+    color: #000;
+  }
+  
+  /* Sección de vueltas */
+  .laps-section {
+    margin-top: 1rem;
+  }
+  
+  .laps-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .laps-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  /* Elemento individual de vuelta */
+  .lap-item {
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Efecto de parpadeo para nueva vuelta */
+  .highlight {
+    animation: highlightFlash 1.5s ease;
+  }
+  
+  /* Keyframes para parpadeo */
+  @keyframes highlightFlash {
+    0% { background-color: var(--pastel-yellow); }
+    50% { background-color: transparent; }
+    100% { background-color: var(--pastel-yellow); }
+  }
+
+  /* Estilos para el selector de modo */
+  .mode-toggle {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    gap: 0.5rem;
+  }
+
+  .mode-btn {
+    border: 1px solid var(--text-color);
+    background-color: transparent;
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .mode-btn.mode-active {
+    background-color: var(--text-color);
+    color: var(--dark-bg-color);
+  }
+
+  /* Estilos para la configuración de tiempo en cuenta atrás */
+  .countdown-config {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  .time-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0.25rem;
+  }
+
+  .time-input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .time-input-header {
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+    opacity: 0.8;
+  }
+
+  .time-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .time-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--text-color);
+    width: 2rem;
+    height: 1.5rem;
+    cursor: pointer;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+  }
+
+  .time-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .time-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-color);
+    width: 3rem;
+    height: 2.5rem;
+    text-align: center;
+    font-size: 1.25rem;
+    margin: 0.25rem 0;
+    border-radius: 2px;
+  }
+
+  .time-input:focus {
+    outline: 2px solid var(--pastel-blue);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .time-separator {
+    align-self: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 0.125rem;
+    opacity: 0.7;
+  }
+
+  /* Estado de botones deshabilitados */
+  .btn:disabled {
+    opacity: 0.5;
+    transform: none;
+    cursor: not-allowed;
+  }
+
+  /* Clase para elementos ocultos */
+  .hidden {
+    display: none !important;
+  }
+
+  /* Animación de parpadeo para los últimos segundos */
+  .countdown-warning {
+    color: var(--countdown-warning);
+  }
+
+  .countdown-danger {
+    color: var(--countdown-danger);
+  }
+
+  .countdown-finished {
+    animation: finishedFlash 1s infinite;
+  }
+
+  /* Animación de fondo */
+  .countdown-bg {
+    position: relative;
+    z-index: 1;
+  }
+
+  .countdown-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--countdown-danger);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    border-radius: 4px;
+  }
+
+  .countdown-bg.danger::before {
+    opacity: 0.3;
+  }
+
+  @keyframes finishedFlash {
+    0% { background-color: transparent; }
+    50% { background-color: var(--countdown-danger); }
+    100% { background-color: transparent; }
+  }
+
+  /* Adaptaciones para móviles pequeños */
+  @media (max-width: 320px) {
+    .time-input {
+      width: 2.5rem;
+      font-size: 1rem;
+    }
+
+    .controls {
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+    }
+  }
+```
+
+```md
+# 📌 Notas Finales
+
+## 🔊 Sonido `beep.mp3`
+📢 **Debes colocar un archivo de sonido** (por ejemplo, `beep.mp3`) en la misma carpeta o ajustar la ruta para que funcione correctamente.
+
+## 🔄 Integración
+✅ **Stopwatch**: Se mantiene **exactamente igual**, con su historial persistente en `localStorage`.  
+✅ **Countdown**: No persiste nada; si recargas, **se pierde**.
+
+## 🎮 Uso
+1. **Haz clic en "Countdown"** en el menú, ingresa el tiempo (o usa los botones numéricos), y presiona **"Iniciar"**.  
+2. Si inicias y pausas, el tiempo **se retoma desde donde se pausó**.  
+3. **Al llegar a `00:00`**:  
+   - La pantalla **parpadea en rojo**.  
+   - La **alarma suena en bucle** hasta que hagas **"Reset"** o **"Clear"**.  
+---
+
+💡 **Ajustes posibles**:  
+- Modificar la **frecuencia de parpadeo**.  
+- Ajustar la lógica para **restar el tiempo en countdown** (usando un delta real para mayor precisión).  
+- **Cambiar la apariencia de la animación final**.  
+
+---
+
+🚀 ¡Listo, Yoberty! Con esto tienes la **implementación completa**, ahora con la funcionalidad de **Countdown**.  
+Cualquier duda o ajuste adicional, aquí estamos. ¡Éxitos! 🎯
+
+```

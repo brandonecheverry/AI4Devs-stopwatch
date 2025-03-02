@@ -14,10 +14,14 @@
     <!-- Título / Encabezado -->
     <header class="header">
       <h1>Cronómetro</h1>
+      <div class="mode-toggle">
+        <button id="stopwatchModeBtn" class="mode-btn mode-active">Cronómetro</button>
+        <button id="countdownModeBtn" class="mode-btn">Cuenta Atrás</button>
+      </div>
       <p class="shortcuts-info">
         <span>Presiona <strong>Barra espaciadora</strong> para Iniciar / Pausar / Continuar</span> •
         <span>Presiona <strong>L</strong> para Limpiar</span> •
-        <span>Presiona <strong>V</strong> para Capturar Vuelta</span>
+        <span id="lapShortcut">Presiona <strong>V</strong> para Capturar Vuelta</span>
       </p>
     </header>
 
@@ -26,12 +30,49 @@
       <span id="timer" class="timer" aria-label="Tiempo transcurrido">00:00.000</span>
     </section>
 
+    <!-- Configuración de cuenta atrás (oculto por defecto) -->
+    <section id="countdownConfig" class="countdown-config hidden">
+      <div class="time-input-container">
+        <div class="time-input-group">
+          <div class="time-input-header">Horas</div>
+          <div class="time-controls">
+            <button class="time-btn up" data-target="hours">▲</button>
+            <input type="text" id="hoursInput" class="time-input" maxlength="2" value="00">
+            <button class="time-btn down" data-target="hours">▼</button>
+          </div>
+        </div>
+        <div class="time-separator">:</div>
+        <div class="time-input-group">
+          <div class="time-input-header">Minutos</div>
+          <div class="time-controls">
+            <button class="time-btn up" data-target="minutes">▲</button>
+            <input type="text" id="minutesInput" class="time-input" maxlength="2" value="00">
+            <button class="time-btn down" data-target="minutes">▼</button>
+          </div>
+        </div>
+        <div class="time-separator">:</div>
+        <div class="time-input-group">
+          <div class="time-input-header">Segundos</div>
+          <div class="time-controls">
+            <button class="time-btn up" data-target="seconds">▲</button>
+            <input type="text" id="secondsInput" class="time-input" maxlength="2" value="00">
+            <button class="time-btn down" data-target="seconds">▼</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Botones de acción -->
     <section class="controls">
       <button id="startPauseBtn" class="btn btn-green" 
         aria-label="Iniciar cronómetro" role="button">
         <span class="sr-only">Iniciar o Pausar cronómetro</span>
         <span id="startPauseText">Iniciar</span>
+      </button>
+
+      <button id="resetBtn" class="btn btn-blue hidden" aria-label="Reiniciar cuenta atrás" role="button">
+        <span class="sr-only">Reiniciar cuenta atrás</span>
+        Reiniciar
       </button>
 
       <button id="lapBtn" class="btn btn-yellow" aria-label="Capturar vuelta" role="button">
@@ -46,12 +87,15 @@
     </section>
 
     <!-- Listado de vueltas -->
-    <section class="laps-section">
+    <section id="lapsSection" class="laps-section">
       <h2 class="laps-title">Vueltas</h2>
       <ul id="lapsList" class="laps-list" aria-live="polite"></ul>
     </section>
 
   </main>
+
+  <!-- Audio para alarma de cuenta atrás -->
+  <audio id="alarmSound" src="./beep.mp3" preload="auto"></audio>
 
   <!-- Script de la lógica del cronómetro -->
   <script src="./index.js"></script>
