@@ -7,15 +7,63 @@
     padding: 0;
   }
   
-  /* Just a simple styling to confirm it’s working */
   body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin-top: 50px;
   }
   
+  /* Title */
   h1 {
     font-size: 2rem;
     margin-bottom: 1rem;
+  }
+  
+  /* Hide sections by default (used for toggling views) */
+  .hidden {
+    display: none;
+  }
+  
+  /* Mode Selection Buttons */
+  #mode-selection {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .mode-btn {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Just a bit of color emphasis for icons */
+  .green-arrow {
+    color: green;
+    font-size: 1.5rem;
+  }
+  
+  .red-arrow {
+    color: red;
+    font-size: 1.5rem;
+  }
+  
+  /* Back button */
+  .back-button {
+    display: inline-block;
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    background: #ddd;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
   }
   

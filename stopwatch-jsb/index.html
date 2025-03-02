@@ -4,13 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timer and Countdown</title>
-    <!-- Link to our stylesheet -->
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <h1>Timer and Countdown</h1>
 
-    <!-- Link to our script -->
+    <!-- MODE SELECTION VIEW -->
+    <div id="mode-selection">
+      <button id="stopwatch-button" class="mode-btn">
+        <!-- Using text or an emoji for the arrow icon as a placeholder -->
+        <span class="icon green-arrow">⬆️</span>
+        <span>Stopwatch</span>
+      </button>
+      <button id="countdown-button" class="mode-btn">
+        <span class="icon red-arrow">⬇️</span>
+        <span>Countdown</span>
+      </button>
+    </div>
+
+    <!-- STOPWATCH VIEW (will hide by default, revealed later) -->
+    <div id="stopwatch-view" class="hidden">
+      <button class="back-button" id="back-to-main-from-stopwatch">
+        ← Back
+      </button>
+      <h2>Stopwatch View</h2>
+      <!-- More elements (time display, start/pause/clear buttons) will be added in Task 3 -->
+    </div>
+
+    <!-- COUNTDOWN VIEW (will hide by default, revealed later) -->
+    <div id="countdown-view" class="hidden">
+      <button class="back-button" id="back-to-main-from-countdown">
+        ← Back
+      </button>
+      <h2>Countdown View</h2>
+      <!-- More elements (numeric pad, set/clear buttons) will be added in Task 4 -->
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
