@@ -54,3 +54,30 @@ El modo cuenta atrás no funciona como se ha indicado.
 El objetivo de este modo es que una vez que el usuario indique unos valores y pulse en el botón Establecer, estos valores se coloquen en el reloj, para que al pulsar en el botón Iniciar, empiece la cuenta atrás desde el valor del reloj hasta llegar a cero.
 Si mientras está la cuenta atrás funcionando, se pulsa en el botón Detener, el reloj se parará. 
 Si cuando está parado se vuelve a pulsar en el botón Iniciar, la cuenta atrás seguirá hasta llegar a cero.
+
+Prompt9
+Ahora hay algunos errores que solucionar:
+- La funcionalidad del cronómetro ha dejado de funcionar.
+
+Prompt10
+Sigue habiendo problemas. Para que todo funcione bien, los elementos de cada una de las funcionalidades deben tener diferentes identificadores. Ahora se están mezclando elementos entre la funcionalidad del cronómetro y la de la cuenta atrás.
+
+Prompt11
+Voy a detallar las funcionalidades que funcionan correctamente y las que no funcionan, para que corrijas las que no funcionan.
+Las que si funcionan son:
+- Botón iniciar del cronómetro
+- Botón reiniciar del cronómetro
+Las que no funcionan son:
+- Botón detener del cronómetro
+- Botón establecer de la cuenta atrás
+- Botón iniciar de la cuenta atrás
+- Botón detener de la cuenta atrás
+- Botón reiniciar de la cuenta atrás
+
+--------------------- Corrección manual ---------------------
+En este punto he tenido que corregir de forma manual lo siguiente:
+- La funcionalidad de mostrar ocultar el cronómetro y la cuenta atrás se había perdido. La he rescado de un commit anterior.
+- Al botón detener del cronómetro le había puesto un disabled. Lo he tenido que quitar manualmente.
+- La sección de bienvenida, no la estaba recuperando bien en el script, y no podía interactuar con ella para ocultarla cuando correspondía.
+- La funcionalidad del botón de reseteo de la cuenta atrás, se había perdido, la he recuperado.
+--------------------- Corrección manual ---------------------

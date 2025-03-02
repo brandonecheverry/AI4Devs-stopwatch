@@ -3,13 +3,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const showCountdownBtn = document.getElementById("showCountdown");
     const stopwatchContainer = document.getElementById("stopwatch");
     const countdownContainer = document.getElementById("countdown");
+
     const welcomeContainer = document.getElementById("welcome");
-    const selectedTimeDisplay = document.getElementById("selectedTime");
+
+    let stopwatchInterval;
+    let stopwatchTime = 0;
+    let isStopwatchRunning = false;
+    const stopwatchDisplay = document.getElementById("stopwatchDisplay");
+    const startStopwatchBtn = document.getElementById("startStopwatch");
+    const stopStopwatchBtn = document.getElementById("stopStopwatch");
+    const resetStopwatchBtn = document.getElementById("resetStopwatch");
 
     let countdownInterval;
     let countdownTime = 0;
     let isCountingDown = false;
-    const countdownDisplay = document.querySelector("#countdown .timer-display");
+    const countdownDisplay = document.getElementById("countdownDisplay");
     const startCountdownBtn = document.getElementById("startCountdown");
     const stopCountdownBtn = document.getElementById("stopCountdown");
     const resetCountdownBtn = document.getElementById("resetCountdown");
@@ -33,29 +41,49 @@ document.addEventListener("DOMContentLoaded", () => {
         updateActiveMenu(showCountdownBtn);
     });
 
+    startStopwatchBtn.addEventListener("click", () => {
+        if (!isStopwatchRunning) {
+            isStopwatchRunning = true;
+            let startTime = performance.now() - stopwatchTime;
+            stopwatchInterval = setInterval(() => {
+                stopwatchTime = performance.now() - startTime;
+                let totalMilliseconds = Math.floor(stopwatchTime);
+                stopwatchDisplay.textContent = new Date(totalMilliseconds).toISOString().substr(11, 12);
+            }, 10);
+        }
+    });
+
+    stopStopwatchBtn.addEventListener("click", () => {
+        clearInterval(stopwatchInterval);
+        isStopwatchRunning = false;
+    });
+
+    resetStopwatchBtn.addEventListener("click", () => {
+        clearInterval(stopwatchInterval);
+        stopwatchTime = 0;
+        isStopwatchRunning = false;
+        stopwatchDisplay.textContent = "00:00:00.000";
+    });
+
     setCountdownBtn.addEventListener("click", () => {
-        const hours = parseInt(document.getElementById("hours").value) || 0;
-        const minutes = parseInt(document.getElementById("minutes").value) || 0;
-        const seconds = parseInt(document.getElementById("seconds").value) || 0;
-        countdownTime = (hours * 3600 + minutes * 60 + seconds) * 1000;
-        selectedTimeDisplay.textContent = `Tiempo seleccionado: ${hours}h ${minutes}m ${seconds}s`;
-        selectedTimeDisplay.classList.remove("hidden");
-        countdownDisplay.textContent = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.000`;
+        countdownTime = 
+            (parseInt(document.getElementById("countdownHours").value) || 0) * 3600000 +
+            (parseInt(document.getElementById("countdownMinutes").value) || 0) * 60000 +
+            (parseInt(document.getElementById("countdownSeconds").value) || 0) * 1000;
+        countdownDisplay.textContent = new Date(countdownTime).toISOString().substr(11, 12);
     });
 
     startCountdownBtn.addEventListener("click", () => {
         if (!isCountingDown && countdownTime > 0) {
-            let endTime = performance.now() + countdownTime;
             isCountingDown = true;
             countdownInterval = setInterval(() => {
-                let remainingTime = endTime - performance.now();
-                if (remainingTime <= 0) {
+                countdownTime -= 10;
+                if (countdownTime <= 0) {
                     clearInterval(countdownInterval);
                     countdownDisplay.textContent = "00:00:00.000";
                     isCountingDown = false;
-                    return;
                 }
-                countdownTime = remainingTime;
+                countdownDisplay.textContent = new Date(countdownTime).toISOString().substr(11, 12);
             }, 10);
         }
     });
@@ -63,5 +91,15 @@ document.addEventListener("DOMContentLoaded", () => {
     stopCountdownBtn.addEventListener("click", () => {
         clearInterval(countdownInterval);
         isCountingDown = false;
+    });
+
+    resetCountdownBtn.addEventListener("click", () => {
+        clearInterval(countdownInterval);
+        countdownTime = 0;
+        isCountingDown = false;
+        countdownDisplay.textContent = "00:00:00.000";
+        document.getElementById("countdownHours").value = "";
+        document.getElementById("countdownMinutes").value = "";
+        document.getElementById("countdownSeconds").value = "";
     });
 });
