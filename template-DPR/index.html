@@ -11,37 +11,6 @@
 
 <!-- Contenedor principal centrado -->
 <div class="app-container">
-    <!-- Pantalla Principal -->
-    <div id="screen-main" class="screen active main-container">
-        <!-- Columna Izquierda: Stopwatch -->
-        <div id="btn-timer" class="half half-stopwatch">
-            <img src="Stopwatch.png" alt="Stopwatch" class="arrow-icon" />
-        </div>
-        <!-- Columna Derecha: Countdown -->
-        <div id="btn-countdown" class="half half-countdown">
-            <img src="Countdown.png" alt="Countdown" class="arrow-icon" />
-        </div>
-    </div>
-
-    <!-- Pantalla de Cronómetro -->
-    <div id="screen-timer" class="screen">
-        <div class="time-display">
-            <div class="time-wrapper">
-                <span id="timer-time">00:00:00</span>
-                <span id="timer-ms" class="milliseconds">000</span>
-            </div>
-        </div>
-        <div class="controls row">
-            <button id="timer-toggle" class="big-button cron-start-continue-button">Start</button>
-            <button id="timer-clear" class="big-button cron-clear-button">Clear</button>
-        </div>
-        <div class="back-row">
-            <button id="timer-back" class="back-button">
-                <img src="back-arrow-green.png" alt="Back Icon" class="back-icon" />
-                <span>Back</span>
-            </button>
-        </div>
-    </div>
 
     <!-- Pantalla de Cuenta Atrás -->
     <div id="screen-countdown" class="screen">
@@ -82,6 +51,39 @@
             </div>
         </div>
     </div>
+
+       <!-- Pantalla Principal -->
+    <div id="screen-main" class="screen active main-container">
+        <!-- Columna Izquierda: Stopwatch -->
+        <div id="btn-timer" class="half half-stopwatch">
+            <img src="Stopwatch.png" alt="Stopwatch" class="arrow-icon" />
+        </div>
+        <!-- Columna Derecha: Countdown -->
+        <div id="btn-countdown" class="half half-countdown">
+            <img src="Countdown.png" alt="Countdown" class="arrow-icon" />
+        </div>
+    </div>
+
+    <!-- Pantalla de Cronómetro -->
+    <div id="screen-timer" class="screen">
+        <div class="time-display">
+            <div class="time-wrapper">
+                <span id="timer-time">00:00:00</span>
+                <span id="timer-ms" class="milliseconds">000</span>
+            </div>
+        </div>
+        <div class="controls row">
+            <button id="timer-toggle" class="big-button cron-start-continue-button">Start</button>
+            <button id="timer-clear" class="big-button cron-clear-button">Clear</button>
+        </div>
+        <div class="back-row">
+            <button id="timer-back" class="back-button">
+                <img src="back-arrow-green.png" alt="Back Icon" class="back-icon" />
+                <span>Back</span>
+            </button>
+        </div>
+    </div>
+
 </div>
 
 <script src="js/stopwatch.js"></script>
