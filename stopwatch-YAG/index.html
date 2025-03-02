@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cronómetro YAG</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <!-- Meta viewport para Mobile-First -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body class="dark-bg text-base">
+  <!-- Contenedor principal -->
+  <main class="container" role="main">
+    
+    <!-- Título / Encabezado -->
+    <header class="header">
+      <h1>Cronómetro</h1>
+      <p class="shortcuts-info">
+        <span>Presiona <strong>Barra espaciadora</strong> para Iniciar / Pausar / Continuar</span> •
+        <span>Presiona <strong>L</strong> para Limpiar</span> •
+        <span>Presiona <strong>V</strong> para Capturar Vuelta</span>
+      </p>
+    </header>
+
+    <!-- Display del tiempo -->
+    <section class="time-display" aria-live="polite" aria-atomic="true">
+      <span id="timer" class="timer" aria-label="Tiempo transcurrido">00:00.000</span>
+    </section>
+
+    <!-- Botones de acción -->
+    <section class="controls">
+      <button id="startPauseBtn" class="btn btn-green" 
+        aria-label="Iniciar cronómetro" role="button">
+        <span class="sr-only">Iniciar o Pausar cronómetro</span>
+        <span id="startPauseText">Iniciar</span>
+      </button>
+
+      <button id="lapBtn" class="btn btn-yellow" aria-label="Capturar vuelta" role="button">
+        <span class="sr-only">Capturar vuelta</span>
+        Vuelta
+      </button>
+
+      <button id="clearBtn" class="btn btn-red" aria-label="Limpiar cronómetro" role="button">
+        <span class="sr-only">Limpiar cronómetro y restablecer historial</span>
+        Limpiar
+      </button>
+    </section>
+
+    <!-- Listado de vueltas -->
+    <section class="laps-section">
+      <h2 class="laps-title">Vueltas</h2>
+      <ul id="lapsList" class="laps-list" aria-live="polite"></ul>
+    </section>
+
+  </main>
+
+  <!-- Script de la lógica del cronómetro -->
+  <script src="./index.js"></script>
+</body>
+</html>
