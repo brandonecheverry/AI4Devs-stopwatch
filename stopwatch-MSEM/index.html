@@ -41,6 +41,16 @@
             position: relative;
         }
         
+        .time-section {
+            cursor: pointer;
+        }
+        
+        .time-section.active {
+            background-color: #ffe0b2;
+            border-radius: 5px;
+            padding: 0 5px;
+        }
+        
         .milliseconds {
             font-size: 18px;
             position: absolute;
@@ -192,7 +202,7 @@
     <!-- Countdown Config Screen -->
     <div id="countdown-config-screen" class="screen">
         <div class="timer-display" id="countdown-config-display">
-            00:00:00<span class="milliseconds">000</span>
+            <span id="hour-display" class="time-section">00</span>:<span id="minute-display" class="time-section">00</span>:<span id="second-display" class="time-section">00</span><span class="milliseconds">000</span>
         </div>
         <div class="numpad">
             <div class="num-btn" data-val="5">5</div>
