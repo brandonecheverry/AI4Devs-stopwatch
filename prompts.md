@@ -74,3 +74,8 @@ Modifica los ficheros adjuntos *index.html*, *styles.css* y *script.js* para que
 
 - Un diseño, colores y disposición de elementos moderno y minimalista, con un enfoque alegre que invite a usarse con mucha frecuencia.
 - Debe aplicar un diseño web *responsive*. Por ejemplo, se debe visualizar correctamente los elementos en un móvil estrecho, una pantalla de escritorio o en una televisión. Si esto requiere algún ajuste de la disposición o tamaños, siéntete libre de ajustarlos para la pantalla mediante *media queries de CSS*. Te dejo un [link de ejemplo](https://developer.mozilla.org/es/docs/Web/CSS/CSS_media_queries/Using_media_queries).
+
+
+# Website
+
+[ai4devs-chronometer](https://ai4devs-chronometer.netlify.app/)
