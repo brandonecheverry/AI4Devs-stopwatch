@@ -289,9 +289,28 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to handle key press events
     function handleKeyPress(e) {
-        if (!countdownConfigScreen.classList.contains('active') || !activeTimeSection) return;
+        if (!countdownConfigScreen.classList.contains('active')) return;
         
         const key = e.key;
+        
+        // Handle Tab key for cycling between time units
+        if (key === 'Tab') {
+            e.preventDefault(); // Prevent default tab behavior
+            
+            // Determine which section to activate next
+            if (activeTimeSection === secondDisplay) {
+                setActiveTimeSection(minuteDisplay);
+            } else if (activeTimeSection === minuteDisplay) {
+                setActiveTimeSection(hourDisplay);
+            } else {
+                setActiveTimeSection(secondDisplay);
+            }
+            
+            return;
+        }
+        
+        // For digit input, need an active section
+        if (!activeTimeSection) return;
         
         // Check if key is a digit
         if (/^\d$/.test(key)) {
@@ -358,6 +377,8 @@ document.addEventListener('DOMContentLoaded', function() {
     reconfigureBtn.addEventListener('click', function() {
         stopCountdown();
         showScreen(countdownConfigScreen);
+        // Pre-select seconds by default when reconfiguring
+        setActiveTimeSection(secondDisplay);
     });
     
     // Navigation event listeners
@@ -367,6 +388,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     countdownOption.addEventListener('click', function() {
         showScreen(countdownConfigScreen);
+        // Pre-select seconds by default when entering countdown configuration
+        setActiveTimeSection(secondDisplay);
     });
     
     stopwatchBackBtn.addEventListener('click', function() {
