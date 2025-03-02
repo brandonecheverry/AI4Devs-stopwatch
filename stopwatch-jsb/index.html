@@ -12,7 +12,6 @@
     <!-- MODE SELECTION VIEW -->
     <div id="mode-selection">
       <button id="stopwatch-button" class="mode-btn">
-        <!-- Using text or an emoji for the arrow icon as a placeholder -->
         <span class="icon green-arrow">⬆️</span>
         <span>Stopwatch</span>
       </button>
@@ -22,22 +21,28 @@
       </button>
     </div>
 
-    <!-- STOPWATCH VIEW (will hide by default, revealed later) -->
+    <!-- STOPWATCH VIEW -->
     <div id="stopwatch-view" class="hidden">
       <button class="back-button" id="back-to-main-from-stopwatch">
         ← Back
       </button>
-      <h2>Stopwatch View</h2>
-      <!-- More elements (time display, start/pause/clear buttons) will be added in Task 3 -->
+      <h2>Stopwatch</h2>
+      <!-- Time Display -->
+      <div id="stopwatch-display">00:00:00</div>
+      <!-- Controls: Start/Pause and Clear -->
+      <div class="controls">
+        <button id="stopwatch-start-pause">Start</button>
+        <button id="stopwatch-clear">Clear</button>
+      </div>
     </div>
 
-    <!-- COUNTDOWN VIEW (will hide by default, revealed later) -->
+    <!-- COUNTDOWN VIEW (Placeholder for Task 4) -->
     <div id="countdown-view" class="hidden">
       <button class="back-button" id="back-to-main-from-countdown">
         ← Back
       </button>
       <h2>Countdown View</h2>
-      <!-- More elements (numeric pad, set/clear buttons) will be added in Task 4 -->
+      <!-- Future elements for the countdown will be added here -->
     </div>
 
     <script src="script.js"></script>

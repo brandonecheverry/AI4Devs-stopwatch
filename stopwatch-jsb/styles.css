@@ -1,6 +1,6 @@
 /* styles.css */
 
-/* Basic reset or minimal styling */
+/* Basic reset */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -13,13 +13,13 @@
     margin-top: 50px;
   }
   
-  /* Title */
+  /* Title styling */
   h1 {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
   
-  /* Hide sections by default (used for toggling views) */
+  /* Hide sections by default */
   .hidden {
     display: none;
   }
@@ -44,7 +44,7 @@
     gap: 0.5rem;
   }
   
-  /* Just a bit of color emphasis for icons */
+  /* Icon styling */
   .green-arrow {
     color: green;
     font-size: 1.5rem;
@@ -55,7 +55,7 @@
     font-size: 1.5rem;
   }
   
-  /* Back button */
+  /* Back button styling */
   .back-button {
     display: inline-block;
     margin: 1rem;
@@ -64,6 +64,28 @@
     border: none;
     border-radius: 4px;
     font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  /* Stopwatch Display */
+  #stopwatch-display {
+    font-size: 3rem;
+    margin: 1rem 0;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  /* Controls container */
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .controls button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
   }
   
