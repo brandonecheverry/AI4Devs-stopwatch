@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timer and Countdown</title>
+    <!-- Link to the external stylesheet -->
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -11,10 +12,12 @@
 
     <!-- MODE SELECTION VIEW -->
     <div id="mode-selection">
+      <!-- Button for Stopwatch mode with a green arrow icon -->
       <button id="stopwatch-button" class="mode-btn">
         <span class="icon green-arrow">⬆️</span>
         <span>Stopwatch</span>
       </button>
+      <!-- Button for Countdown mode with a red arrow icon -->
       <button id="countdown-button" class="mode-btn">
         <span class="icon red-arrow">⬇️</span>
         <span>Countdown</span>
@@ -23,13 +26,16 @@
 
     <!-- STOPWATCH VIEW -->
     <div id="stopwatch-view" class="hidden">
+      <!-- Back button to return to the previous view -->
       <button class="back-button" id="back-to-main-from-stopwatch">
         ← Back
       </button>
       <h2>Stopwatch</h2>
+      <!-- Display for the stopwatch timer (hh:mm:ss.mmm) -->
       <div id="stopwatch-display">
         00:00:00.<span class="milliseconds">000</span>
       </div>
+      <!-- Controls for the stopwatch: Start/Pause/Continue and Clear -->
       <div class="controls">
         <button id="stopwatch-start-pause">Start</button>
         <button id="stopwatch-clear">Clear</button>
@@ -38,11 +44,14 @@
 
     <!-- COUNTDOWN VIEW (Numeric Pad Setup) -->
     <div id="countdown-view" class="hidden">
+      <!-- Back button to return to the previous view -->
       <button class="back-button" id="back-to-main-from-countdown">
         ← Back
       </button>
       <h2>Countdown Setup</h2>
+      <!-- Display for the numeric pad input, shown as hh:mm:ss -->
       <div id="countdown-input-display">00:00:00</div>
+      <!-- Numeric pad container for input digits -->
       <div id="countdown-numpad">
         <button class="numpad-digit" data-digit="7">7</button>
         <button class="numpad-digit" data-digit="8">8</button>
@@ -55,12 +64,14 @@
         <button class="numpad-digit" data-digit="3">3</button>
         <button class="numpad-digit" data-digit="0">0</button>
       </div>
+      <!-- Controls for the numeric pad: Set and Clear -->
       <div class="controls">
         <button id="countdown-set">Set</button>
         <button id="countdown-clear">Clear</button>
       </div>
     </div>
 
+    <!-- Link to the external script file -->
     <script src="script.js"></script>
   </body>
 </html>
