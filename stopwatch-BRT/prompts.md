@@ -1,3 +1,5 @@
+Model: ChatGPT 4o
+
 
 ---Prompt 1---
 
