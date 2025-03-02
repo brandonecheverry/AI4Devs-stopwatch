@@ -26,12 +26,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const configClearBtn = document.getElementById('config-clear-btn');
     const numBtns = document.querySelectorAll('.num-btn[data-val]');
     
+    // Countdown timer elements
+    const countdownTimerDisplay = document.getElementById('countdown-timer-display');
+    const countdownStartBtn = document.getElementById('countdown-start-btn');
+    const countdownClearBtn = document.getElementById('countdown-clear-btn');
+    
     // Stopwatch variables
     let stopwatchInterval;
     let stopwatchRunning = false;
     let stopwatchTime = 0;
     let stopwatchStartTime;
     let stopwatchPausedTime = 0;
+    
+    // Countdown config variables
+    let activeTimeSection = null;
+    let configuredHours = '00';
+    let configuredMinutes = '00';
+    let configuredSeconds = '00';
+    let configuredTime = 0; // in milliseconds
+    
+    // Countdown timer variables
+    let countdownInterval;
+    let countdownRunning = false;
+    let countdownEndTime;
+    let countdownTimeRemaining = 0;
+    let countdownPaused = false;
     
     // Function to show a screen and hide others
     function showScreen(screen) {
@@ -117,54 +136,85 @@ document.addEventListener('DOMContentLoaded', function() {
         updateStopwatchDisplay();
     }
     
-    // Stopwatch event listeners
-    stopwatchStartBtn.addEventListener('click', function() {
-        if (this.textContent === 'Start') {
-            startStopwatch();
-        } else if (this.textContent === 'Pause') {
-            pauseStopwatch();
-        } else if (this.textContent === 'Continue') {
-            continueStopwatch();
+    // Function to update countdown timer display
+    function updateCountdownDisplay(timeInMs) {
+        if (timeInMs < 0) timeInMs = 0;
+        
+        const formatted = formatTime(timeInMs);
+        countdownTimerDisplay.innerHTML = formatted.main + '<span class="milliseconds">' + formatted.ms + '</span>';
+        
+        // If countdown reached zero, stop it
+        if (timeInMs <= 0 && countdownRunning) {
+            stopCountdown();
+            // Optional: add a sound or visual alert when countdown ends
         }
-    });
+    }
     
-    stopwatchClearBtn.addEventListener('click', clearStopwatch);
+    // Function to start the countdown
+    function startCountdown() {
+        if (!countdownRunning) {
+            countdownRunning = true;
+            
+            if (!countdownPaused) {
+                // Starting fresh
+                countdownTimeRemaining = configuredTime;
+            }
+            
+            // Calculate end time
+            countdownEndTime = Date.now() + countdownTimeRemaining;
+            
+            countdownInterval = setInterval(function() {
+                // Calculate remaining time
+                countdownTimeRemaining = countdownEndTime - Date.now();
+                updateCountdownDisplay(countdownTimeRemaining);
+            }, 10);
+            
+            countdownStartBtn.textContent = 'Pause';
+            countdownStartBtn.classList.remove('blue-btn');
+            countdownStartBtn.classList.add('green-btn');
+            countdownPaused = false;
+        }
+    }
     
-    // Navigation event listeners
-    stopwatchOption.addEventListener('click', function() {
-        showScreen(stopwatchScreen);
-    });
+    // Function to pause the countdown
+    function pauseCountdown() {
+        if (countdownRunning) {
+            countdownRunning = false;
+            clearInterval(countdownInterval);
+            
+            // Store the remaining time
+            countdownTimeRemaining = countdownEndTime - Date.now();
+            if (countdownTimeRemaining < 0) countdownTimeRemaining = 0;
+            
+            countdownStartBtn.textContent = 'Continue';
+            countdownStartBtn.classList.remove('green-btn');
+            countdownStartBtn.classList.add('blue-btn');
+            countdownPaused = true;
+        }
+    }
     
-    countdownOption.addEventListener('click', function() {
-        showScreen(countdownConfigScreen);
-    });
+    // Function to continue the countdown
+    function continueCountdown() {
+        startCountdown();
+    }
     
-    stopwatchBackBtn.addEventListener('click', function() {
-        showScreen(homeScreen);
-    });
+    // Function to stop the countdown
+    function stopCountdown() {
+        countdownRunning = false;
+        clearInterval(countdownInterval);
+        countdownPaused = false;
+        
+        countdownStartBtn.textContent = 'Start';
+        countdownStartBtn.classList.remove('blue-btn');
+        countdownStartBtn.classList.add('green-btn');
+    }
     
-    countdownConfigBackBtn.addEventListener('click', function() {
-        showScreen(homeScreen);
-    });
-    
-    countdownBackBtn.addEventListener('click', function() {
-        showScreen(homeScreen);
-    });
-    
-    setBtn.addEventListener('click', function() {
-        showScreen(countdownTimerScreen);
-    });
-    
-    reconfigureBtn.addEventListener('click', function() {
-        showScreen(countdownConfigScreen);
-    });
-    
-    // Countdown config variables
-    let activeTimeSection = null;
-    let configuredHours = '00';
-    let configuredMinutes = '00';
-    let configuredSeconds = '00';
-    let configuredTime = 0; // in milliseconds
+    // Function to clear/reset the countdown
+    function clearCountdown() {
+        stopCountdown();
+        countdownTimeRemaining = configuredTime;
+        updateCountdownDisplay(countdownTimeRemaining);
+    }
     
     // Function to set active time section
     function setActiveTimeSection(section) {
@@ -257,6 +307,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Stopwatch event listeners
+    stopwatchStartBtn.addEventListener('click', function() {
+        if (this.textContent === 'Start') {
+            startStopwatch();
+        } else if (this.textContent === 'Pause') {
+            pauseStopwatch();
+        } else if (this.textContent === 'Continue') {
+            continueStopwatch();
+        }
+    });
+    
+    stopwatchClearBtn.addEventListener('click', clearStopwatch);
+    
     // Countdown config event listeners
     hourDisplay.addEventListener('click', function() {
         setActiveTimeSection(this);
@@ -279,6 +342,45 @@ document.addEventListener('DOMContentLoaded', function() {
     
     configClearBtn.addEventListener('click', clearCountdownConfig);
     
+    // Countdown timer event listeners
+    countdownStartBtn.addEventListener('click', function() {
+        if (this.textContent === 'Start') {
+            startCountdown();
+        } else if (this.textContent === 'Pause') {
+            pauseCountdown();
+        } else if (this.textContent === 'Continue') {
+            continueCountdown();
+        }
+    });
+    
+    countdownClearBtn.addEventListener('click', clearCountdown);
+    
+    reconfigureBtn.addEventListener('click', function() {
+        stopCountdown();
+        showScreen(countdownConfigScreen);
+    });
+    
+    // Navigation event listeners
+    stopwatchOption.addEventListener('click', function() {
+        showScreen(stopwatchScreen);
+    });
+    
+    countdownOption.addEventListener('click', function() {
+        showScreen(countdownConfigScreen);
+    });
+    
+    stopwatchBackBtn.addEventListener('click', function() {
+        showScreen(homeScreen);
+    });
+    
+    countdownConfigBackBtn.addEventListener('click', function() {
+        showScreen(homeScreen);
+    });
+    
+    countdownBackBtn.addEventListener('click', function() {
+        showScreen(homeScreen);
+    });
+    
     // Listen for keyboard input
     document.addEventListener('keydown', handleKeyPress);
     
@@ -288,8 +390,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize countdown timer display when set button is clicked
     setBtn.addEventListener('click', function() {
-        document.getElementById('countdown-timer-display').innerHTML = 
-            `${configuredHours}:${configuredMinutes}:${configuredSeconds}<span class="milliseconds">000</span>`;
+        // Update the displayed time on the countdown timer screen
+        updateCountdownDisplay(configuredTime);
+        
+        // Reset button state
+        countdownStartBtn.textContent = 'Start';
+        countdownStartBtn.classList.remove('blue-btn');
+        countdownStartBtn.classList.add('green-btn');
+        
+        // Show the countdown timer screen
         showScreen(countdownTimerScreen);
     });
 });
