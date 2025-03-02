@@ -92,3 +92,15 @@ Thanks, we're off to a great start. Let's add some tweaks:
 * Make the start/stop/continue button a fixed size so that the Clear button doesn't move around.
 * Format the milliseconds flush right under the seconds, and a bit closer to the line before.
 * Add milliseconds to the timer too, with the same layout.
+
+## Prompt 5
+
+A few more tweaks:
+
+* Please use `<img src="up-green.png" alt="Stopwatch" class="w-32 h-32 mb-2">` for the green arrow and `<img src="down-red.png" alt="Stopwatch" class="w-32 h-32 mb-2">` for the red one.
+* Right-align the milliseconds with the right margin of the row above.
+* Make the milliseconds update in real time for the timer too. Currently they update every 0.1 seconds.
+* Give all buttons a 2px black border with rounded corners.
+* Make the digit buttons green.
+* Use `https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3` for the alarm sound.
+* Make the milliseconds smaller, like 1/4 the height of the other numbers.

@@ -1,15 +1,7 @@
-/* Minimal custom CSS overrides or additions */
+/* Custom CSS tweaks */
 
-/* Tailwind provides 'hidden', but if you'd rather do .hidden yourself, you can:
-.hidden {
-  display: none !important;
-} */
-
-/* Example: fix font or container style if needed */
-#app-container {
-    /* Centered in the screen with a fixed size */
-    /* Already handled in HTML body with Tailwind classes */
-  }
-  
-  /* Feel free to add or adjust any styles for matching your sketch more closely. */
-  
+/* Make milliseconds 1/4 the size of the main display text */
+#stopwatch-ms,
+#timer-run-ms {
+  font-size: 0.5em;
+}
