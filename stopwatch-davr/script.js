@@ -63,14 +63,12 @@ btnTimer.addEventListener('click', () => {
 btnBack.addEventListener('click', () => {
     let current = getCurrentScreen();
     if (!current) return;
-    // Animate current screen out left, then menu in from left.
     current.classList.add('slide-out-left');
     current.addEventListener('animationend', function handler() {
         current.removeEventListener('animationend', handler);
         current.classList.add('hidden');
         current.classList.remove('slide-out-left');
-        // Hide back button since we're returning to home.
-        btnBack.classList.add('hidden');
+        btnBack.classList.add('hidden'); // Hide back button when returning home.
         screenMenu.classList.remove('hidden');
         screenMenu.classList.add('slide-in-from-left');
         screenMenu.addEventListener('animationend', function handler2() {
@@ -232,7 +230,6 @@ btnTimerSetupSet.addEventListener('click', () => {
     if (msVal <= 0) return;
     timerSetMs = msVal;
     timerRemainingMs = msVal;
-    // Transition from timer setup to timer run without extra animation.
     screenTimerSetup.classList.add('hidden');
     screenTimerRun.classList.remove('hidden');
     btnBack.classList.remove('hidden');

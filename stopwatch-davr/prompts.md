@@ -116,5 +116,10 @@ A few more tweaks:
 * When the user clicks Back, make an animation so that the buttons slide in from the left.
 * Don't show the Back button on the home page since there is nowhere to go back from there.
 
+## Prompt 7
 
+A few more tweaks:
 
+* Set button borders to 3px.
+* Removing the Back button on the home page made the bottom bar collapse. Make it as big as before, but without the button.
+* There is a lot of blank space between the blue header and the content, and between the content and the blue footer. Shrink that space to the height of the header.

@@ -1,15 +1,15 @@
-/* Define thick borders for all non-menu buttons */
+/* Define thick borders for non-home buttons (now 3px thick) */
 .thick-border {
-    border: 2px solid black;
+    border: 3px solid black;
     border-radius: 0.25rem;
 }
 
-/* Remove extra right alignment from the ms displays by letting them naturally sit
-     under the seconds text. We already use -mt-1 to pull them a bit closer. */
+/* Ensure the bottom bar stays at a fixed height even when empty */
+#bottom-bar {
+    height: 40px;
+}
 
-/* ------------------------------
-     Animation Keyframes
-  ------------------------------ */
+/* Animation Keyframes (unchanged) */
 @keyframes slide-out-down {
     from {
         transform: translateY(0);

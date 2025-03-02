@@ -18,8 +18,8 @@
       <h1 class="text-lg font-bold">David's Funky Timers</h1>
     </div>
 
-    <!-- Main content area -->
-    <div id="main-content" class="flex-grow flex flex-col items-center justify-center p-4 relative">
+    <!-- Main content area (reduced padding) -->
+    <div id="main-content" class="flex-grow flex flex-col items-center justify-center py-2 relative">
       <!-- MENU SCREEN (no Back button here) -->
       <div id="screen-menu" class="flex flex-col items-center justify-center">
         <div class="flex items-center justify-center space-x-8">
@@ -38,7 +38,7 @@
 
       <!-- STOPWATCH SCREEN -->
       <div id="screen-stopwatch" class="hidden flex flex-col items-center justify-center space-y-2">
-        <!-- Wrap seconds and milliseconds in a container so ms goes directly under -->
+        <!-- Wrap seconds and milliseconds in a container -->
         <div class="inline-block">
           <div id="stopwatch-display" class="text-4xl font-mono">00:00:00</div>
           <div id="stopwatch-ms" class="text-xs text-right -mt-1">.000</div>
@@ -100,8 +100,8 @@
       </div>
     </div>
 
-    <!-- Bottom bar: Back button (left-aligned) shown on all screens except menu -->
-    <div id="bottom-bar" class="bg-blue-500 text-white px-4 py-2 flex items-center">
+    <!-- Bottom bar: fixed height, Back button shown only on non-home screens -->
+    <div id="bottom-bar" class="bg-blue-500 text-white px-4 flex items-center h-[40px]">
       <button id="btn-back" class="bg-white text-blue-500 px-4 py-1 thick-border font-semibold hidden">
         Back
       </button>
