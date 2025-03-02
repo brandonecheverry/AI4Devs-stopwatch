@@ -26,13 +26,11 @@
         <div class="flex items-center justify-center space-x-8">
           <!-- Stopwatch button -->
           <button id="btn-stopwatch" class="flex flex-col items-center">
-            <!-- Replace with your own green arrow icon if desired -->
             <img src="up-green.png" alt="Stopwatch" class="w-32 h-32 mb-2">
             <span class="text-xl font-semibold text-gray-700">Stopwatch</span>
           </button>
           <!-- Timer button -->
           <button id="btn-timer" class="flex flex-col items-center">
-            <!-- Replace with your own red arrow icon if desired -->
             <img src="down-red.png" alt="Stopwatch" class="w-32 h-32 mb-2">
             <span class="text-xl font-semibold text-gray-700">Countdown</span>
           </button>
@@ -40,15 +38,15 @@
       </div>
 
       <!-- STOPWATCH SCREEN -->
-      <div id="screen-stopwatch" class="hidden absolute inset-0 flex flex-col items-center justify-center space-y-4">
-        <!-- HH:MM:SS -->
+      <div id="screen-stopwatch" class="hidden absolute inset-0 flex flex-col items-center justify-center space-y-2">
+        <!-- HH:MM:SS display -->
         <div id="stopwatch-display" class="text-4xl font-mono">00:00:00</div>
-        <!-- Milliseconds underneath -->
-        <div id="stopwatch-ms" class="text-xl font-mono">.000</div>
+        <!-- Milliseconds underneath (flush right, closer to the main display) -->
+        <div id="stopwatch-ms" class="text-xl font-mono text-right -mt-2 w-full pr-4">.000</div>
         <!-- Buttons -->
         <div class="flex space-x-2 mt-4">
           <button id="stopwatch-start-pause-btn"
-                  class="px-4 py-2 rounded bg-green-500 text-white font-semibold">
+                  class="w-32 px-4 py-2 rounded bg-green-500 text-white font-semibold">
             Start
           </button>
           <button id="stopwatch-clear-btn"
@@ -60,39 +58,43 @@
 
       <!-- TIMER SETUP SCREEN -->
       <div id="screen-timer-setup" class="hidden absolute inset-0 flex flex-col items-center justify-center space-y-4">
-        <!-- Display of typed HH:MM:SS -->
+        <!-- Display of typed HH:MM:SS (raw input, not normalized) -->
         <div id="timer-setup-display" class="text-4xl font-mono">00:00:00</div>
-        <!-- Digit buttons layout -->
-        <div class="grid grid-cols-3 gap-2">
-          <!-- Digits 1-9 -->
-          <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="1">1</button>
-          <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="2">2</button>
-          <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="3">3</button>
-          <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="4">4</button>
+        <!-- Digit buttons layout: 2 rows, 6 columns -->
+        <div class="grid grid-cols-6 gap-2">
+          <!-- Row 1: 5 6 7 8 9 Set -->
           <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="5">5</button>
           <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="6">6</button>
           <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="7">7</button>
           <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="8">8</button>
           <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="9">9</button>
-          <!-- CLR, 0, SET -->
-          <button id="timer-setup-clear"
-                  class="bg-yellow-300 py-2 text-xl font-bold">CLR</button>
-          <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="0">0</button>
           <button id="timer-setup-set"
                   class="bg-green-500 text-white py-2 text-xl font-bold">
             Set
+          </button>
+          <!-- Row 2: 0 1 2 3 4 Clear -->
+          <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="0">0</button>
+          <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="1">1</button>
+          <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="2">2</button>
+          <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="3">3</button>
+          <button class="timer-digit-btn bg-gray-300 py-2 text-xl font-bold" data-digit="4">4</button>
+          <button id="timer-setup-clear"
+                  class="bg-yellow-300 py-2 text-xl font-bold">
+            Clear
           </button>
         </div>
       </div>
 
       <!-- TIMER RUN SCREEN -->
-      <div id="screen-timer-run" class="hidden absolute inset-0 flex flex-col items-center justify-center space-y-4">
-        <!-- Display HH:MM:SS -->
+      <div id="screen-timer-run" class="hidden absolute inset-0 flex flex-col items-center justify-center space-y-2">
+        <!-- HH:MM:SS display -->
         <div id="timer-run-display" class="text-4xl font-mono">00:00:00</div>
+        <!-- Milliseconds underneath (flush right) -->
+        <div id="timer-run-ms" class="text-xl font-mono text-right -mt-2 w-full pr-4">.000</div>
         <!-- Buttons -->
         <div class="flex space-x-2">
           <button id="timer-start-stop-btn"
-                  class="px-4 py-2 rounded bg-green-500 text-white font-semibold">
+                  class="w-32 px-4 py-2 rounded bg-green-500 text-white font-semibold">
             Start
           </button>
           <button id="timer-clear-btn"
@@ -103,8 +105,8 @@
       </div>
     </div>
 
-    <!-- Bottom bar with Back button -->
-    <div class="bg-blue-500 text-white text-center py-2">
+    <!-- Bottom bar with Back button, left aligned -->
+    <div class="bg-blue-500 text-white px-4 py-2 flex items-center">
       <button id="btn-back" class="bg-white text-blue-500 px-4 py-1 rounded font-semibold">
         Back
       </button>

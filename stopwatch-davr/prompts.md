@@ -84,10 +84,11 @@ I want you to generate HTML, CSS and JS in separate files.
 
 Thanks, we're off to a great start. Let's add some tweaks:
 
-1. Make the home/menu look like the sketches: green arrow up for stopwatch, red arrow down for timer.
-2. Put the milliseconds _below_ the seconds like in the screenshots I shared. Make sure that they don't become part of what defines the width of the counter box, or the box will jitter since different digits have different width.
-3. Put the "Back" link in a blue footer bar.
-4. Put the title in a blue bar on top.
-5. Make the page white instead of blue.
-6. When the stopwatch is stopped, change the button text to "Continue" and make the button blue.
-7. Lay out the 0-9 buttons in two rows like in the sketch.
+* Lay out the buttons for initialising the timer like this:
+    5 6 7 8 9 Set
+    0 1 2 3 4 Clear
+* Don't mess with the user input until they click "Set". So if they enter 9, 9, 9, the clock should read 00:09:99, and only when they click Set should it change to 00:10:39.
+* Make the "Back" button left-aligned rather than centred.
+* Make the start/stop/continue button a fixed size so that the Clear button doesn't move around.
+* Format the milliseconds flush right under the seconds, and a bit closer to the line before.
+* Add milliseconds to the timer too, with the same layout.
