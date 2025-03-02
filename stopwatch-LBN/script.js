@@ -22,6 +22,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const stopCountdownBtn = document.getElementById("stopCountdown");
     const resetCountdownBtn = document.getElementById("resetCountdown");
     const setCountdownBtn = document.getElementById("setCountdown");
+    
+    // Obtener referencias a los inputs
+    const hoursInput = document.getElementById("countdownHours");
+    const minutesInput = document.getElementById("countdownMinutes");
+    const secondsInput = document.getElementById("countdownSeconds");
+    
+    // Agregar validación para prevenir valores negativos
+    [hoursInput, minutesInput, secondsInput].forEach(input => {
+        input.addEventListener("input", function() {
+            if (this.value < 0) {
+                this.value = 0;
+            }
+        });
+        
+        // También validar cuando el input pierde el foco
+        input.addEventListener("blur", function() {
+            if (this.value < 0) {
+                this.value = 0;
+            }
+        });
+    });
 
     function updateActiveMenu(activeBtn) {
         document.querySelectorAll(".menu-btn").forEach(btn => btn.classList.remove("active"));
@@ -66,10 +87,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     setCountdownBtn.addEventListener("click", () => {
+        // Asegurarse de que los valores sean no negativos
+        const hours = Math.max(0, parseInt(hoursInput.value) || 0);
+        const minutes = Math.max(0, parseInt(minutesInput.value) || 0);
+        const seconds = Math.max(0, parseInt(secondsInput.value) || 0);
+        
+        // Actualizar los inputs con los valores validados
+        hoursInput.value = hours;
+        minutesInput.value = minutes;
+        secondsInput.value = seconds;
+        
         countdownTime = 
-            (parseInt(document.getElementById("countdownHours").value) || 0) * 3600000 +
-            (parseInt(document.getElementById("countdownMinutes").value) || 0) * 60000 +
-            (parseInt(document.getElementById("countdownSeconds").value) || 0) * 1000;
+            hours * 3600000 +
+            minutes * 60000 +
+            seconds * 1000;
         countdownDisplay.textContent = new Date(countdownTime).toISOString().substr(11, 12);
     });
 
@@ -98,8 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
         countdownTime = 0;
         isCountingDown = false;
         countdownDisplay.textContent = "00:00:00.000";
-        document.getElementById("countdownHours").value = "";
-        document.getElementById("countdownMinutes").value = "";
-        document.getElementById("countdownSeconds").value = "";
+        hoursInput.value = "";
+        minutesInput.value = "";
+        secondsInput.value = "";
     });
 });
