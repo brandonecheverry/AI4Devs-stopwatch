@@ -75,115 +75,6 @@
 
 ## **Countdown Functionality**
 
-    - TO DO
-
----
-
-## **UI Description**
-
-        - All functionality (homepage, stopwatch, and countdown) should be implemented within `index.html`.
-        - Use JavaScript to dynamically show/hide sections.
-        - Please use flex align-items center justify-content center for the homepage images and text alignment
-        - The design must be **responsive**
-        - Use **smooth transitions** when switching between sections.
-        - Place a back button in the **bottom left corner** of each functionality section in another row
-        - The back button should return the user to the homepage.
-        - The button start is green
-        - The button pause is green
-        - the button continue is blue
-        - the button clear is red
-
----
-
-## **Development Interaction**
-
-    1. **Step-by-Step Approach**:
-        - We will implement the **stopwatch first**, and once approved, we will move on to the **countdown**.
-    2. **Feedback and Approval**:
-        - For each subtask, present your proposal, explain your reasoning, and wait for my feedback.
-        - Do not proceed to the next task without my confirmation.
-    3. **Clarifications**:
-        - If you need more information or clarification or you have any doubts, ask before proceeding.
-
-# Stopwatch and Countdown Timer web application
-
-## **Role**
-
-    You are an expert HTML, CSS, and JavaScript developer.
-    You are capable of implementing OWASP security guidelines of this project described in the /stopwatch-AG/owasp.md file  and implementthe best practices described in the /stopwatch-AG/development-guidelines.md file.
-
----
-
-## **Folder Structure**
-
-    stopwatch-AG/
-    ├── index.html # Homepage with stopwatch and countdown sections
-    ├── styles.css # All CSS styles
-    ├── script.js # All JavaScript logic
-    └── images/
-        ├── stopwatch.png # Stopwatch image
-        └── countdown.png # Countdown image
-
----
-
-## **Objective**
-
-    The goal is to create a **web application** that includes:
-
-    1. A **homepage** that allows users to navigate between the two functionalities.
-    2. A **stopwatch**
-    3. A **countdown
-
----
-
-## **Homepage**
-
-    The homepage (`index.html`) should display two  mages with their respective titles
-
-    - **Stopwatch**: Image located at `./images/stopwatch.png` with the h1 "Stopwatch".
-    - **Countdown**: Image located at `./images/countdown.png` with the h1 "Countdown".
-
-    The images and titles must be arranged horizontally, side by side, use display: flex with  justify-content: center;
-
-
-    ### **Behavior**
-
-        - When a user clicks on either image:
-        - Hide the homepage section.
-        - Show the corresponding functionality section (stopwatch or countdown) with a **smooth transition effect of 0.5 seconds**.
-        - Each functionality section should have a **back button** in the bottom left corner.
-        - When clicked, it should: Hide the current section and Show the homepage again.
-
-    ---
-
-## **Stopwatch Functionality**
-
-    ### **Default State**
-
-    - The stopwatch displays `00:00:00.000` (hours:minutes:seconds.milliseconds).
-
-    ### **Buttons and Behavior**
-
-    1. **Start Button**:
-        - When clicked, the stopwatch starts counting.
-        - The button text changes to **"Pause"** (color: green).
-    2. **Pause Button**:
-        - When clicked, the stopwatch stops counting.
-        - The button text changes to **"Continue"** (color: blue).
-    3. **Continue Button**:
-        - When clicked, the stopwatch resumes counting.
-        - The button text changes back to **"Pause"** (color: green).
-    4. **Clear Button**:
-        - When clicked, the stopwatch resets to `00:00:00.000`.
-        - The button color is red.
-
-    Please follow the screenshot iamge layout for style font and colors
-    /res/stopwatch.png
-
----
-
-## **Countdown Functionality**
-
     The countdown functionality is designed to mirror the stopwatch session in terms of layout, buttons, font, and color. However, it includes a preceding step where the user sets the time, and of course the countdown runs in reverse.
 
 
@@ -215,6 +106,8 @@
 
 ---
 
+---
+
 ## **UI Description**
 
         - All functionality (homepage, stopwatch, and countdown) should be implemented within `index.html`.
@@ -222,8 +115,12 @@
         - Please use flex align-items center justify-content center for the homepage images and text alignment
         - The design must be **responsive**
         - Use **smooth transitions** when switching between sections.
-        - Place a back button in the **bottom left corner** of each functionality section.
+        - Place a back button in the **bottom left corner** of each functionality section in another row
         - The back button should return the user to the homepage.
+        - The button START is green
+        - The button PAUSE is green
+        - the button CONTINUE is blue
+        - the button CLEAR is red
 
 ---
 
@@ -239,7 +136,7 @@
 
 # PROMPT 2
 
-    - I asked to impelment only the first step and wait my feedback, please revert the code and respect the step described mon the prompt
+    - I asked to impelment only the first step and wait my feedback, please revert the code and respect the step described insde the prompt !
 
 # PROMPT 3
 
@@ -252,4 +149,4 @@
 # PROMPT 5
 
     - please use a transaction of 0.5 seconds from right to left when the user click the navigation button
-    - the countdown the default value is 00:00:00.000
+    - the countdown has the default value : 00:00:00.000
