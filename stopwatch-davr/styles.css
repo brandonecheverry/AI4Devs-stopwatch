@@ -1,7 +1,108 @@
-/* Custom CSS tweaks */
+/* Define thick borders for all non-menu buttons */
+.thick-border {
+    border: 2px solid black;
+    border-radius: 0.25rem;
+}
 
-/* Make milliseconds 1/4 the size of the main display text */
-#stopwatch-ms,
-#timer-run-ms {
-  font-size: 0.5em;
+/* Remove extra right alignment from the ms displays by letting them naturally sit
+     under the seconds text. We already use -mt-1 to pull them a bit closer. */
+
+/* ------------------------------
+     Animation Keyframes
+  ------------------------------ */
+@keyframes slide-out-down {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slide-in-from-top {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-out-up {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slide-in-from-bottom {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-out-left {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slide-in-from-left {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Animation utility classes */
+.slide-out-down {
+    animation: slide-out-down 0.3s forwards;
+}
+
+.slide-in-from-top {
+    animation: slide-in-from-top 0.3s forwards;
+}
+
+.slide-out-up {
+    animation: slide-out-up 0.3s forwards;
+}
+
+.slide-in-from-bottom {
+    animation: slide-in-from-bottom 0.3s forwards;
+}
+
+.slide-out-left {
+    animation: slide-out-left 0.3s forwards;
+}
+
+.slide-in-from-left {
+    animation: slide-in-from-left 0.3s forwards;
 }

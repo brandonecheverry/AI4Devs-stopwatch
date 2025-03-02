@@ -104,3 +104,17 @@ A few more tweaks:
 * Make the digit buttons green.
 * Use `https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3` for the alarm sound.
 * Make the milliseconds smaller, like 1/4 the height of the other numbers.
+
+## Prompt 6
+
+A few more tweaks:
+
+* The size of the milliseconds is good now, but they need to go right under the seconds, not under and far to the right as they do now.
+* Remove the borders from the buttons on the start page.
+* Make the borders of the other buttons thicker, and define the thickness in the CSS file so that I can tweak it, not in the HTML file.
+* Add an animation so that when the user selects Stopwatch, the buttons slide out towards the bottom and the stopwatch page slides in from above to replace it.  Do the reverse for when the user selects Countdown.
+* When the user clicks Back, make an animation so that the buttons slide in from the left.
+* Don't show the Back button on the home page since there is nowhere to go back from there.
+
+
+
