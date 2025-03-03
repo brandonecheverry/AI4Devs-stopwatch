@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer and Countdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .timer {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .timer__title {
+            margin-bottom: 20px;
+        }
+
+        .timer__controls {
+            margin-bottom: 20px;
+        }
+
+        .timer__button {
+            padding: 10px 15px;
+            margin: 0 5px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .timer__button:hover {
+            background-color: #0056b3;
+        }
+
+        .timer__display {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+
+        .timer__options {
+            margin-bottom: 20px;
+        }
+
+        .timer__input {
+            margin-top: 20px;
+        }
+
+        .timer__input input {
+            width: 50px;
+            margin: 0 5px;
+            text-align: center;
+        }
+
+        .timer__button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="timer">
+        <h1 class="timer__title">Timer and Countdown</h1>
+        <div class="timer__controls">
+            <button class="timer__button" id="startBtn">Start</button>
+            <button class="timer__button" id="pauseBtn" disabled>Pause</button>
+            <button class="timer__button" id="resetBtn" disabled>Reset</button>
+        </div>
+        <div class="timer__display" id="timerDisplay">00:00:00:000</div>
+        <div class="timer__options">
+            <label>
+                <input type="radio" name="timerType" value="up" checked> Ascending
+            </label>
+            <label>
+                <input type="radio" name="timerType" value="down"> Descending
+            </label>
+        </div>
+        <div class="timer__input" id="countdownInputContainer" style="display: none;">
+            <input type="number" id="hoursInput" placeholder="HH" min="0" max="59">
+            <input type="number" id="minutesInput" placeholder="MM" min="0" max="59">
+            <input type="number" id="secondsInput" placeholder="SS" min="0" max="59">
+            <button class="timer__button" id="setCountdownBtn">Set Countdown</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
