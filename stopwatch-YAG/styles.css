@@ -1,0 +1,331 @@
+/***********************************************
+ * styles.css
+ * Estilos para el Cronómetro (Mobile-First)
+ **********************************************/
+
+/* Modo oscuro base */
+:root {
+    --dark-bg-color: #001d3d;
+    --text-color: #ffffff;
+    --pastel-yellow: #ffc300;
+    --pastel-green: #06d6a0;
+    --pastel-red: #ff1c66;
+    --pastel-blue: #4cc9f0;
+    
+    /* Colores para indicadores de cuenta atrás */
+    --countdown-warning: #ffc107;
+    --countdown-danger: #ff1c66;
+    
+    /* Ajuste de tipografía base */
+    --font-size-base: 16px;
+  }
+  
+  /* Reset básico */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Texto oculto para lectores de pantalla */
+  .sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+  
+  /* Body principal */
+  body.dark-bg {
+    background-color: var(--dark-bg-color);
+    color: var(--text-color);
+    font-family: sans-serif;
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+  }
+  
+  /* Contenedor principal (centrado en pantallas grandes, full en móviles) */
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Info de shortcuts */
+  .shortcuts-info {
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+  
+  /* Display del tiempo */
+  .time-display {
+    text-align: center;
+    margin: 1rem 0;
+  }
+  
+  .timer {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Sección de botones de control */
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .btn {
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    transition: transform 0.15s ease, background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Colores pastel */
+  .btn-green {
+    background-color: var(--pastel-green);
+    color: #000;
+  }
+  
+  .btn-red {
+    background-color: var(--pastel-red);
+    color: #000;
+  }
+  
+  .btn-yellow {
+    background-color: var(--pastel-yellow);
+    color: #000;
+  }
+
+  .btn-blue {
+    background-color: var(--pastel-blue);
+    color: #000;
+  }
+  
+  /* Sección de vueltas */
+  .laps-section {
+    margin-top: 1rem;
+  }
+  
+  .laps-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .laps-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  /* Elemento individual de vuelta */
+  .lap-item {
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Efecto de parpadeo para nueva vuelta */
+  .highlight {
+    animation: highlightFlash 1.5s ease;
+  }
+  
+  /* Keyframes para parpadeo */
+  @keyframes highlightFlash {
+    0% { background-color: var(--pastel-yellow); }
+    50% { background-color: transparent; }
+    100% { background-color: var(--pastel-yellow); }
+  }
+
+  /* Estilos para el selector de modo */
+  .mode-toggle {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    gap: 0.5rem;
+  }
+
+  .mode-btn {
+    border: 1px solid var(--text-color);
+    background-color: transparent;
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .mode-btn.mode-active {
+    background-color: var(--text-color);
+    color: var(--dark-bg-color);
+  }
+
+  /* Estilos para la configuración de tiempo en cuenta atrás */
+  .countdown-config {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  .time-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0.25rem;
+  }
+
+  .time-input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .time-input-header {
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+    opacity: 0.8;
+  }
+
+  .time-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .time-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--text-color);
+    width: 2rem;
+    height: 1.5rem;
+    cursor: pointer;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+  }
+
+  .time-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .time-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-color);
+    width: 3rem;
+    height: 2.5rem;
+    text-align: center;
+    font-size: 1.25rem;
+    margin: 0.25rem 0;
+    border-radius: 2px;
+  }
+
+  .time-input:focus {
+    outline: 2px solid var(--pastel-blue);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .time-separator {
+    align-self: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 0.125rem;
+    opacity: 0.7;
+  }
+
+  /* Estado de botones deshabilitados */
+  .btn:disabled {
+    opacity: 0.5;
+    transform: none;
+    cursor: not-allowed;
+  }
+
+  /* Clase para elementos ocultos */
+  .hidden {
+    display: none !important;
+  }
+
+  /* Animación de parpadeo para los últimos segundos */
+  .countdown-warning {
+    color: var(--countdown-warning);
+  }
+
+  .countdown-danger {
+    color: var(--countdown-danger);
+  }
+
+  .countdown-finished {
+    animation: finishedFlash 1s infinite;
+  }
+
+  /* Animación de fondo */
+  .countdown-bg {
+    position: relative;
+    z-index: 1;
+  }
+
+  .countdown-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--countdown-danger);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    border-radius: 4px;
+  }
+
+  .countdown-bg.danger::before {
+    opacity: 0.3;
+  }
+
+  @keyframes finishedFlash {
+    0% { background-color: transparent; }
+    50% { background-color: var(--countdown-danger); }
+    100% { background-color: transparent; }
+  }
+
+  /* Adaptaciones para móviles pequeños */
+  @media (max-width: 320px) {
+    .time-input {
+      width: 2.5rem;
+      font-size: 1rem;
+    }
+
+    .controls {
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+    }
+  }
+  
