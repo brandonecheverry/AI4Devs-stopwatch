@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stopwatch & Countdown Timer</title>
+  <style>
+    /* GLOBAL RESETS & CONTAINER */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    /* The main outer container: 942px × 518.1px, centered */
+    .app-container {
+      width: 942px;
+      height: 518.1px;
+      overflow: hidden; /* Hide pages sliding in/out */
+      position: relative;
+      background: #fff;
+    }
+
+    /* A wrapper that holds all "pages" side by side */
+    .pages-wrapper {
+      display: flex;
+      width: calc(942px * 4); /* 4 pages side by side */
+      height: 518.1px;
+      transition: transform 0.5s ease; /* Smooth slide animation */
+    }
+
+    /* Each page has the exact size of the container */
+    .page {
+      width: 942px;
+      height: 518.1px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    /* TOP & BOTTOM BANDS (each 30px high) */
+    .top-band, .bottom-band {
+      width: 100%;
+      height: 30px;
+      background: #0000ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: bold;
+      font-size: 18px;
+      position: absolute;
+      left: 0;
+    }
+    .top-band {
+      top: 0;
+    }
+    .bottom-band {
+      bottom: 0;
+      justify-content: flex-start;
+      padding-left: 10px;
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .back-btn span.arrow {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: #ffff00;
+      margin-right: 5px;
+      mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>') no-repeat center;
+      -webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>') no-repeat center;
+      mask-size: contain;
+      -webkit-mask-size: contain;
+    }
+
+    /* Hide the back button on the Home Page */
+    .home .bottom-band .back-btn {
+      display: none;
+    }
+
+    /* CONTENT WRAPPER (accounts for the top and bottom bands) */
+    .content {
+      position: absolute;
+      top: 30px;
+      bottom: 30px;
+      width: 100%;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* TIME DISPLAY BOX (used in other pages) */
+    .time-display {
+      width: 80%;
+      max-width: 600px;
+      height: 100px;
+      background: #e6e6ff;
+      border-radius: 10px;
+      border: 2px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      font-weight: bold;
+      color: #000;
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .milliseconds {
+      font-size: 24px;
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      color: #000;
+    }
+
+    /* BUTTON STYLES */
+    .button {
+      cursor: pointer;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 10px 30px;
+      margin: 0 10px;
+      border-radius: 5px;
+      border: 2px solid #000;
+      transition: background 0.3s ease;
+    }
+    .button-green {
+      background: #00ff00;
+    }
+    .button-red {
+      background: #ff0000;
+    }
+    .button-blue {
+      background: #0000ff;
+      color: #fff;
+    }
+
+    /* Layout for Stopwatch/Countdown main buttons */
+    .main-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    /* NUMERIC PAD for Countdown Setup */
+    .numeric-pad {
+      display: grid;
+      grid-template-columns: repeat(5, 80px);
+      grid-template-rows: repeat(2, 80px);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .num-button {
+      background: #00ff00;
+      border: 2px solid #000;
+      border-radius: 5px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .set-button {
+      background: #00ff00;
+      border: 2px solid #000;
+      border-radius: 5px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      grid-column: 5;
+      grid-row: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .clear-button {
+      background: #ccc;
+      border: 2px solid #000;
+      border-radius: 5px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      grid-column: 5;
+      grid-row: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* HOMEPAGE SPLIT-SCREEN STYLING */
+    .split-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+    .split-half {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      padding: 20px;
+    }
+    .split-half h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .large-arrow {
+      width: 120px;
+      height: 120px;
+    }
+    /* Specific arrow colors for each half */
+    .left-half .large-arrow {
+      fill: #00ff00;
+    }
+    .right-half .large-arrow {
+      fill: #ff0000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <div class="pages-wrapper" id="pagesWrapper">
+      
+      <!-- ==================== 1) HOME PAGE (Updated Split-Screen) ==================== -->
+      <div class="page home" id="homePage">
+        <!-- Top band -->
+        <div class="top-band">
+          www.online-stopwatch.com
+        </div>
+        <!-- Bottom band -->
+        <div class="bottom-band">
+          <a href="#" class="back-btn">
+            <span class="arrow"></span>Back
+          </a>
+        </div>
+        <!-- Content: Split Screen -->
+        <div class="content">
+          <div class="split-container">
+            <!-- Left Half: Stopwatch -->
+            <div class="split-half left-half" id="homeStopwatch">
+              <h2>Stopwatch</h2>
+              <!-- Downward arrow via inline SVG; rotated 90deg -->
+              <svg class="large-arrow" viewBox="0 0 24 24">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+              </svg>
+            </div>
+            <!-- Right Half: Countdown Timer -->
+            <div class="split-half right-half" id="homeCountdown">
+              <h2>Countdown</h2>
+              <svg class="large-arrow" viewBox="0 0 24 24">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== 2) STOPWATCH PAGE ==================== -->
+      <div class="page" id="stopwatchPage">
+        <!-- Top band -->
+        <div class="top-band">
+          www.online-stopwatch.com
+        </div>
+        <!-- Bottom band -->
+        <div class="bottom-band">
+          <a href="#" class="back-btn" id="backFromStopwatch">
+            <span class="arrow"></span>Back
+          </a>
+        </div>
+        <!-- Content -->
+        <div class="content">
+          <div class="time-display">
+            <span id="stopwatchDisplay">00:00:00</span>
+            <span class="milliseconds" id="stopwatchMs">000</span>
+          </div>
+          <div class="main-buttons">
+            <button class="button button-green" id="stopwatchStartBtn">Start</button>
+            <button class="button button-red" id="stopwatchClearBtn">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== 3) COUNTDOWN SETUP PAGE ==================== -->
+      <div class="page" id="countdownSetupPage">
+        <!-- Top band -->
+        <div class="top-band">
+          www.online-stopwatch.com
+        </div>
+        <!-- Bottom band -->
+        <div class="bottom-band">
+          <a href="#" class="back-btn" id="backFromSetup">
+            <span class="arrow"></span>Back
+          </a>
+        </div>
+        <!-- Content -->
+        <div class="content">
+          <div class="time-display">
+            <span id="countdownSetupDisplay">00:00:00</span>
+            <span class="milliseconds" id="countdownSetupMs">000</span>
+          </div>
+          <!-- Numeric Pad -->
+          <div class="numeric-pad">
+            <!-- First row: 5,6,7,8,9 -->
+            <div class="num-button" data-value="5">5</div>
+            <div class="num-button" data-value="6">6</div>
+            <div class="num-button" data-value="7">7</div>
+            <div class="num-button" data-value="8">8</div>
+            <div class="num-button" data-value="9">9</div>
+
+            <!-- Second row: 0,1,2,3,4 -->
+            <div class="num-button" data-value="0">0</div>
+            <div class="num-button" data-value="1">1</div>
+            <div class="num-button" data-value="2">2</div>
+            <div class="num-button" data-value="3">3</div>
+            <div class="num-button" data-value="4">4</div>
+
+            <!-- Set & Clear buttons -->
+            <div class="set-button" id="countdownSetBtn">Set</div>
+            <div class="clear-button" id="countdownClearBtn">Clear</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== 4) COUNTDOWN WORKING PAGE ==================== -->
+      <div class="page" id="countdownWorkingPage">
+        <!-- Top band -->
+        <div class="top-band">
+          www.online-stopwatch.com
+        </div>
+        <!-- Bottom band -->
+        <div class="bottom-band">
+          <a href="#" class="back-btn" id="backFromWorking">
+            <span class="arrow"></span>Back
+          </a>
+        </div>
+        <!-- Content -->
+        <div class="content">
+          <div class="time-display">
+            <span id="countdownDisplay">00:00:00</span>
+            <span class="milliseconds" id="countdownMs">000</span>
+          </div>
+          <div class="main-buttons">
+            <button class="button button-green" id="countdownStartBtn">Start</button>
+            <button class="button button-red" id="countdownResetBtn">Reset</button>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- end .pages-wrapper -->
+  </div> <!-- end .app-container -->
+
+  <script src="script.js" defer></script>
+</body>
+</html>
+
