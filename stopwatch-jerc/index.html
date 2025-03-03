@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI4Devs Stopwatch & Countdown</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<!-- Página Principal -->
+<section id="main-menu" class="page">
+  <header>
+    <h1>www.online-stopwatch.com</h1>
+  </header>
+  <div class="menu-container">
+    <!-- Botón Stopwatch (flecha apuntando hacia arriba en verde) -->
+    <button id="to-stopwatch" class="menu-btn">
+      <div class="arrow-up"></div>
+      <span>Stopwatch</span>
+    </button>
+    <!-- Botón Countdown (flecha apuntando hacia abajo en rojo) -->
+    <button id="to-countdown-setup" class="menu-btn">
+      <div class="arrow-down"></div>
+      <span>Countdown</span>
+    </button>
+  </div>
+</section>
+
+<!-- Página Stopwatch -->
+<section id="stopwatch-page" class="page" style="display:none">
+  <header>
+    <h1>www.online-stopwatch.com</h1>
+  </header>
+  <div class="content">
+    <h2>Stopwatch</h2>
+    <div id="stopwatch-display" class="display">00:00:00.000</div>
+    <div class="controls">
+      <button id="stopwatch-toggle" class="btn-green">Start</button>
+      <button id="stopwatch-clear" class="btn-red">Clear</button>
+    </div>
+  </div>
+  <!-- Botón Back (imagen flecha verde a la izquierda) -->
+  <button id="stopwatch-back" class="back-btn">
+    <div class="arrow-left"></div>
+  </button>
+</section>
+
+<!-- Página Countdown Setup -->
+<section id="countdown-setup-page" class="page" style="display:none">
+  <header>
+    <h1>www.online-stopwatch.com</h1>
+  </header>
+  <div class="content">
+    <h2>Countdown Setup</h2>
+    <!-- Reloj de configuración: la parte superior muestra los segundos a configurar -->
+    <div id="countdown-setup-display" class="display">00:00:00</div>
+    <!-- Teclado numérico (botones de color verde) y botones Set y Clear -->
+    <div class="keypad">
+      <button class="num-key" data-value="1">1</button>
+      <button class="num-key" data-value="2">2</button>
+      <button class="num-key" data-value="3">3</button>
+      <button class="num-key" data-value="4">4</button>
+      <button class="num-key" data-value="5">5</button>
+      <button class="num-key" data-value="6">6</button>
+      <button class="num-key" data-value="7">7</button>
+      <button class="num-key" data-value="8">8</button>
+      <button class="num-key" data-value="9">9</button>
+      <button class="num-key" data-value="0">0</button>
+    </div>
+    <div class="controls">
+      <button id="countdown-set" class="btn-green">Set</button>
+      <button id="countdown-setup-clear" class="btn-gray">Clear</button>
+    </div>
+  </div>
+  <!-- Botón Back -->
+  <button id="countdown-setup-back" class="back-btn">
+    <div class="arrow-left"></div>
+  </button>
+</section>
+
+<!-- Página Countdown -->
+<section id="countdown-page" class="page" style="display:none">
+  <header>
+    <h1>www.online-stopwatch.com</h1>
+  </header>
+  <div class="content">
+    <h2>Countdown</h2>
+    <div id="countdown-display" class="display">00:00:00</div>
+    <div class="controls">
+      <button id="countdown-toggle" class="btn-green">Start</button>
+      <button id="countdown-clear" class="btn-red">Clear</button>
+    </div>
+  </div>
+  <!-- Botón Back -->
+  <button id="countdown-back" class="back-btn">
+    <div class="arrow-left"></div>
+  </button>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

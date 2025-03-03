@@ -1,0 +1,163 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  color: #333;
+  text-align: center;
+}
+
+/* ---------- General ---------- */
+header {
+  background: #003399;
+  color: #fff;
+  padding: 1em;
+}
+
+.page {
+  padding: 1em;
+}
+
+/* Contenedor principal del menú */
+.menu-container {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  margin-top: 2em;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Flechas del menú */
+.arrow-up, .arrow-down, .arrow-left {
+  width: 0;
+  height: 0;
+  margin: 0 auto;
+}
+
+.arrow-up {
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 40px solid #4CAF50; /* verde */
+}
+
+.arrow-down {
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 40px solid #f44336; /* rojo */
+}
+
+/* Flecha izquierda para Back */
+.arrow-left {
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 30px solid #4CAF50; /* verde */
+}
+
+/* Display (relojes) */
+.display {
+  font-size: 2rem;
+  background: #e6e6e6;
+  margin: 1em auto;
+  padding: 0.5em 1em;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+/* Contenido central */
+.content {
+  margin-top: 1em;
+}
+
+/* Controles y botones */
+.controls {
+  margin-top: 1em;
+}
+
+.controls button {
+  font-size: 1rem;
+  padding: 0.6em 1.2em;
+  margin: 0 0.5em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-green {
+  background: #4CAF50;
+  color: #fff;
+}
+
+.btn-green:hover {
+  background: #388e3c;
+}
+
+.btn-red {
+  background: #f44336;
+  color: #fff;
+}
+
+.btn-red:hover {
+  background: #d32f2f;
+}
+
+.btn-gray {
+  background: #9e9e9e;
+  color: #fff;
+}
+
+.btn-gray:hover {
+  background: #757575;
+}
+
+/* Teclado numérico */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5em;
+  margin: 1em auto;
+  max-width: 300px;
+}
+
+.num-key {
+  padding: 1em;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.num-key:hover {
+  background: #388e3c;
+}
+
+/* Botón Back (posición inferior izquierda) */
+.back-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
