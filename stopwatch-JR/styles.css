@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    border-bottom: 3px solid #333;
+}
+
+.tab-content {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 40px;
+    background-color: #f1f3ff;
+    border: 2px solid #666;
+    position: relative;
+}
+
+.display span {
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 5px;
+    color: #000;
+}
+
+.milisegundos {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    font-size: 1.5rem !important;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 20px;
+    color: #000;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid #333;
+}
+
+.start {
+    background-color: #00ff00;
+}
+
+.clear {
+    background-color: #ff0000;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: scale(0.98);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.config {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.time-input {
+    display: flex;
+    align-items: center;
+}
+
+.time-input input {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.time-input span {
+    margin: 0 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.set {
+    background-color: #333;
+    color: white;
+    height: 40px;
+    padding: 0 15px;
+    font-size: 1rem;
+}
