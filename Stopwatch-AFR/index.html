@@ -1,0 +1,35 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch-AFR</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="stopwatch-container">
+        <h1>StopWatch-AFR</h1>
+        <div class="display">
+            <button class="adjust" id="hour-plus">+</button>
+            <span id="hours">00</span>
+            <button class="adjust" id="hour-minus">-</button>
+            :
+            <button class="adjust" id="minute-plus">+</button>
+            <span id="minutes">00</span>
+            <button class="adjust" id="minute-minus">-</button>
+            :
+            <button class="adjust" id="second-plus">+</button>
+            <span id="seconds">00</span>
+            <button class="adjust" id="second-minus">-</button>
+        </div>
+        <div class="controls">
+            <button id="start">Iniciar</button>
+            <button id="pause">Pausa</button>
+            <button id="clear">Limpiar</button>
+            <button id="toggle-count">Modo Cuenta Atrás</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
