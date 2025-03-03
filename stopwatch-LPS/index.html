@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stopwatch</title>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+	<div class="container">
+		<!-- ℹ️ Info Icon -->
+		<span class="info-icon" onclick="openReadme()">ℹ️</span>
+
+		<h1 id="pageTitle">Stopwatch</h1>
+		<div class="timer-display">
+			<span id="display-hours">00</span> :
+			<span id="display-minutes">00</span> :
+			<span id="display-seconds">00</span>
+			<span id="display-milliseconds">.000</span>
+		</div>
+		<div class="controls">
+			<button id="startPause" class="start-btn">Start</button>
+			<button id="resetStop" class="reset-btn">Clear</button>
+		</div>
+		<div class="mode-switch">
+			<label>
+				<input type="checkbox" id="modeToggle"> Countdown Mode
+			</label>
+			<input type="text" id="countdownTime" placeholder="00:00:00" hidden>
+			<p id="error-message" style="color: red; font-size: 14px;"></p>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
