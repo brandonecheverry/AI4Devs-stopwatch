@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronómetro y Temporizador</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-btn active" data-target="cronometro">Cronómetro</button>
+            <button class="tab-btn" data-target="temporizador">Temporizador</button>
+        </div>
+
+        <div class="tab-content" id="cronometro">
+            <div class="display">
+                <span id="cronometro-display">00:00:00</span>
+                <span class="milisegundos">000</span>
+            </div>
+            <div class="controls">
+                <button id="cronometro-start" class="btn start">Start</button>
+                <button id="cronometro-clear" class="btn clear">Clear</button>
+            </div>
+        </div>
+
+        <div class="tab-content hidden" id="temporizador">
+            <div class="config">
+                <div class="time-input">
+                    <input type="number" id="horas" min="0" max="23" placeholder="00">
+                    <span>:</span>
+                    <input type="number" id="minutos" min="0" max="59" placeholder="08">
+                    <span>:</span>
+                    <input type="number" id="segundos" min="0" max="59" placeholder="00">
+                </div>
+                <button id="set-timer" class="btn set">Set</button>
+            </div>
+            <div class="display">
+                <span id="temporizador-display">00:08:00</span>
+                <span class="milisegundos">000</span>
+            </div>
+            <div class="controls">
+                <button id="temporizador-start" class="btn start">Start</button>
+                <button id="temporizador-clear" class="btn clear">Clear</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
