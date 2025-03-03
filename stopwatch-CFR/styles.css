@@ -1,0 +1,345 @@
+/* Base styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Branding and logo styles */
+.branding {
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.brand-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.separator-line {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin-bottom: 15px;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+/* Panel styling */
+.panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+}
+
+.panel.active {
+    transform: translateX(0);
+}
+
+#main-panel {
+    z-index: 1;
+}
+
+#stopwatch-panel {
+    transform: translateX(-100%);
+}
+
+/* Clases para controlar la visibilidad de los paneles */
+#stopwatch-panel.active {
+    transform: translateX(0);
+}
+
+#countdown-panel.active {
+    transform: translateX(0);
+}
+
+#main-panel.move-right {
+    transform: translateX(100%);
+}
+
+#main-panel.move-left {
+    transform: translateX(-100%);
+}
+
+/* Header styling */
+.header {
+    background-color: #0047AB;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Footer styling */
+.footer {
+    background-color: #0047AB;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    margin-top: auto; /* Empuja el footer al fondo */
+}
+
+/* Main content styling */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Quitamos el padding para que el contenido ocupe todo el espacio */
+}
+
+/* Option container styling */
+.option-container {
+    display: flex;
+    width: 100%;
+    height: 100%; /* Que ocupe todo el espacio disponible */
+}
+
+.option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 30px 0;
+}
+
+/* Efecto de hover para las opciones */
+.option:hover {
+    background-color: #e8ffe8; /* Verde claro */
+}
+
+.option h2 {
+    font-size: 44px; /* Texto más grande */
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.divider {
+    width: 2px;
+    background-color: #ccc;
+    height: 100%; /* Aseguramos que el divisor ocupe toda la altura */
+}
+
+/* Icon images */
+.icon-img {
+    width: 180px; /* Imágenes más grandes */
+    height: 180px;
+    margin-top: 30px;
+    object-fit: contain;
+}
+
+/* Time display styling */
+.display-container {
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+/* Ajuste para los paneles de stopwatch y countdown */
+#stopwatch-panel .main-content,
+#countdown-panel .main-content {
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.time-display {
+    width: 100%;
+    background-color: #e8e8ff;
+    border: 5px solid #333;
+    border-radius: 20px;
+    padding: 25px 20px;
+    font-size: 72px;
+    text-align: center;
+    position: relative;
+    font-weight: bold;
+}
+
+.milliseconds {
+    position: absolute;
+    bottom: 8px;
+    right: 20px;
+    font-size: 28px;
+}
+
+/* Button styling */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 30px;
+    padding: 0 20px;
+    margin-top: 40px;
+}
+
+.btn {
+    padding: 20px 40px;
+    font-size: 32px;
+    border: 5px solid #333;
+    border-radius: 15px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, transform 0.1s;
+    font-weight: bold;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-start {
+    background-color: #00c853;
+    color: black;
+    flex: 1;
+}
+
+.btn-pause {
+    background-color: #00b0ff;
+    color: black;
+    flex: 1;
+}
+
+.btn-continue {
+    background-color: #00b0ff;
+    color: black;
+    flex: 1;
+}
+
+.btn-clear {
+    background-color: #ff3d00;
+    color: black;
+    flex: 1;
+}
+
+.btn-clear-gray {
+    background-color: #aaaaaa;
+    color: black;
+}
+
+.btn-num, .btn-set {
+    background-color: #00c853;
+    color: black;
+}
+
+/* Keypad styling */
+.keypad {
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 40px;
+}
+
+.keypad-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.keypad-row .btn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    padding: 0;
+    font-size: 36px;
+}
+
+/* Back button */
+.back-btn {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.back-arrow {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #00c853;
+    clip-path: polygon(40% 0%, 0% 50%, 40% 100%, 40% 65%, 100% 65%, 100% 35%, 40% 35%);
+    margin-right: 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        height: 100vh;
+        max-height: 600px;
+    }
+    
+    .time-display {
+        font-size: 54px;
+    }
+    
+    .btn {
+        font-size: 24px;
+    }
+    
+    .keypad-row .btn {
+        height: 60px;
+        font-size: 28px;
+    }
+    
+    .icon-img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .option h2 {
+        font-size: 36px;
+    }
+    
+    .logo {
+        height: 30px;
+    }
+    
+    .brand-title {
+        font-size: 18px;
+    }
+}
