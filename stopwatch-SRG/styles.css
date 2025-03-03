@@ -1,0 +1,158 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.app-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Selector de modo */
+.mode-selector {
+    display: flex;
+    border-bottom: 1px solid #eee;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.mode-btn.active {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+/* Contenedor de tiempo */
+.time-container {
+    display: none;
+    padding: 20px;
+}
+
+.time-container.active {
+    display: block;
+}
+
+/* Visualización de tiempo */
+.time-display {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f0f5ff;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.time-display span {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.milliseconds {
+    font-size: 24px !important;
+    opacity: 0.7;
+}
+
+/* Controles */
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.control-btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.control-btn:hover {
+    opacity: 0.9;
+}
+
+.start-btn {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.pause-btn {
+    background-color: #f39c12;
+    color: white;
+}
+
+.clear-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Entrada de tiempo para el temporizador */
+.time-input {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.time-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.time-field label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.time-field input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Diseño responsivo */
+@media (max-width: 480px) {
+    .time-display span {
+        font-size: 36px;
+    }
+    
+    .milliseconds {
+        font-size: 18px !important;
+    }
+    
+    .time-input {
+        flex-direction: column;
+    }
+}
