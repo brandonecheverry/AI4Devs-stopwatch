@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronómetro y Cuenta Atrás</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="menu">
+        <button id="showStopwatch" class="menu-btn"><i class="fas fa-stopwatch"></i> Cronómetro</button>
+        <button id="showCountdown" class="menu-btn"><i class="fas fa-hourglass-half"></i> Cuenta Atrás</button>
+    </div>
+
+    <div id="welcome" class="container">
+        <h2>Bienvenido</h2>
+        <p>Seleccione una opción del menú para comenzar.</p>
+    </div>
+
+    <div id="stopwatch" class="container hidden">
+        <h2 id="stopwatchTitle">Modo: Cronómetro</h2>
+        <div id="stopwatchDisplay" class="timer-display">00:00:00.000</div>
+        <div class="button-group">
+            <button id="startStopwatch"><i class="fas fa-play"></i> Iniciar</button>
+            <button id="stopStopwatch"><i class="fas fa-stop"></i> Detener</button>
+            <button id="resetStopwatch"><i class="fas fa-redo"></i> Reiniciar</button>
+        </div>
+    </div>
+
+    <div id="countdown" class="container hidden">
+        <h2 id="countdownTitle">Modo: Cuenta Atrás</h2>
+        <div class="input-group">
+            <input type="number" id="countdownHours" placeholder="HH" min="0">
+            <input type="number" id="countdownMinutes" placeholder="MM" min="0" max="59">
+            <input type="number" id="countdownSeconds" placeholder="SS" min="0" max="59">
+            <button id="setCountdown"><i class="fas fa-check"></i> Establecer</button>
+        </div>
+        <p id="selectedTime" class="hidden"></p>
+        <div id="countdownDisplay" class="timer-display">00:00:00.000</div>
+        <div class="button-group">
+            <button id="startCountdown"><i class="fas fa-play"></i> Iniciar</button>
+            <button id="stopCountdown"><i class="fas fa-stop"></i> Detener</button>
+            <button id="resetCountdown"><i class="fas fa-redo"></i> Reiniciar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
