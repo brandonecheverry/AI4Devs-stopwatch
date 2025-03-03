@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+}
+
+body {
+    background-color: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    position: absolute;
+    left: 0;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #666;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.back-btn:hover {
+    color: #333;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.timer-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background-color: #f0f4f8;
+    padding: 20px 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.timer-display span {
+    display: inline-block;
+    min-width: 3ch;
+    text-align: center;
+}
+
+#stopwatch-milliseconds, #countdown-milliseconds {
+    font-size: 0.8em;
+    opacity: 0.7;
+    min-width: 4ch;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.selection-btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+    background-color: #4a6fa5;
+}
+
+.selection-btn:hover {
+    background-color: #3a5982;
+    transform: translateY(-2px);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.control-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+.control-btn.start {
+    background-color: #4caf50;
+    color: white;
+}
+
+.control-btn.pause {
+    background-color: #ff9800;
+    color: white;
+}
+
+.control-btn.continue {
+    background-color: #2196f3;
+    color: white;
+}
+
+.control-btn.clear {
+    background-color: #f44336;
+    color: white;
+}
+
+.control-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.setup-controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.number-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.number-btn {
+    padding: 15px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #e0e7ff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.number-btn:hover {
+    background-color: #ccd6ff;
+}
+
+.number-btn:nth-child(10) {
+    grid-column: 2;
+}
+
+.setup-buttons {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.setup-btn {
+    flex: 1;
+    padding: 12px 0;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#clear-setup {
+    background-color: #ff9800;
+    color: white;
+}
+
+#confirm-setup {
+    background-color: #4caf50;
+    color: white;
+}
+
+.setup-btn:hover {
+    filter: brightness(1.1);
+}
+
+.alarm {
+    animation: alarm 0.5s linear infinite alternate;
+}
+
+@keyframes alarm {
+    0% {
+        background-color: #f44336;
+        color: white;
+    }
+    100% {
+        background-color: #ffcdd2;
+        color: #d32f2f;
+    }
+}
+
+/* Disable number buttons */
+.number-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
