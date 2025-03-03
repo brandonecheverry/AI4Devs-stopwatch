@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer and Countdown</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="app-container">
+        <h1>Timer & Countdown</h1>
+        
+        <div class="mode-selection">
+            <button id="chrono-btn">Cronómetro</button>
+            <button id="countdown-btn">Cuenta Atrás</button>
+        </div>
+
+        <div id="chrono-screen" class="hidden">
+            <button id="fullscreen-btn" class="fullscreen-toggle">⛶</button>
+            <button id="exit-fullscreen-btn" class="fullscreen-exit hidden">×</button>
+
+            <h2>Cronómetro</h2>
+            <div class="display" id="chrono-display">00:00:00<span class="milliseconds">.00</span></div>
+            <div class="controls">
+                <button id="start-chrono">Iniciar</button>
+                <button id="clear-chrono">Clear</button>
+                <button class="back-btn">Back</button>
+            </div>
+        </div>
+
+        <div id="countdown-screen" class="hidden">
+            <button id="fullscreen-btn-countdown" class="fullscreen-toggle">⛶</button>
+            <button id="exit-fullscreen-btn-countdown" class="fullscreen-exit hidden">×</button>
+
+            <h2>Cuenta Atrás</h2>
+            <div class="display" id="countdown-display">00:00:00<span class="milliseconds">.00</span></div>
+
+            <div id="num-pad">
+                <div class="num-display" id="num-input">00:00:00</div>
+                <div class="keypad">
+                    <button class="num-key">1</button>
+                    <button class="num-key">2</button>
+                    <button class="num-key">3</button>
+                    <button class="num-key">4</button>
+                    <button class="num-key">5</button>
+                    <button class="num-key">6</button>
+                    <button class="num-key">7</button>
+                    <button class="num-key">8</button>
+                    <button class="num-key">9</button>
+                    <button class="num-key">0</button>
+                    <button id="delete-key">⌫</button>
+                </div>
+                <button id="set-time">SET</button>
+                <button id="reset-time">Reset</button>
+                <button class="back-btn">Back</button> <!-- 🔹 Se ha añadido aquí -->
+            </div>
+
+            <div class="controls hidden" id="countdown-controls">
+                <button id="start-countdown">Start</button>
+                <button id="clear-countdown">Clear</button>
+                <button class="back-btn">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
