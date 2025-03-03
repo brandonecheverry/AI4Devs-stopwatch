@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #fff;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.display {
+    font-size: 80px;
+    font-weight: bold;
+    background-color: #e6e9ff;
+    border: 5px solid #333;
+    border-radius: 20px;
+    padding: 10px 20px;
+    display: inline-block;
+    min-width: 300px;
+}
+
+#milliseconds {
+    font-size: 30px;
+    vertical-align: super;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    font-size: 30px;
+    padding: 15px 40px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#start {
+    background-color: #4CAF50;
+    color: white;
+    border: 3px solid #333;
+}
+
+#clear {
+    background-color: #FF3B30;
+    color: white;
+    border: 3px solid #333;
+}
+
+button:active {
+    transform: scale(0.95);
+}
