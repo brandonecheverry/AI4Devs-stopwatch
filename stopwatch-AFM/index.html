@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronómetro y Temporizador - América de Cali</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>⚽ Cronómetro y Temporizador del América de Cali 🔥</h1>
+
+    <p id="instructions">Elige entre cronómetro para medir el tiempo de juego o temporizador para marcar el final del partido.</p>
+
+    <div class="mode-switch">
+        <label>Modo:</label>
+        <select id="modeSelector">
+            <option value="cronometro">Cronómetro</option>
+            <option value="temporizador">Temporizador</option>
+        </select>
+    </div>
+
+    <div id="timer-display">
+        <span class="editable" id="hours">00</span>:
+        <span class="editable" id="minutes">00</span>:
+        <span class="editable" id="seconds">00</span>
+        <span id="milliseconds">.000</span>
+    </div>
+
+    <div class="controls">
+        <button id="startPause">Iniciar</button>
+        <button id="reset">Reiniciar</button>
+    </div>
+
+    <div id="countdown-options" class="hidden">
+        <p>⏳ Opciones rápidas del temporizador:</p>
+        <button class="countdown-btn" data-time="1">1 min</button>
+        <button class="countdown-btn" data-time="3">3 min</button>
+        <button class="countdown-btn" data-time="5">5 min</button>
+        <button class="countdown-btn" data-time="10">10 min</button>
+        <button class="countdown-btn" data-time="15">15 min</button>
+        <button class="countdown-btn" data-time="30">30 min</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
