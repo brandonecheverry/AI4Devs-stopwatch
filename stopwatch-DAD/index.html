@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch and Countdown</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Icons for accessibility and better UX -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="min-h-screen flex flex-col items-center">
+    <header class="w-full text-center py-4 mb-8">
+        <h1 class="text-xl md:text-2xl font-bold" aria-label="Stopwatch and Countdown">Stopwatch and Countdown</h1>
+    </header>
+
+    <main class="container mx-auto px-4 max-w-3xl">
+        <!-- Initial selection screen -->
+        <section id="seleccion-inicial" class="flex flex-col md:flex-row justify-center gap-8 mb-8">
+            <div class="option-card p-6 rounded-lg shadow-md flex flex-col items-center cursor-pointer transition-transform" data-option="cronometro" tabindex="0" role="button" aria-label="Select stopwatch">
+                <h2 class="text-2xl font-bold mb-4">Stopwatch</h2>
+                <div class="icon-container p-4 rounded-full mb-4">
+                    <i class="fas fa-stopwatch text-4xl"></i>
+                </div>
+                <p class="text-gray-600 text-center">Measure elapsed time</p>
+            </div>
+
+            <div class="option-card p-6 rounded-lg shadow-md flex flex-col items-center cursor-pointer transition-transform" data-option="cuenta-atras" tabindex="0" role="button" aria-label="Select countdown">
+                <h2 class="text-2xl font-bold mb-4">Countdown</h2>
+                <div class="icon-container p-4 rounded-full mb-4">
+                    <i class="fas fa-hourglass-half text-4xl"></i>
+                </div>
+                <p class="text-gray-600 text-center">Set a time and count down</p>
+            </div>
+        </section>
+
+        <!-- Stopwatch section (initially hidden) -->
+        <section id="cronometro" class="hidden">
+            <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <div class="timer-display text-center py-4 px-6 rounded-lg mb-6" aria-live="polite">
+                    <span id="cronometro-display" class="text-5xl md:text-7xl font-mono font-bold">00:00:00</span>
+                    <span id="cronometro-ms" class="text-2xl md:text-3xl font-mono">000</span>
+                </div>
+                <div class="flex justify-center gap-4">
+                    <button id="cronometro-start" class="btn-primary py-3 px-8 rounded-lg text-xl transition-colors" aria-label="Start stopwatch">
+                        <i class="fas fa-play mr-2"></i>Start
+                    </button>
+                    <button id="cronometro-pause" class="btn-secondary py-3 px-8 rounded-lg text-xl transition-colors hidden" aria-label="Pause stopwatch">
+                        <i class="fas fa-pause mr-2"></i>Pause
+                    </button>
+                    <button id="cronometro-reset" class="btn-danger py-3 px-8 rounded-lg text-xl transition-colors" aria-label="Reset stopwatch">
+                        <i class="fas fa-undo mr-2"></i>Reset
+                    </button>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <button id="cronometro-back" class="btn-back py-2 px-6 rounded-lg flex items-center transition-colors" aria-label="Back to home screen">
+                    <i class="fas fa-arrow-left mr-2"></i>Back
+                </button>
+            </div>
+        </section>
+
+        <!-- Countdown section (initially hidden) -->
+        <section id="cuenta-atras" class="hidden">
+            <!-- Countdown configuration -->
+            <div id="cuenta-atras-config" class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <div class="timer-display text-center py-4 px-6 rounded-lg mb-6" aria-live="polite">
+                    <span id="cuenta-atras-display" class="text-5xl md:text-7xl font-mono font-bold">00:00:00</span>
+                    <span id="cuenta-atras-ms" class="text-2xl md:text-3xl font-mono">000</span>
+                </div>
+                <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-6">
+                    <button class="num-btn py-3 rounded-lg text-xl transition-colors" data-num="1">1</button>
+                    <button class="num-btn py-3 rounded-lg text-xl transition-colors" data-num="2">2</button>
+                    <button class="num-btn py-3 rounded-lg text-xl transition-colors" data-num="3">3</button>
+                    <button class="num-btn py-3 rounded-lg text-xl transition-colors" data-num="4">4</button>
+                    <button class="num-btn py-3 rounded-lg text-xl transition-colors" data-num="5">5</button>
+                    <button class="num-btn py-3 rounded-lg text-xl transition-colors" data-num="6">6</button>
+                    <button class="num-btn py-3 rounded-lg text-xl transition-colors" data-num="7">7</button>
+                    <button class="num-btn py-3 rounded-lg text-xl transition-colors" data-num="8">8</button>
+                    <button class="num-btn py-3 rounded-lg text-xl transition-colors" data-num="9">9</button>
+                    <button class="num-btn py-3 rounded-lg text-xl transition-colors" data-num="0">0</button>
+                    <button id="set-btn" class="py-3 rounded-lg text-xl transition-colors col-span-2 text-white">Set</button>
+                </div>
+                <div class="flex justify-center">
+                    <button id="clear-btn" class="py-3 px-8 rounded-lg text-xl transition-colors text-white" aria-label="Clear input">
+                        <i class="fas fa-backspace mr-2"></i>Clear
+                    </button>
+                </div>
+            </div>
+
+            <!-- Countdown controls (initially hidden) -->
+            <div id="cuenta-atras-controles" class="bg-white p-6 rounded-lg shadow-md mb-6 hidden">
+                <div class="timer-display text-center py-4 px-6 rounded-lg mb-6" aria-live="polite">
+                    <span id="cuenta-atras-running-display" class="text-5xl md:text-7xl font-mono font-bold">00:00:00</span>
+                    <span id="cuenta-atras-running-ms" class="text-2xl md:text-3xl font-mono">000</span>
+                </div>
+                <div class="flex justify-center gap-4">
+                    <button id="cuenta-atras-start" class="btn-primary py-3 px-8 rounded-lg text-xl transition-colors" aria-label="Start countdown">
+                        <i class="fas fa-play mr-2"></i>Start
+                    </button>
+                    <button id="cuenta-atras-pause" class="btn-secondary py-3 px-8 rounded-lg text-xl transition-colors hidden" aria-label="Pause countdown">
+                        <i class="fas fa-pause mr-2"></i>Pause
+                    </button>
+                    <button id="cuenta-atras-reset" class="btn-danger py-3 px-8 rounded-lg text-xl transition-colors" aria-label="Reset countdown">
+                        <i class="fas fa-undo mr-2"></i>Reset
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex justify-center">
+                <button id="cuenta-atras-back" class="btn-back py-2 px-6 rounded-lg flex items-center transition-colors" aria-label="Back to home screen">
+                    <i class="fas fa-arrow-left mr-2"></i>Back
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="mt-auto w-full text-center py-3">
+        <p>&copy; 2025 Stopwatch and Countdown</p>
+    </footer>
+
+    <!-- Completion notification (initially hidden) -->
+    <div id="notification" class="fixed hidden top-4 right-4 p-4 rounded-lg shadow-lg text-white" role="alert" aria-live="assertive">
+        <p>Time's up!</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
