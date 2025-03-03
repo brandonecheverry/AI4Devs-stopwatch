@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Temporizador y Cronómetro Divertidos</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <!-- Menú principal -->
+  <section id="mainMenu" class="section-active">
+    <h1>¡Bienvenido!</h1>
+    <p>Elige una de nuestras opciones emocionantes:</p>
+    <div class="menu-buttons">
+      <button id="btnTemporizador" class="btn-menu">¡Cuenta Atrás!</button>
+      <button id="btnCronometro" class="btn-menu">¡A Contrarreloj!</button>
+    </div>
+  </section>
+
+  <!-- Sección de Temporizador -->
+  <section id="timerSection" class="section-hidden">
+    <h2>¡Configura tu Temporizador!</h2>
+    <div class="timer-config">
+      <label for="hoursInput">Horas</label>
+      <input type="number" id="hoursInput" min="0" max="99" value="0">
+      <label for="minutesInput">Minutos</label>
+      <input type="number" id="minutesInput" min="0" max="59" value="0">
+      <label for="secondsInput">Segundos</label>
+      <input type="number" id="secondsInput" min="0" max="59" value="0">
+    </div>
+    <button id="btnIniciarTimer" class="btn-start">¡Arranca la Cuenta!</button>
+
+    <div class="time-display" id="timerDisplay">00:00:00</div>
+    <div class="timer-controls">
+      <button id="btnDetenerTimer" class="btn-stop">¡Frena la Sirena!</button>
+      <button id="btnResetTimer" class="btn-reset">¡Borrón y Cuenta Nueva!</button>
+    </div>
+
+    <button id="btnVolverMenuTimer" class="btn-back">¡Regresar al Menú!</button>
+  </section>
+
+  <!-- Sección de Cronómetro -->
+  <section id="stopwatchSection" class="section-hidden">
+    <h2>¡Cronómetro en acción!</h2>
+    <div class="time-display" id="stopwatchDisplay">00:00:00</div>
+    <div class="stopwatch-controls">
+      <button id="btnIniciarStopwatch" class="btn-start">¡A Toda Máquina!</button>
+      <button id="btnPausarStopwatch" class="btn-stop">¡Pausa!</button>
+      <button id="btnResetStopwatch" class="btn-reset">¡Borrón y Cuenta Nueva!</button>
+    </div>
+
+    <button id="btnVolverMenuStopwatch" class="btn-back">¡Regresar al Menú!</button>
+  </section>
+
+  <!-- Audio de alarma (sirena de ambulancia) -->
+  <audio id="alarmAudio" loop>
+    <source src="siren.mp3" type="audio/mpeg">
+    Tu navegador no soporta reproducción de audio.
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
