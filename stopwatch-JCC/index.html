@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronómetro y Cuenta Regresiva</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <h1 class="app-title">Cronómetro y Cuenta Regresiva</h1>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-mode="stopwatch">Cronómetro</button>
+            <button class="tab-btn" data-mode="countdown">Cuenta Regresiva</button>
+        </div>
+
+        <div class="display-container">
+            <div class="time-display">
+                <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+                <span id="milliseconds">000</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="control-btn start">Iniciar</button>
+            <button id="pauseBtn" class="control-btn pause" disabled>Pausar</button>
+            <button id="resetBtn" class="control-btn clear">Limpiar</button>
+        </div>
+
+        <div id="countdownSettings" class="countdown-settings hidden">
+            <p class="countdown-description"></p>
+            <div class="time-inputs-container">
+                <div class="time-inputs">
+                    <div class="input-group">
+                        <label for="hoursInput">Horas:</label>
+                        <input type="number" 
+                               id="hoursInput" 
+                               min="0" 
+                               max="99" 
+                               value="0"
+                               class="time-input"
+                               aria-label="Horas">
+                        <span class="input-hint"></span>
+                    </div>
+                    <span class="time-separator">:</span>
+                    <div class="input-group">
+                        <label for="minutesInput">Minutos:</label>
+                        <input type="number" 
+                               id="minutesInput" 
+                               min="0" 
+                               max="59" 
+                               value="0"
+                               class="time-input"
+                               aria-label="Minutos">
+                        <span class="input-hint"></span>
+                    </div>
+                    <span class="time-separator">:</span>
+                    <div class="input-group">
+                        <label for="secondsInput">Segundos:</label>
+                        <input type="number" 
+                               id="secondsInput" 
+                               min="0" 
+                               max="59" 
+                               value="0"
+                               class="time-input"
+                               aria-label="Segundos">
+                        <span class="input-hint"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="config-controls">
+                <button id="clearConfigBtn" class="control-btn clear-config">Limpiar Configuración</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
