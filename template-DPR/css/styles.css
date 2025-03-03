@@ -1,0 +1,255 @@
+/* ====== RESET BÁSICO ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+/* ====== CONTENEDOR PRINCIPAL ====== */
+.app-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fefefe;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    height: 60vh;
+}
+
+/* ====== TRANSICIONES ENTRE PANTALLAS ====== */
+/* Todas las pantallas se posicionan de forma absoluta y se les aplica una transición de 1s */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease;
+}
+
+/* Posición inicial de cada pantalla según la disposición:
+   Cuenta Atrás (izquierda), Main (centro), Cronómetro (derecha) */
+#screen-countdown {
+    transform: translateX(100%);
+}
+#screen-main {
+    transform: translateX(0%);
+}
+#screen-timer {
+    transform: translateX(-100%);
+}
+
+/* La pantalla activa siempre se sitúa en el centro */
+.screen.active {
+    transform: translateX(0%);
+}
+
+/* ====== PANTALLA PRINCIPAL (Main) ====== */
+.main-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+
+.half {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.half-stopwatch {
+    background-color: #ffffff;
+}
+
+.half-countdown {
+    background-color: #f0fff0;
+}
+
+.half:hover {
+    filter: brightness(95%);
+}
+
+/* Íconos */
+.arrow-icon {
+    width: 200px;
+    height: auto;
+}
+
+/* ====== CRONÓMETRO Y CUENTA ATRÁS ====== */
+.time-display {
+    padding: 10px 20px;
+    background-color: #e9ecff;
+    border: 3px solid #666;
+    border-radius: 30px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* En Cuenta Atrás, encapsulamos los elementos en un contenedor que se ajusta al ancho del contenido */
+.time-wrapper {
+    display: inline-block;
+}
+
+#timer-time, #countdown-time {
+    display: block;
+    font-size: 4.5rem;
+    font-weight: bold;
+}
+
+#timer-ms, #countdown-ms {
+    display: block;
+    font-size: 1.2rem;
+    text-align: right;
+    margin-top: 5px;
+}
+
+/* ====== CONTROLES Y BOTONES ====== */
+.controls {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Para Timer, los botones se muestran en una misma fila */
+#screen-timer .controls.row {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Hacemos que los botones ocupen el espacio disponible de la línea */
+#screen-timer .controls.row button {
+    flex: 1;
+}
+
+/* Botones de dígitos para Cuenta Atrás */
+.digit-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Botones grandes de acción */
+.big-button {
+    min-width: 120px;
+    min-height: 50px;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    border: 3px solid #333;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+
+/* ----- CRONÓMETRO ----- */
+.cron-start-continue-button {
+    background-color: green;
+    color: black;
+}
+.cron-pause-button {
+    background-color: blue;
+    color: black;
+}
+.cron-clear-button {
+    background-color: red;
+    color: black;
+}
+
+/* ----- CUENTA ATRÁS ----- */
+.ca-green-button {
+    background: linear-gradient(to bottom, #d3d3d3, #a9a9a9);
+    color: black;
+}
+.ca-green-button:hover {
+    background: linear-gradient(to bottom, #a9a9a9, #d3d3d3);
+}
+.ca-gray-button {
+    background: linear-gradient(to bottom, #d3d3d3, #a9a9a9);
+    color: black;
+}
+.ca-gray-button:hover {
+    background: linear-gradient(to bottom, #a9a9a9, #d3d3d3);
+}
+.ca-pause-button {
+    background-color: blue;
+    color: black;
+}
+.red-button {
+    background-color: red;
+    color: black;
+}
+
+/* Botones de dígitos */
+.digit-button {
+    min-width: 60px;
+    min-height: 50px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: 2px solid #333;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    background: linear-gradient(to bottom, #a8e6a3, #66cc66);
+    color: black;
+}
+.digit-button:hover {
+    background: linear-gradient(to bottom, #66cc66, #a8e6a3);
+}
+
+/* ====== BOTÓN BACK ====== */
+.back-row {
+    width: 100%;
+    background-color: #00008B;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;  /* Alinea el contenido a la izquierda */
+    width: 100%;
+    padding-left: 20px;  /* Espacio desde el borde izquierdo */
+    cursor: pointer;
+}
+
+.back-button:hover {
+    opacity: 0.9;
+}
+
+.back-icon {
+    height: 24px;
+    width: auto;
+    margin-right: 8px;
+}
+
+/* ====== OCULTAR ELEMENTOS ====== */
+.hidden {
+    display: none !important;
+}
