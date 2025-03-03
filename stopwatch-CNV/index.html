@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cronómetro Web</title>
+  <style>
+    /* Reset y estilos básicos */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .screen {
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .active {
+      display: block;
+    }
+    .container {
+      text-align: center;
+    }
+    /* Pantalla inicial */
+    #initialScreen .option-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .option-button {
+      width: 33%;
+      height: 200px;
+      border: 2px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    /* Estilos de las flechas */
+    .arrow {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+    .arrow.stopwatch {
+      color: green;
+      text-shadow: 1px 1px 2px #006400;
+    }
+    .arrow.countdown {
+      color: red;
+      text-shadow: 1px 1px 2px #8B0000;
+    }
+    /* Estilos para el recuadro del cronómetro */
+    .timer-box {
+      background-color: #dce1e3;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 300px;
+    }
+    .time {
+      font-size: 40px;
+      color: #000;
+    }
+    .milliseconds {
+      font-size: 20px;
+      vertical-align: super;
+    }
+    /* Botones grandes */
+    .big-button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    /* Botones específicos de Stopwatch */
+    #stopwatchScreen .start-btn {
+      background-color: green;
+      color: black;
+    }
+    #stopwatchScreen .clear-btn {
+      background-color: red;
+      color: black;
+    }
+    /* Botón Start en Downwatch (Countdown en cuenta atrás) */
+    #downwatchScreen .start-btn {
+      background: linear-gradient(to right, #add8e6, #00008b);
+      color: black;
+    }
+    /* Botones en pantalla Countdown */
+    #countdownScreen .set-btn {
+      background-color: green;
+      color: black;
+    }
+    #countdownScreen .clear-btn {
+      background-color: grey;
+      color: black;
+    }
+    /* Botón Back (común a todas las pantallas) */
+    .back-button {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background-color: blue;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    .back-button .back-arrow {
+      font-size: 20px;
+      margin-right: 5px;
+      color: green;
+    }
+    /* Barra superior */
+    .top-bar {
+      background-color: blue;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    /* Botones numéricos en Countdown */
+    .number-buttons {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin: 20px;
+    }
+    .number-button {
+      background-color: green;
+      color: white;
+      font-size: 20px;
+      padding: 15px 0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .config-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Pantalla Inicial -->
+  <div id="initialScreen" class="screen active">
+    <div class="container">
+      <div class="option-buttons">
+        <div id="btnStopwatch" class="option-button">
+          <div class="arrow stopwatch">&#8593;</div> <!-- Flecha verde apuntando hacia arriba -->
+          <div>StopWatch</div>
+        </div>
+        <div id="btnCountdown" class="option-button">
+          <div class="arrow countdown">&#8595;</div> <!-- Flecha roja apuntando hacia abajo -->
+          <div>Countdown</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pantalla Stopwatch -->
+  <div id="stopwatchScreen" class="screen">
+    <div class="top-bar">www.online-stopwatch.com</div>
+    <div class="container">
+      <div class="timer-box">
+        <span id="stopwatchTime" class="time">00:00:00</span>
+        <span id="stopwatchMs" class="milliseconds">000</span>
+      </div>
+      <div>
+        <button id="swStartBtn" class="big-button start-btn">Start</button>
+        <button id="swClearBtn" class="big-button clear-btn">Clear</button>
+      </div>
+    </div>
+    <button id="swBackBtn" class="back-button"><span class="back-arrow">&#8592;</span>Back</button>
+  </div>
+
+  <!-- Pantalla Countdown -->
+  <div id="countdownScreen" class="screen">
+    <div class="top-bar">www.online-stopwatch.com</div>
+    <div class="container">
+      <div class="timer-box">
+        <span id="countdownTime" class="time">00:00:00</span>
+        <span id="countdownMs" class="milliseconds">000</span>
+      </div>
+      <!-- Sección de dígitos y botones de configuración -->
+      <div style="display:flex; justify-content: center; align-items: center;">
+        <div class="number-buttons">
+          <!-- Primera fila: 5, 6, 7, 8, 9 -->
+          <button class="number-button">5</button>
+          <button class="number-button">6</button>
+          <button class="number-button">7</button>
+          <button class="number-button">8</button>
+          <button class="number-button">9</button>
+          <!-- Segunda fila: 0, 1, 2, 3, 4 -->
+          <button class="number-button">0</button>
+          <button class="number-button">1</button>
+          <button class="number-button">2</button>
+          <button class="number-button">3</button>
+          <button class="number-button">4</button>
+        </div>
+        <div class="config-buttons" style="margin-left:20px;">
+          <button id="cdSetBtn" class="big-button set-btn">Set</button>
+          <button id="cdClearBtn" class="big-button clear-btn">Clear</button>
+        </div>
+      </div>
+    </div>
+    <button id="cdBackBtn" class="back-button"><span class="back-arrow">&#8592;</span>Back</button>
+  </div>
+
+  <!-- Pantalla Downwatch (resultado de configurar Countdown) -->
+  <div id="downwatchScreen" class="screen">
+    <div class="top-bar">www.online-stopwatch.com</div>
+    <div class="container">
+      <div class="timer-box">
+        <span id="downwatchTime" class="time">00:00:00</span>
+        <span id="downwatchMs" class="milliseconds">000</span>
+      </div>
+      <div>
+        <button id="dwStartBtn" class="big-button start-btn">Start</button>
+        <button id="dwClearBtn" class="big-button clear-btn">Clear</button>
+      </div>
+    </div>
+    <button id="dwBackBtn" class="back-button"><span class="back-arrow">&#8592;</span>Back</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
